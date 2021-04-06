@@ -4,12 +4,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import fr.pederobien.mumble.server.interfaces.IMumbleServer;
@@ -22,6 +24,12 @@ public class EventListener implements Listener {
 	public EventListener(IMumbleServer mumbleServer) {
 		this.mumbleServer = mumbleServer;
 		players = new HashMap<Player, IPlayer>();
+
+		for (Player player : Bukkit.getOnlinePlayers()) {
+			IPlayer mumblePlayer = mumbleServer.addPlayer(player.getAddress(), player.getName(), player.isOp());
+			updatePlayerLocation(player, mumblePlayer);
+			players.put(player, mumblePlayer);
+		}
 	}
 
 	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
@@ -52,5 +60,21 @@ public class EventListener implements Listener {
 			if (optEntry.isPresent())
 				optEntry.get().getValue().setAdmin(false);
 		}
+	}
+
+	@EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
+	public void onPlayerMoveEvent(PlayerMoveEvent event) {
+		IPlayer player = players.get(event.getPlayer());
+
+		if (player == null)
+			return;
+
+		updatePlayerLocation(event.getPlayer(), player);
+	}
+
+	private void updatePlayerLocation(Player player, IPlayer mumblePlayer) {
+		mumblePlayer.getPosition().setX(player.getLocation().getX());
+		mumblePlayer.getPosition().setY(player.getLocation().getY());
+		mumblePlayer.getPosition().setZ(player.getLocation().getZ());
 	}
 }
