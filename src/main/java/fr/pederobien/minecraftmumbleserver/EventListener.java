@@ -76,5 +76,7 @@ public class EventListener implements Listener {
 		mumblePlayer.getPosition().setX(player.getLocation().getX());
 		mumblePlayer.getPosition().setY(player.getLocation().getY());
 		mumblePlayer.getPosition().setZ(player.getLocation().getZ());
+		mumblePlayer.getPosition().setYaw(player.getLocation().getYaw());
+		mumblePlayer.getPosition().setPitch(player.getLocation().getPitch());
 	}
 }
