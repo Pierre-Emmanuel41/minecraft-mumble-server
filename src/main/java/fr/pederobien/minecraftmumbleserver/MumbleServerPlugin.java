@@ -6,6 +6,7 @@ import java.net.UnknownHostException;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import fr.pederobien.minecraftgameplateform.utils.Plateform;
 import fr.pederobien.mumble.server.impl.MumbleServer;
 import fr.pederobien.mumble.server.interfaces.IMumbleServer;
 
@@ -15,7 +16,7 @@ public class MumbleServerPlugin extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		try {
-			server = new MumbleServer("Mumble-1.0-SNAPSHOT", InetAddress.getByName(Bukkit.getIp()), 28000, 32000);
+			server = new MumbleServer("Mumble-1.0-SNAPSHOT", InetAddress.getByName(Bukkit.getIp()), 28000, 32000, Plateform.ROOT.resolve("Mumble"));
 			server.open();
 			getServer().getPluginManager().registerEvents(new EventListener(server), this);
 		} catch (UnknownHostException e) {
