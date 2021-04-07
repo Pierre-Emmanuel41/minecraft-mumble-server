@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dictionary>
+	<name>Game</name>
+	<version>1.0</version>
+	<locales>
+		<locale>fr</locale>
+		<locale>fr-FR</locale>
+		<locale>fr-CA</locale>
+	</locales>
+	<messages>
+		<message>
+			<code>MUMBLE_EXPLANATION</code>
+			<value>Pour configurer la liste des channels du serveur mumble</value>
+		</message>
+		<message>
+			<code>ADD_CHANNEL__EXPLANATION</code>
+			<value>Pour ajouter un channel au serveur mumble</value>
+		</message>
+		<message>
+			<code>ADD_CHANNEL__NAME_IS_MISSING</code>
+			<value>Impossible d'ajouter un channel, il manque le nom du channel</value>
+		</message>
+		<message>
+			<code>ADD_CHANNEL__CHANNEL_ALREADY_REGISTERED</code>
+			<value>Impossible d'ajouter le channel %s, ce channel existe déjà</value>
+		</message>
+		<message>
+			<code>ADD_CHANNEL__CHANNEL_ADDED</code>
+			<value>Le channel %s a été ajouté</value>
+		</message>
+		<message>
+			<code>REMOVE_CHANNEL__EXPLANATION</code>
+			<value>Pour supprimer un channel du serveur mumble</value>
+		</message>
+		<message>
+			<code>REMOVE_CHANNEL__ALL_CHANNELS_REMOVED</code>
+			<value>Tous les channels ont été supprimés du serveur mumble</value>
+		</message>
+		<message>
+			<code>REMOVE_CHANNEL__CHANNEL_DOES_NOT_EXIST</code>
+			<value>Impossible de supprimer le channel %s, ce channel n'existe pas</value>
+		</message>
+		<message>
+			<code>REMOVE_CHANNEL__NO_CHANNEL_REMOVED</code>
+			<value>Aucun channel n'a été supprimé</value>
+		</message>
+		<message>
+			<code>REMOVE_CHANNEL__ONE_CHANNEL_REMOVED</code>
+			<value>Le channel %s a été supprimé du serveur mumble</value>
+		</message>
+		<message>
+			<code>REMOVE_CHANNEL__SEVERAL_CHANNELS_REMOVED</code>
+			<value>Les channels %s ont été supprimés du serveur mumble</value>
+		</message>
+		<message>
+			<code>RENAME_CHANNEL__EXPLANATION</code>
+			<value>Pour renommer un channel</value>
+		</message>
+		<message>
+			<code>RENAME_CHANNEL__CHANNEL_NAME_IS_MISSING</code>
+			<value>Impossible de renommer un channel, il manque le nom du channel</value>
+		</message>
+		<message>
+			<code>RENAME_CHANNEL__NEW_CHANNEL_NAME_IS_MISSING</code>
+			<value>Impossible de renommer le channel %s, il manque le nouveau nom du channel</value>
+		</message>
+		<message>
+			<code>RENAME_CHANNEL__CHANNEL_ALREADY_EXIST</code>
+			<value>Impossible de renommer channel %s en %s, ce channel existe déjà</value>
+		</message>
+		<message>
+			<code>RENAME_CHANNEL__CHANNEL_DOES_NOT_EXIST</code>
+			<value>Impossible de renommer le channel %s, ce channel n'existe pas</value>
+		</message>
+		<message>
+			<code>RENAME_CHANNEL__CHANNEL_RENAMED</code>
+			<value>Le channel %s a été renommé en %s</value>
+		</message>
+		<message>
+			<code>SOUND_MODIFIER__EXPLANATION</code>
+			<value>Pour modifier le volume du signal stéréo d'un joueur</value>
+		</message>
+		<message>
+			<code>SOUND_MODIFIER__CHANNEL_NAME_IS_MISSING</code>
+			<value>Impossible de définir le modifieur de son d'un channel, il manque le nom du channel</value>
+		</message>
+		<message>
+			<code>SOUND_MODIFIER__CHANNEL_DOES_NOT_EXIST</code>
+			<value>Impossible de définir le modifieur de son du channel %s, ce channel n'existe pas</value>
+		</message>
+		<message>
+			<code>SOUND_MODIFIER__MODIFIER_NAME_IS_MISSING</code>
+			<value>Impossible de définir le modifieur de son du channel %s, il manque le nom du modifieur de son</value>
+		</message>
+		<message>
+			<code>SOUND_MODIFIER__MODIFIER_DOES_NOT_EXIST</code>
+			<value>Impossible de définir le modifieur de son du channel %s, le modifieur de son %s n'existe pas</value>
+		</message>
+		<message>
+			<code>SOUND_MODIFIER__MODIFIER_UPDATED</code>
+			<value>Le channel %s a maintenant %s en tant que modifieur de son</value>
+		</message>
+		<message>
+			<code>MUMBLE_DETAILS__EXPLANATION</code>
+			<value>Pour afficher les caractéristiques de tous les channels</value>
+		</message>
+		<message>
+			<code>MUMBLE_DETAILS__NO_CHANNEL_REGISTERED</code>
+			<value>Il n'y a pas de channel enregistré</value>
+		</message>
+		<message>
+			<code>MUMBLE_DETAILS__CHANNELS_DETAILS</code>
+			<value>Caractéristiques des channels :%n%s</value>
+		</message>
+	</messages>
+</dictionary>

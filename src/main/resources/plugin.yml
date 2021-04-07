@@ -3,3 +3,8 @@ name: minecraft-mumble-server
 version: 1.0-SNAPSHOT
 api-version: 1.13
 depend: [minecraft-game-plateform]
+
+commands:
+  mumble:
+    description: This command is used to configure a mumble server.
+    permission: MumblePlugin.permission

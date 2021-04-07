@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dictionary>
+	<name>Game</name>
+	<version>1.0</version>
+	<locales>
+		<locale>en</locale>
+		<locale>en-EN</locale>
+		<locale>en-GB</locale>
+		<locale>en-UK</locale>
+		<locale>en-US</locale>
+		<locale>en-CA</locale>
+	</locales>
+	<messages>
+		<message>
+			<code>MUMBLE_EXPLANATION</code>
+			<value>To configure the list of channels of the mumble server</value>
+		</message>
+		<message>
+			<code>ADD_CHANNEL__EXPLANATION</code>
+			<value>To add a channel to the mumble server</value>
+		</message>
+		<message>
+			<code>ADD_CHANNEL__NAME_IS_MISSING</code>
+			<value>Cannot add a channel, the channel name is missing</value>
+		</message>
+		<message>
+			<code>ADD_CHANNEL__CHANNEL_ALREADY_REGISTERED</code>
+			<value>Cannot add channel %s, this channel already exists</value>
+		</message>
+		<message>
+			<code>ADD_CHANNEL__CHANNEL_ADDED</code>
+			<value>The channel %s has been added</value>
+		</message>
+		<message>
+			<code>REMOVE_CHANNEL__EXPLANATION</code>
+			<value>To remove a channel from the mumble server</value>
+		</message>
+		<message>
+			<code>REMOVE_CHANNEL__ALL_CHANNELS_REMOVED</code>
+			<value>All channels have been removed from the mumble server</value>
+		</message>
+		<message>
+			<code>REMOVE_CHANNEL__CHANNEL_DOES_NOT_EXIST</code>
+			<value>Cannot remove the channel %s, this channel does not exists</value>
+		</message>
+		<message>
+			<code>REMOVE_CHANNEL__NO_CHANNEL_REMOVED</code>
+			<value>No channel has been removed</value>
+		</message>
+		<message>
+			<code>REMOVE_CHANNEL__ONE_CHANNEL_REMOVED</code>
+			<value>The channel %s has been removed from the mumble server</value>
+		</message>
+		<message>
+			<code>REMOVE_CHANNEL__SEVERAL_CHANNELS_REMOVED</code>
+			<value>Channels %s have been removed from the mumble server</value>
+		</message>
+		<message>
+			<code>RENAME_CHANNEL__EXPLANATION</code>
+			<value>To rename a channel</value>
+		</message>
+		<message>
+			<code>RENAME_CHANNEL__CHANNEL_NAME_IS_MISSING</code>
+			<value>Cannot rename a channel, the channel name is missing</value>
+		</message>
+		<message>
+			<code>RENAME_CHANNEL__NEW_CHANNEL_NAME_IS_MISSING</code>
+			<value>Cannot rename channel %s, the new channel name is missing</value>
+		</message>
+		<message>
+			<code>RENAME_CHANNEL__CHANNEL_ALREADY_EXIST</code>
+			<value>Cannot rename channel %s as %s, this channel already exists</value>
+		</message>
+		<message>
+			<code>RENAME_CHANNEL__CHANNEL_DOES_NOT_EXIST</code>
+			<value>Cannot rename channel %s, this channel does not exist</value>
+		</message>
+		<message>
+			<code>RENAME_CHANNEL__CHANNEL_RENAMED</code>
+			<value>The channel %s has been renamed as %s</value>
+		</message>
+		<message>
+			<code>SOUND_MODIFIER__EXPLANATION</code>
+			<value>To modify the stereo signal volume when players speak</value>
+		</message>
+		<message>
+			<code>SOUND_MODIFIER__CHANNEL_NAME_IS_MISSING</code>
+			<value>Cannot set the sound modifier of a channel, the channel name is missing</value>
+		</message>
+		<message>
+			<code>SOUND_MODIFIER__CHANNEL_DOES_NOT_EXIST</code>
+			<value>Cannot set the sound modifier of channel %s, this channel does not exist</value>
+		</message>
+		<message>
+			<code>SOUND_MODIFIER__MODIFIER_NAME_IS_MISSING</code>
+			<value>Cannot set the sound modifier of channel %s, the sound modifier name is missing</value>
+		</message>
+		<message>
+			<code>SOUND_MODIFIER__MODIFIER_DOES_NOT_EXIST</code>
+			<value>Cannot set the sound modifier of channel %s, the sound modifier %s does not exist</value>
+		</message>
+		<message>
+			<code>SOUND_MODIFIER__MODIFIER_UPDATED</code>
+			<value>The channel %s has now %s as sound modifier</value>
+		</message>
+		<message>
+			<code>MUMBLE_DETAILS__EXPLANATION</code>
+			<value>To display the characteristics of all channels</value>
+		</message>
+		<message>
+			<code>MUMBLE_DETAILS__NO_CHANNEL_REGISTERED</code>
+			<value>There is no registered channel</value>
+		</message>
+		<message>
+			<code>MUMBLE_DETAILS__CHANNELS_DETAILS</code>
+			<value>Characteristics of channels :%n%s</value>
+		</message>
+	</messages>
+</dictionary>
