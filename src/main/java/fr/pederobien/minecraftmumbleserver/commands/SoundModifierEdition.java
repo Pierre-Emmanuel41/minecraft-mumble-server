@@ -9,6 +9,7 @@ import org.bukkit.command.CommandSender;
 
 import fr.pederobien.minecraftmumbleserver.EMumbleMessageCode;
 import fr.pederobien.mumble.server.exceptions.ChannelNotRegisteredException;
+import fr.pederobien.mumble.server.impl.SoundManager;
 import fr.pederobien.mumble.server.interfaces.IChannel;
 import fr.pederobien.mumble.server.interfaces.IMumbleServer;
 import fr.pederobien.mumble.server.interfaces.ISoundModifier;
@@ -38,7 +39,7 @@ public class SoundModifierEdition extends CommonMumbleEdition {
 		String modifierName = null;
 		try {
 			modifierName = args[1];
-			Optional<ISoundModifier> optModifier = get().getSoundManager().getByName(modifierName);
+			Optional<ISoundModifier> optModifier = SoundManager.getByName(modifierName);
 			if (!optModifier.isPresent()) {
 				sendSynchro(sender, EMumbleMessageCode.SOUND_MODIFIER__MODIFIER_DOES_NOT_EXIST, channelName, modifierName);
 				return false;
@@ -60,7 +61,7 @@ public class SoundModifierEdition extends CommonMumbleEdition {
 		case 1:
 			return filter(getChannels().map(channel -> channel.getName()), args);
 		case 2:
-			Collection<ISoundModifier> sounds = get().getSoundManager().getSoundModifiers().values();
+			Collection<ISoundModifier> sounds = SoundManager.getSoundModifiers().values();
 			return filter(check(args[0], name -> get().getChannels().get(name) != null, sounds.stream().map(sound -> sound.getName())), args);
 		default:
 			return emptyList();
