@@ -9,5 +9,6 @@ public class MumbleEdition extends CommonMumbleEdition {
 		super(EMumbleLabel.MUMBLE, EMumbleMessageCode.MUMBLE_EXPLANATION, mumbleServer);
 		addEdition(new ChannelsEdition(mumbleServer));
 		addEdition(new MumbleDetails(mumbleServer));
+		addEdition(new MutePlayerEdition(mumbleServer));
 	}
 }

@@ -104,6 +104,30 @@
 			<value>The channel %s has now %s as sound modifier</value>
 		</message>
 		<message>
+			<code>MUTE__EXPLANATION</code>
+			<value>To mute a player</value>
+		</message>
+		<message>
+			<code>MUTE__ALL_PLAYERS_MUTE</code>
+			<value>All players have been</value>
+		</message>
+		<message>
+			<code>MUTE__PLAYER_NOT_REGISTERED_IN_A_CHANNEL</code>
+			<value>Cannot mute player %s, this player is not registered in a channel</value>
+		</message>
+		<message>
+			<code>MUTE__NO_PLAYER_MUTE</code>
+			<value>No player muted</value>
+		</message>
+		<message>
+			<code>MUTE__ONE_PLAYER_MUTE</code>
+			<value>Player %s has been muted</value>
+		</message>
+		<message>
+			<code>MUTE__ONE_PLAYER_MUTE</code>
+			<value>Players %s have been muted</value>
+		</message>
+		<message>
 			<code>MUMBLE_DETAILS__EXPLANATION</code>
 			<value>To display the characteristics of all channels</value>
 		</message>

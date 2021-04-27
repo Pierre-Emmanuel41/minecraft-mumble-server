@@ -101,6 +101,30 @@
 			<value>Le channel %s a maintenant %s en tant que modifieur de son</value>
 		</message>
 		<message>
+			<code>MUTE__EXPLANATION</code>
+			<value>Pour rendre muet un joueur</value>
+		</message>
+		<message>
+			<code>MUTE__ALL_PLAYERS_MUTE</code>
+			<value>Tous les joueurs ont été rendu muet</value>
+		</message>
+		<message>
+			<code>MUTE__PLAYER_NOT_REGISTERED_IN_A_CHANNEL</code>
+			<value>Impossible de rendre muet le joueur %s, ce joueur n'est pas enregistré dans un channel</value>
+		</message>
+		<message>
+			<code>MUTE__NO_PLAYER_MUTE</code>
+			<value>Aucun joueur n'a été rendu muet</value>
+		</message>
+		<message>
+			<code>MUTE__ONE_PLAYER_MUTE</code>
+			<value>Le joueur %s a été rendu muet</value>
+		</message>
+		<message>
+			<code>MUTE__ONE_PLAYER_MUTE</code>
+			<value>Les joueurs %s ont été rendus muet</value>
+		</message>
+		<message>
 			<code>MUMBLE_DETAILS__EXPLANATION</code>
 			<value>Pour afficher les caractéristiques de tous les channels</value>
 		</message>

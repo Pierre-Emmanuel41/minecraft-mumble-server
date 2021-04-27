@@ -1,16 +1,20 @@
 package fr.pederobien.minecraftmumbleserver.commands;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import fr.pederobien.minecraftdictionary.interfaces.IMinecraftMessageCode;
+import fr.pederobien.minecraftgameplateform.exceptions.PlayerNotFoundException;
 import fr.pederobien.minecraftgameplateform.impl.editions.AbstractSimpleMapEdition;
 import fr.pederobien.minecraftgameplateform.interfaces.element.ILabel;
 import fr.pederobien.mumble.server.exceptions.ChannelNotRegisteredException;
 import fr.pederobien.mumble.server.interfaces.IChannel;
 import fr.pederobien.mumble.server.interfaces.IMumbleServer;
+import fr.pederobien.mumble.server.interfaces.IPlayer;
 
 public class CommonMumbleEdition extends AbstractSimpleMapEdition {
 	private IMumbleServer mumbleServer;
@@ -83,5 +87,63 @@ public class CommonMumbleEdition extends AbstractSimpleMapEdition {
 	 */
 	protected List<String> getChannelNames(List<IChannel> channels) {
 		return channels.stream().map(channel -> channel.getName()).collect(Collectors.toList());
+	}
+
+	/**
+	 * Removes players already mentioned from the concatenation of the player list of each channels.
+	 * 
+	 * @param alreadyMentionedPlayers A list that contains already mentioned players.
+	 * @return A stream that contains not mentioned players.
+	 */
+	protected Stream<IPlayer> getFreePlayers(List<String> alreadyMentionnedPlayers) {
+		List<IPlayer> freeplayers = new ArrayList<IPlayer>();
+		Iterator<Map.Entry<String, IChannel>> iterator = mumbleServer.getChannels().entrySet().iterator();
+		while (iterator.hasNext()) {
+			Map.Entry<String, IChannel> entry = iterator.next();
+			for (IPlayer player : entry.getValue().getPlayers())
+				if (!alreadyMentionnedPlayers.contains(player.getName()))
+					freeplayers.add(player);
+		}
+		return freeplayers.stream();
+	}
+
+	/**
+	 * Get a list of players associated to each player's name in array <code>playerNames</code>
+	 * 
+	 * @param playerNames The array that contains player names.
+	 * @return The list of players.
+	 * 
+	 * @see #getPlayer(String)
+	 */
+	protected List<IPlayer> getPlayers(String[] playerNames) {
+		List<IPlayer> players = new ArrayList<IPlayer>();
+		for (String playerName : playerNames)
+			players.add(getPlayer(playerName));
+		return players;
+	}
+
+	/**
+	 * Find the player associated to the given name.
+	 * 
+	 * @param playerName The player's name.
+	 * @return The associated player if it exists.
+	 * 
+	 * @throws PlayerNotFoundException If the name does not correspond to a player.
+	 */
+	protected IPlayer getPlayer(String playerName) {
+		for (IPlayer player : mumbleServer.getPlayers())
+			if (player.getName().equals(playerName))
+				return player;
+		throw new PlayerNotFoundException(playerName);
+	}
+
+	/**
+	 * Get a list of string that correspond to the name of each player in the given list <code>players</code>
+	 * 
+	 * @param players The list of player used to get their name.
+	 * @return The list of player's name.
+	 */
+	protected List<String> getPlayerNames(List<IPlayer> players) {
+		return players.stream().map(player -> player.getName()).collect(Collectors.toList());
 	}
 }

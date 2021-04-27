@@ -3,7 +3,7 @@ package fr.pederobien.minecraftmumbleserver.commands;
 import fr.pederobien.minecraftgameplateform.interfaces.element.ILabel;
 
 public enum EMumbleLabel implements ILabel {
-	MUMBLE("mumble"), CHANNELS("channels"), ADD_CHANNEL("add"), REMOVE_CHANNEL("remove"), SOUND_MODIFIER("soundModifier");
+	MUMBLE("mumble"), CHANNELS("channels"), ADD_CHANNEL("add"), REMOVE_CHANNEL("remove"), SOUND_MODIFIER("soundModifier"), MUTE("mute");
 
 	private String label;
 
