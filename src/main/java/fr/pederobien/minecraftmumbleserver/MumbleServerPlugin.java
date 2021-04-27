@@ -4,6 +4,9 @@ import java.io.FileNotFoundException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.nio.file.Path;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -14,16 +17,28 @@ import fr.pederobien.mumble.server.impl.MumbleServer;
 import fr.pederobien.mumble.server.interfaces.IMumbleServer;
 
 public class MumbleServerPlugin extends JavaPlugin {
+	private static Map<String, MinecraftMumblePlayer> players;
 	private IMumbleServer mumbleServer;
+	private static Object mutex;
+
+	protected static Map<String, MinecraftMumblePlayer> getPlayers() {
+		synchronized (mutex) {
+			return players;
+		}
+	}
 
 	@Override
 	public void onEnable() {
 		try {
+			mutex = new Object();
+			players = new HashMap<String, MinecraftMumblePlayer>();
+
 			mumbleServer = new MumbleServer("Mumble-1.0-SNAPSHOT", InetAddress.getByName(Bukkit.getIp()), 28000, 32000, Plateform.ROOT.resolve("Mumble"));
 			mumbleServer.open();
 			getServer().getPluginManager().registerEvents(new EventListener(mumbleServer), this);
 			new MumbleCommand(this, mumbleServer);
 			registerDictionaries();
+			registerSoundModifier();
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
@@ -32,6 +47,14 @@ public class MumbleServerPlugin extends JavaPlugin {
 	@Override
 	public void onDisable() {
 		mumbleServer.close();
+		players.clear();
+	}
+
+	/**
+	 * @return A map that contains an association of a minecraft player and a mumble player.
+	 */
+	public Map<String, MinecraftMumblePlayer> getMinecraftMumblePlayers() {
+		return Collections.unmodifiableMap(players);
 	}
 
 	private void registerDictionaries() {
@@ -56,5 +79,9 @@ public class MumbleServerPlugin extends JavaPlugin {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+	}
+
+	private void registerSoundModifier() {
+
 	}
 }

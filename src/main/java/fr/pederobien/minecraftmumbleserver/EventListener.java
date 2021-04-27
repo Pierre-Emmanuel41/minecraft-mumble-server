@@ -1,6 +1,5 @@
 package fr.pederobien.minecraftmumbleserver;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
@@ -19,27 +18,27 @@ import fr.pederobien.mumble.server.interfaces.IPlayer;
 
 public class EventListener implements Listener {
 	private IMumbleServer mumbleServer;
-	private Map<Player, IPlayer> players;
 
 	public EventListener(IMumbleServer mumbleServer) {
 		this.mumbleServer = mumbleServer;
-		players = new HashMap<Player, IPlayer>();
 
 		for (Player player : Bukkit.getOnlinePlayers()) {
 			IPlayer mumblePlayer = mumbleServer.addPlayer(player.getAddress(), player.getName(), player.isOp());
 			updatePlayerLocation(player, mumblePlayer);
-			players.put(player, mumblePlayer);
+			getPlayers().put(player.getName(), new MinecraftMumblePlayer(player, mumblePlayer));
 		}
 	}
 
 	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
 	public void onPlayerJoinEvent(PlayerJoinEvent event) {
-		players.put(event.getPlayer(), mumbleServer.addPlayer(event.getPlayer().getAddress(), event.getPlayer().getName(), event.getPlayer().isOp()));
+		Player minecraftPlayer = event.getPlayer();
+		IPlayer mumblePlayer = mumbleServer.addPlayer(event.getPlayer().getAddress(), event.getPlayer().getName(), event.getPlayer().isOp());
+		getPlayers().put(minecraftPlayer.getName(), new MinecraftMumblePlayer(minecraftPlayer, mumblePlayer));
 	}
 
 	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
 	public void onPlayerQuiEvent(PlayerQuitEvent event) {
-		players.remove(event.getPlayer());
+		getPlayers().remove(event.getPlayer().getName());
 		mumbleServer.removePlayer(event.getPlayer().getName());
 	}
 
@@ -50,26 +49,26 @@ public class EventListener implements Listener {
 			return;
 
 		if (command[0].equals("op")) {
-			Optional<Map.Entry<Player, IPlayer>> optEntry = players.entrySet().stream().filter(entry -> entry.getKey().getName().equals(command[1])).findFirst();
+			Optional<Map.Entry<String, MinecraftMumblePlayer>> optEntry = getPlayers().entrySet().stream().filter(entry -> entry.getKey().equals(command[1])).findFirst();
 			if (optEntry.isPresent())
-				optEntry.get().getValue().setAdmin(true);
+				optEntry.get().getValue().getMumblePlayer().setAdmin(true);
 		}
 
 		if (command[0].equals("deop")) {
-			Optional<Map.Entry<Player, IPlayer>> optEntry = players.entrySet().stream().filter(entry -> entry.getKey().getName().equals(command[1])).findFirst();
+			Optional<Map.Entry<String, MinecraftMumblePlayer>> optEntry = getPlayers().entrySet().stream().filter(entry -> entry.getKey().equals(command[1])).findFirst();
 			if (optEntry.isPresent())
-				optEntry.get().getValue().setAdmin(false);
+				optEntry.get().getValue().getMumblePlayer().setAdmin(false);
 		}
 	}
 
 	@EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
 	public void onPlayerMoveEvent(PlayerMoveEvent event) {
-		IPlayer player = players.get(event.getPlayer());
+		MinecraftMumblePlayer player = getPlayers().get(event.getPlayer().getName());
 
 		if (player == null)
 			return;
 
-		updatePlayerLocation(event.getPlayer(), player);
+		updatePlayerLocation(event.getPlayer(), player.getMumblePlayer());
 	}
 
 	private void updatePlayerLocation(Player player, IPlayer mumblePlayer) {
@@ -78,5 +77,9 @@ public class EventListener implements Listener {
 		mumblePlayer.getPosition().setZ(player.getLocation().getZ());
 		mumblePlayer.getPosition().setYaw(player.getLocation().getYaw());
 		mumblePlayer.getPosition().setPitch(player.getLocation().getPitch());
+	}
+
+	private Map<String, MinecraftMumblePlayer> getPlayers() {
+		return MumbleServerPlugin.getPlayers();
 	}
 }
