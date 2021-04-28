@@ -124,8 +124,32 @@
 			<value>Player %s has been muted</value>
 		</message>
 		<message>
-			<code>MUTE__ONE_PLAYER_MUTE</code>
+			<code>MUTE__SEVERAL_PLAYERS_MUTE</code>
 			<value>Players %s have been muted</value>
+		</message>
+		<message>
+			<code>DEAFEN__EXPLANATION</code>
+			<value>To deafen a player</value>
+		</message>
+		<message>
+			<code>DEAFEN__ALL_PLAYERS_DEAFEN</code>
+			<value>All players have been deafen</value>
+		</message>
+		<message>
+			<code>DEAFEN__PLAYER_NOT_REGISTERED_IN_A_CHANNEL</code>
+			<value>Cannot deafen player %s, this player is not registered in a channel</value>
+		</message>
+		<message>
+			<code>DEAFEN__NO_PLAYER_DEAFEN</code>
+			<value>No player deafened</value>
+		</message>
+		<message>
+			<code>DEAFEN__ONE_PLAYER_DEAFEN</code>
+			<value>Player %s has been deafened</value>
+		</message>
+		<message>
+			<code>DEAFEN__SEVERAL_PLAYERS_DEAFEN</code>
+			<value>Players %s have been deafened</value>
 		</message>
 		<message>
 			<code>MUMBLE_DETAILS__EXPLANATION</code>

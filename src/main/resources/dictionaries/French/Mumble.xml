@@ -121,8 +121,32 @@
 			<value>Le joueur %s a été rendu muet</value>
 		</message>
 		<message>
-			<code>MUTE__ONE_PLAYER_MUTE</code>
+			<code>MUTE__SEVERAL_PLAYERS_MUTE</code>
 			<value>Les joueurs %s ont été rendus muet</value>
+		</message>
+		<message>
+			<code>DEAFEN__EXPLANATION</code>
+			<value>Pour mettre en sourdine un joueur</value>
+		</message>
+		<message>
+			<code>DEAFEN__ALL_PLAYERS_DEAFEN</code>
+			<value>Tous les joueurs ont été mis en sourdine</value>
+		</message>
+		<message>
+			<code>DEAFEN__PLAYER_NOT_REGISTERED_IN_A_CHANNEL</code>
+			<value>Impossible de mettre en sourdine le joueur %s, ce joueur n'est pas enregistré dans un channel</value>
+		</message>
+		<message>
+			<code>DEAFEN__NO_PLAYER_DEAFEN</code>
+			<value>Aucun joueur n'a été mis en sourdine</value>
+		</message>
+		<message>
+			<code>DEAFEN__ONE_PLAYER_DEAFEN</code>
+			<value>Le joueur %s a été mis en sourdine</value>
+		</message>
+		<message>
+			<code>DEAFEN__SEVERAL_PLAYERS_DEAFEN</code>
+			<value>Les joueurs %s ont été mis en sourdine</value>
 		</message>
 		<message>
 			<code>MUMBLE_DETAILS__EXPLANATION</code>

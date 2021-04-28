@@ -16,10 +16,10 @@ import fr.pederobien.mumble.server.interfaces.IChannel;
 import fr.pederobien.mumble.server.interfaces.IMumbleServer;
 import fr.pederobien.mumble.server.interfaces.IPlayer;
 
-public class MutePlayerEdition extends CommonMumbleEdition {
+public class DeafenPlayerEdition extends CommonMumbleEdition {
 
-	public MutePlayerEdition(IMumbleServer mumbleServer) {
-		super(EMumbleLabel.MUTE, EMumbleMessageCode.MUTE__EXPLANATION, mumbleServer);
+	public DeafenPlayerEdition(IMumbleServer mumbleServer) {
+		super(EMumbleLabel.DEAFEN, EMumbleMessageCode.DEAFEN__EXPLANATION, mumbleServer);
 	}
 
 	@Override
@@ -29,8 +29,8 @@ public class MutePlayerEdition extends CommonMumbleEdition {
 		if (args[0].equals(IGameConfigurationHelper.ALL)) {
 			for (IChannel channel : get().getChannels().values())
 				for (IPlayer player : channel.getPlayers())
-					player.setMute(true);
-			sendSynchro(sender, EMumbleMessageCode.MUTE__ALL_PLAYERS_MUTE);
+					player.setDeafen(true);
+			sendSynchro(sender, EMumbleMessageCode.DEAFEN__ALL_PLAYERS_DEAFEN);
 			return true;
 		}
 
@@ -39,24 +39,24 @@ public class MutePlayerEdition extends CommonMumbleEdition {
 			players = getPlayers(args);
 			playerNamesConcatenated = concat(getPlayerNames(players));
 			for (IPlayer player : players)
-				player.setMute(true);
+				player.setDeafen(true);
 		} catch (PlayerNotFoundException e) {
 			sendSynchro(sender, ECommonMessageCode.COMMON_PLAYER_DOES_NOT_EXIST, e.getPlayerName(), get().getName());
 			return false;
 		} catch (PlayerNotRegisteredInChannelException e) {
-			sendSynchro(sender, EMumbleMessageCode.MUTE__PLAYER_NOT_REGISTERED_IN_A_CHANNEL, e.getNotRegisteredPlayer().getName());
+			sendSynchro(sender, EMumbleMessageCode.DEAFEN__PLAYER_NOT_REGISTERED_IN_A_CHANNEL, e.getNotRegisteredPlayer().getName());
 			return false;
 		}
 
 		switch (players.size()) {
 		case 0:
-			sendSynchro(sender, EMumbleMessageCode.MUTE__NO_PLAYER_MUTE);
+			sendSynchro(sender, EMumbleMessageCode.DEAFEN__NO_PLAYER_DEAFEN);
 			break;
 		case 1:
-			sendSynchro(sender, EMumbleMessageCode.MUTE__ONE_PLAYER_MUTE, playerNamesConcatenated);
+			sendSynchro(sender, EMumbleMessageCode.DEAFEN__ONE_PLAYER_DEAFEN, playerNamesConcatenated);
 			break;
 		default:
-			sendSynchro(sender, EMumbleMessageCode.MUTE__SEVERAL_PLAYERS_MUTE, playerNamesConcatenated);
+			sendSynchro(sender, EMumbleMessageCode.DEAFEN__SEVERAL_PLAYERS_DEAFEN, playerNamesConcatenated);
 			break;
 		}
 
@@ -69,7 +69,7 @@ public class MutePlayerEdition extends CommonMumbleEdition {
 
 		switch (args.length) {
 		case 1:
-			// Adding all to mute all registered players
+			// Adding all to deafen all registered players
 			return filter(Stream.concat(players, Stream.of(IGameConfigurationHelper.ALL)), args);
 		default:
 			// If the first argument is all -> any player is proposed

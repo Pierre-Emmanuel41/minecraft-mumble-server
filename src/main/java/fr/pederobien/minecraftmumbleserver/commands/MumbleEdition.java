@@ -10,5 +10,6 @@ public class MumbleEdition extends CommonMumbleEdition {
 		addEdition(new ChannelsEdition(mumbleServer));
 		addEdition(new MumbleDetails(mumbleServer));
 		addEdition(new MutePlayerEdition(mumbleServer));
+		addEdition(new DeafenPlayerEdition(mumbleServer));
 	}
 }
