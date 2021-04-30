@@ -109,7 +109,7 @@
 		</message>
 		<message>
 			<code>MUTE__ALL_PLAYERS_MUTE</code>
-			<value>All players have been</value>
+			<value>All players have been muted</value>
 		</message>
 		<message>
 			<code>MUTE__PLAYER_NOT_REGISTERED_IN_A_CHANNEL</code>

@@ -106,7 +106,7 @@
 		</message>
 		<message>
 			<code>MUTE__ALL_PLAYERS_MUTE</code>
-			<value>Tous les joueurs ont été rendu muet</value>
+			<value>Tous les joueurs ont été rendus muet</value>
 		</message>
 		<message>
 			<code>MUTE__PLAYER_NOT_REGISTERED_IN_A_CHANNEL</code>

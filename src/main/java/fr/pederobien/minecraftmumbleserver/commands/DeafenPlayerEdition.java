@@ -26,16 +26,16 @@ public class DeafenPlayerEdition extends CommonMumbleEdition {
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		List<IPlayer> players = new ArrayList<IPlayer>();
 
-		if (args[0].equals(IGameConfigurationHelper.ALL)) {
-			for (IChannel channel : get().getChannels().values())
-				for (IPlayer player : channel.getPlayers())
-					player.setDeafen(true);
-			sendSynchro(sender, EMumbleMessageCode.DEAFEN__ALL_PLAYERS_DEAFEN);
-			return true;
-		}
-
 		String playerNamesConcatenated = null;
 		try {
+			if (args[0].equals(IGameConfigurationHelper.ALL)) {
+				for (IChannel channel : get().getChannels().values())
+					for (IPlayer player : channel.getPlayers())
+						player.setDeafen(true);
+				sendSynchro(sender, EMumbleMessageCode.DEAFEN__ALL_PLAYERS_DEAFEN);
+				return true;
+			}
+
 			players = getPlayers(args);
 			playerNamesConcatenated = concat(getPlayerNames(players));
 			for (IPlayer player : players)
@@ -46,6 +46,9 @@ public class DeafenPlayerEdition extends CommonMumbleEdition {
 		} catch (PlayerNotRegisteredInChannelException e) {
 			sendSynchro(sender, EMumbleMessageCode.DEAFEN__PLAYER_NOT_REGISTERED_IN_A_CHANNEL, e.getNotRegisteredPlayer().getName());
 			return false;
+		} catch (IndexOutOfBoundsException e) {
+			sendSynchro(sender, EMumbleMessageCode.DEAFEN__NO_PLAYER_DEAFEN);
+			return true;
 		}
 
 		switch (players.size()) {
@@ -66,6 +69,9 @@ public class DeafenPlayerEdition extends CommonMumbleEdition {
 	@Override
 	public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
 		Stream<String> players = getFreePlayers(asList(args)).map(player -> player.getName());
+		long size = getFreePlayers(asList(args)).filter(player -> !player.isDeafen()).count();
+		if (size == 0)
+			return emptyList();
 
 		switch (args.length) {
 		case 1:
