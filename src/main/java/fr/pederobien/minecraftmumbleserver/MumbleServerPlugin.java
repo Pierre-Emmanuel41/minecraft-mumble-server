@@ -56,7 +56,7 @@ public class MumbleServerPlugin extends JavaPlugin {
 	/**
 	 * @return A map that contains an association of a minecraft player and a mumble player.
 	 */
-	public Map<String, MinecraftMumblePlayer> getMinecraftMumblePlayers() {
+	public static Map<String, MinecraftMumblePlayer> getMinecraftMumblePlayers() {
 		return Collections.unmodifiableMap(players);
 	}
 

@@ -95,13 +95,13 @@ public class CommonMumbleEdition extends AbstractSimpleMapEdition {
 	 * @param alreadyMentionedPlayers A list that contains already mentioned players.
 	 * @return A stream that contains not mentioned players.
 	 */
-	protected Stream<IPlayer> getFreePlayers(List<String> alreadyMentionnedPlayers) {
+	protected Stream<IPlayer> getFreePlayers(List<String> alreadyMentionedPlayers) {
 		List<IPlayer> freeplayers = new ArrayList<IPlayer>();
 		Iterator<Map.Entry<String, IChannel>> iterator = mumbleServer.getChannels().entrySet().iterator();
 		while (iterator.hasNext()) {
 			Map.Entry<String, IChannel> entry = iterator.next();
 			for (IPlayer player : entry.getValue().getPlayers())
-				if (!alreadyMentionnedPlayers.contains(player.getName()))
+				if (!alreadyMentionedPlayers.contains(player.getName()))
 					freeplayers.add(player);
 		}
 		return freeplayers.stream();
@@ -145,5 +145,17 @@ public class CommonMumbleEdition extends AbstractSimpleMapEdition {
 	 */
 	protected List<String> getPlayerNames(List<IPlayer> players) {
 		return players.stream().map(player -> player.getName()).collect(Collectors.toList());
+	}
+
+	/**
+	 * Get a stream of player based on the channel player list but not already mentioned.
+	 * 
+	 * @param channel                  The channel used as source for the returned stream.
+	 * @param alreadyMentionnedPlayers A list that contains already mentioned players.
+	 * 
+	 * @return A stream that contains not mentioned players.
+	 */
+	protected Stream<IPlayer> getFreePlayersFromChannel(IChannel channel, List<String> alreadyMentionnedPlayers) {
+		return channel.getPlayers().stream().filter(player -> !alreadyMentionnedPlayers.contains(player.getName()));
 	}
 }

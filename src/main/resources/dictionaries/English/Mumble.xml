@@ -152,6 +152,30 @@
 			<value>Players %s have been deafened</value>
 		</message>
 		<message>
+			<code>KICK__EXPLANATION</code>
+			<value>To kick a player from a mumble channel</value>
+		</message>
+		<message>
+			<code>KICK__ALL_PLAYERS_KICKED</code>
+			<value>All players have been kicked from their channel</value>
+		</message>
+		<message>
+			<code>KICK__PLAYER_NOT_REGISTERED_IN_CHANNEL</code>
+			<value>Cannot kick player %s, this player is not registered in a channel</value>
+		</message>
+		<message>
+			<code>KICK__NO_PLAYER_KICKED</code>
+			<value>No player has been kicked</value>
+		</message>
+		<message>
+			<code>KICK__ONE_PLAYER_KICKED</code>
+			<value>The player %s has been kicked from its channel</value>
+		</message>
+		<message>
+			<code>KICK__SEVERAL_PLAYERS_KICKED</code>
+			<value>Player %s have been kicked from their channel</value>
+		</message>
+		<message>
 			<code>MUMBLE_DETAILS__EXPLANATION</code>
 			<value>To display the characteristics of all channels</value>
 		</message>
