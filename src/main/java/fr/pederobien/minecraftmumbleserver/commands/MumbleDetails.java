@@ -1,8 +1,10 @@
 package fr.pederobien.minecraftmumbleserver.commands;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
+import java.util.stream.Collectors;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -28,7 +30,9 @@ public class MumbleDetails extends CommonMumbleEdition {
 			Iterator<Map.Entry<String, IChannel>> iterator = channels.entrySet().iterator();
 			while (iterator.hasNext()) {
 				Map.Entry<String, IChannel> entry = iterator.next();
-				joiner.add(String.format("%s : %s", entry.getValue().getName(), entry.getValue().getSoundModifier().getName()));
+				List<String> players = entry.getValue().getPlayers().stream().map(player -> player.getName()).collect(Collectors.toList());
+				String playerNames = players.isEmpty() ? "None" : concat(players);
+				joiner.add(String.format("Channel %s : Players : %s, Modifier : %s", entry.getKey(), playerNames, entry.getValue().getSoundModifier().getName()));
 			}
 			sendSynchro(sender, EMumbleMessageCode.MUMBLE_DETAILS__CHANNELS_DETAILS, joiner.toString());
 		}
