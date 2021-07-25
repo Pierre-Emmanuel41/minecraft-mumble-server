@@ -21,7 +21,7 @@ public class AddChannelEdition extends CommonMumbleEdition {
 		String channelName = null;
 		try {
 			channelName = args[0];
-			get().addChannel(channelName);
+			get().addChannel(channelName, null);
 			sendSynchro(sender, EMumbleMessageCode.ADD_CHANNEL__CHANNEL_ADDED, channelName);
 		} catch (IndexOutOfBoundsException e) {
 			sendSynchro(sender, EMumbleMessageCode.ADD_CHANNEL__NAME_IS_MISSING);
