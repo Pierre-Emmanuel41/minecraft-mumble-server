@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -72,11 +73,8 @@ public class EventListener implements Listener {
 	}
 
 	private void updatePlayerLocation(Player player, IPlayer mumblePlayer) {
-		mumblePlayer.getPosition().setX(player.getLocation().getX());
-		mumblePlayer.getPosition().setY(player.getLocation().getY());
-		mumblePlayer.getPosition().setZ(player.getLocation().getZ());
-		mumblePlayer.getPosition().setYaw(player.getLocation().getYaw());
-		mumblePlayer.getPosition().setPitch(player.getLocation().getPitch());
+		Location loc = player.getLocation();
+		mumblePlayer.getPosition().update(loc.getX(), loc.getY(), loc.getZ(), loc.getYaw(), loc.getPitch());
 	}
 
 	private Map<String, MinecraftMumblePlayer> getPlayers() {
