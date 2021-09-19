@@ -55,18 +55,8 @@ public class TestModifier extends AbstractMinecraftSoundModifier {
 		}
 
 		@Override
-		public void setX(double x) {
-
-		}
-
-		@Override
 		public double getY() {
 			return 62;
-		}
-
-		@Override
-		public void setY(double y) {
-
 		}
 
 		@Override
@@ -75,18 +65,8 @@ public class TestModifier extends AbstractMinecraftSoundModifier {
 		}
 
 		@Override
-		public void setZ(double z) {
-
-		}
-
-		@Override
 		public double getYaw() {
 			return 0;
-		}
-
-		@Override
-		public void setYaw(double yaw) {
-
 		}
 
 		@Override
@@ -95,7 +75,7 @@ public class TestModifier extends AbstractMinecraftSoundModifier {
 		}
 
 		@Override
-		public void setPitch(double pitch) {
+		public void update(double x, double y, double z, double yaw, double pitch) {
 
 		}
 	}
