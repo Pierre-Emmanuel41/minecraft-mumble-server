@@ -74,7 +74,7 @@ public class EventListener implements Listener {
 
 	private void updatePlayerLocation(Player player, IPlayer mumblePlayer) {
 		Location loc = player.getLocation();
-		mumblePlayer.getPosition().update(loc.getX(), loc.getY(), loc.getZ(), loc.getYaw(), loc.getPitch());
+		mumblePlayer.getPosition().update(loc.getX(), -loc.getZ(), loc.getY(), Math.toRadians(loc.getYaw()), Math.toRadians(loc.getPitch()));
 	}
 
 	private Map<String, MinecraftMumblePlayer> getPlayers() {

@@ -2,7 +2,6 @@ package fr.pederobien.minecraftmumbleserver.soundmodifiers;
 
 import java.util.Optional;
 
-import fr.pederobien.minecraftmanagers.WorldManager;
 import fr.pederobien.minecraftmumbleserver.AbstractMinecraftSoundModifier;
 import fr.pederobien.minecraftmumbleserver.MinecraftMumblePlayer;
 import fr.pederobien.mumble.server.interfaces.IPlayer;
@@ -28,17 +27,12 @@ public class TestModifier extends AbstractMinecraftSoundModifier {
 			return new VolumeResult(0);
 
 		double distance = getDistance3D(new TestPosition(), receiver.getPosition());
-
-		double yaw = WorldManager.getYaw(optTransmitter.get().getMinecraftPlayer(), WorldManager.locationFromOverworld(0, 0, 0));
+		double yaw = getYaw(new TestPosition(), receiver.getPosition());
 		double leftVolume = 1.0, rightVolume = 1.0;
-		if (0 <= yaw && yaw <= 90)
-			rightVolume = Math.cos(asRadian(yaw));
-		else if (90 < yaw && yaw <= 180)
-			rightVolume = Math.cos(asRadian(yaw - 90));
-		else if (-90 <= yaw && yaw <= 0)
-			leftVolume = Math.cos(asRadian(yaw));
+		if (0 <= yaw && yaw < Math.PI)
+			leftVolume = Math.abs(Math.cos(yaw));
 		else
-			leftVolume = Math.cos(asRadian(yaw + 90));
+			rightVolume = Math.abs(Math.cos(yaw));
 		return new VolumeResult(-1.0 / 50.0 * distance + 1, leftVolume, rightVolume);
 	}
 
@@ -56,12 +50,12 @@ public class TestModifier extends AbstractMinecraftSoundModifier {
 
 		@Override
 		public double getY() {
-			return 62;
+			return 0;
 		}
 
 		@Override
 		public double getZ() {
-			return 0;
+			return 70;
 		}
 
 		@Override
