@@ -1,14 +1,11 @@
 package fr.pederobien.minecraftmumbleserver;
 
 import java.io.FileNotFoundException;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.nio.file.Path;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import fr.pederobien.dictionary.interfaces.IDictionaryParser;
@@ -32,19 +29,15 @@ public class MumbleServerPlugin extends JavaPlugin {
 
 	@Override
 	public void onEnable() {
-		try {
-			mutex = new Object();
-			players = new HashMap<String, MinecraftMumblePlayer>();
+		mutex = new Object();
+		players = new HashMap<String, MinecraftMumblePlayer>();
 
-			mumbleServer = new MumbleServer("Mumble-1.0-SNAPSHOT", InetAddress.getByName(Bukkit.getIp()), 28000, 32000, Plateform.ROOT.resolve("Mumble"));
-			mumbleServer.open();
-			getServer().getPluginManager().registerEvents(new EventListener(mumbleServer), this);
-			new MumbleCommand(this, mumbleServer);
-			registerDictionaries();
-			registerSoundModifier();
-		} catch (UnknownHostException e) {
-			e.printStackTrace();
-		}
+		mumbleServer = new MumbleServer("Mumble-1.0-SNAPSHOT", 28000, 32000, Plateform.ROOT.resolve("Mumble"));
+		mumbleServer.open();
+		getServer().getPluginManager().registerEvents(new EventListener(mumbleServer), this);
+		new MumbleCommand(this, mumbleServer);
+		registerDictionaries();
+		registerSoundModifier();
 	}
 
 	@Override
