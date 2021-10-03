@@ -4,8 +4,11 @@ import java.util.Optional;
 
 import fr.pederobien.minecraftmumbleserver.AbstractMinecraftSoundModifier;
 import fr.pederobien.minecraftmumbleserver.MinecraftMumblePlayer;
+import fr.pederobien.mumble.server.event.PlayerPositionChangeEvent;
+import fr.pederobien.mumble.server.impl.MathHelper;
 import fr.pederobien.mumble.server.interfaces.IPlayer;
 import fr.pederobien.mumble.server.interfaces.IPosition;
+import fr.pederobien.utils.event.EventHandler;
 
 public class TestModifier extends AbstractMinecraftSoundModifier {
 
@@ -26,14 +29,14 @@ public class TestModifier extends AbstractMinecraftSoundModifier {
 		if (!optTransmitter.get().getMinecraftPlayer().getWorld().equals(optReceiver.get().getMinecraftPlayer().getWorld()))
 			return new VolumeResult(0);
 
-		double distance = getDistance3D(new TestPosition(), receiver.getPosition());
-		double yaw = getYaw(new TestPosition(), receiver.getPosition());
-		double leftVolume = 1.0, rightVolume = 1.0;
-		if (0 <= yaw && yaw < Math.PI)
-			leftVolume = Math.abs(Math.cos(yaw));
-		else
-			rightVolume = Math.abs(Math.cos(yaw));
-		return new VolumeResult(-1.0 / 50.0 * distance + 1, leftVolume, rightVolume);
+		double distance = MathHelper.getDistance3D(new TestPosition(), receiver.getPosition());
+		double[] volumes = MathHelper.getDefaultLeftAndRightVolume(new TestPosition(), receiver.getPosition());
+		return new VolumeResult(-1.0 / 50.0 * distance + 1, volumes[0], volumes[1]);
+	}
+
+	@EventHandler
+	private void onPlayerPositionChanged(PlayerPositionChangeEvent event) {
+
 	}
 
 	private class TestPosition implements IPosition {

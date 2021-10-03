@@ -14,6 +14,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
+import fr.pederobien.mumble.server.impl.MathHelper;
 import fr.pederobien.mumble.server.interfaces.IMumbleServer;
 import fr.pederobien.mumble.server.interfaces.IPlayer;
 
@@ -34,6 +35,7 @@ public class EventListener implements Listener {
 	public void onPlayerJoinEvent(PlayerJoinEvent event) {
 		Player minecraftPlayer = event.getPlayer();
 		IPlayer mumblePlayer = mumbleServer.addPlayer(event.getPlayer().getAddress(), event.getPlayer().getName(), event.getPlayer().isOp());
+		updatePlayerLocation(minecraftPlayer, mumblePlayer);
 		getPlayers().put(minecraftPlayer.getName(), new MinecraftMumblePlayer(minecraftPlayer, mumblePlayer));
 	}
 
@@ -74,7 +76,7 @@ public class EventListener implements Listener {
 
 	private void updatePlayerLocation(Player player, IPlayer mumblePlayer) {
 		Location loc = player.getLocation();
-		mumblePlayer.getPosition().update(loc.getX(), -loc.getZ(), loc.getY(), Math.toRadians(loc.getYaw()), Math.toRadians(loc.getPitch()));
+		mumblePlayer.getPosition().update(loc.getX(), -loc.getZ(), loc.getY(), MathHelper.inRange(Math.toRadians(-loc.getYaw() - 90)), Math.toRadians(loc.getPitch()));
 	}
 
 	private Map<String, MinecraftMumblePlayer> getPlayers() {
