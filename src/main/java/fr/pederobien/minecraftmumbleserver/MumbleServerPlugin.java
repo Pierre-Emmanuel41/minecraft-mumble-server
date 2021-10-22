@@ -32,7 +32,7 @@ public class MumbleServerPlugin extends JavaPlugin {
 		mutex = new Object();
 		players = new HashMap<String, MinecraftMumblePlayer>();
 
-		mumbleServer = new MumbleServer("Mumble-1.0-SNAPSHOT", 28000, 32000, Plateform.ROOT.resolve("Mumble"));
+		mumbleServer = new MumbleServer("Mumble-1.0-SNAPSHOT", 28000, Plateform.ROOT.resolve("Mumble"));
 		mumbleServer.open();
 		getServer().getPluginManager().registerEvents(new EventListener(mumbleServer), this);
 		new MumbleCommand(this, mumbleServer);
