@@ -8,13 +8,16 @@ import java.util.Map;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
+import fr.pederobien.communication.event.ConnectionEvent;
 import fr.pederobien.dictionary.interfaces.IDictionaryParser;
 import fr.pederobien.minecraftgameplateform.utils.Plateform;
 import fr.pederobien.minecraftmumbleserver.soundmodifiers.TestModifier;
+import fr.pederobien.mumble.server.event.PlayerPositionChangeEvent;
 import fr.pederobien.mumble.server.impl.MumbleServer;
 import fr.pederobien.mumble.server.impl.SoundManager;
 import fr.pederobien.mumble.server.impl.modifiers.LinearCircularSoundModifier;
 import fr.pederobien.mumble.server.interfaces.IMumbleServer;
+import fr.pederobien.utils.event.EventLogger;
 
 public class MumbleServerPlugin extends JavaPlugin {
 	private static Map<String, MinecraftMumblePlayer> players;
@@ -29,6 +32,9 @@ public class MumbleServerPlugin extends JavaPlugin {
 
 	@Override
 	public void onEnable() {
+		EventLogger.instance().register();
+		EventLogger.instance().ignore(ConnectionEvent.class);
+		EventLogger.instance().ignore(PlayerPositionChangeEvent.class);
 		mutex = new Object();
 		players = new HashMap<String, MinecraftMumblePlayer>();
 
@@ -44,6 +50,7 @@ public class MumbleServerPlugin extends JavaPlugin {
 	public void onDisable() {
 		mumbleServer.close();
 		players.clear();
+		EventLogger.instance().register();
 	}
 
 	/**

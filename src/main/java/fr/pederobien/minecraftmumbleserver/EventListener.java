@@ -40,7 +40,7 @@ public class EventListener implements Listener {
 	}
 
 	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
-	public void onPlayerQuiEvent(PlayerQuitEvent event) {
+	public void onPlayerQuitEvent(PlayerQuitEvent event) {
 		getPlayers().remove(event.getPlayer().getName());
 		mumbleServer.removePlayer(event.getPlayer().getName());
 	}
