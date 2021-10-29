@@ -32,9 +32,7 @@ public class MumbleServerPlugin extends JavaPlugin {
 
 	@Override
 	public void onEnable() {
-		EventLogger.instance().register();
-		EventLogger.instance().ignore(ConnectionEvent.class);
-		EventLogger.instance().ignore(PlayerPositionChangeEvent.class);
+		EventLogger.instance().displayNewLine(false).ignore(ConnectionEvent.class).ignore(PlayerPositionChangeEvent.class).register();
 		mutex = new Object();
 		players = new HashMap<String, MinecraftMumblePlayer>();
 
