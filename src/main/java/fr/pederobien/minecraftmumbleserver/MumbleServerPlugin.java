@@ -12,7 +12,7 @@ import fr.pederobien.communication.event.ConnectionEvent;
 import fr.pederobien.dictionary.interfaces.IDictionaryParser;
 import fr.pederobien.minecraftgameplateform.utils.Plateform;
 import fr.pederobien.minecraftmumbleserver.soundmodifiers.TestModifier;
-import fr.pederobien.mumble.server.event.PlayerPositionChangeEvent;
+import fr.pederobien.mumble.server.event.PlayerEvent;
 import fr.pederobien.mumble.server.impl.MumbleServer;
 import fr.pederobien.mumble.server.impl.SoundManager;
 import fr.pederobien.mumble.server.impl.modifiers.LinearCircularSoundModifier;
@@ -32,7 +32,7 @@ public class MumbleServerPlugin extends JavaPlugin {
 
 	@Override
 	public void onEnable() {
-		EventLogger.instance().displayNewLine(false).ignore(ConnectionEvent.class).ignore(PlayerPositionChangeEvent.class).register();
+		EventLogger.instance().displayNewLine(false).ignore(ConnectionEvent.class).ignore(PlayerEvent.class).register();
 		mutex = new Object();
 		players = new HashMap<String, MinecraftMumblePlayer>();
 
