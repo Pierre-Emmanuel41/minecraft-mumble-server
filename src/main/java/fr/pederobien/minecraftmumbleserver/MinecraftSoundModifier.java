@@ -2,12 +2,21 @@ package fr.pederobien.minecraftmumbleserver;
 
 import java.util.Optional;
 
-import fr.pederobien.mumble.server.impl.modifiers.AbstractSoundModifier;
+import fr.pederobien.mumble.server.impl.modifiers.SoundModifier;
 
-public abstract class AbstractMinecraftSoundModifier extends AbstractSoundModifier {
+public class MinecraftSoundModifier extends SoundModifier {
 
-	public AbstractMinecraftSoundModifier(String name) {
+	public MinecraftSoundModifier(String name) {
 		super(name);
+	}
+
+	/**
+	 * Protected constructor for method clone.
+	 * 
+	 * @param original The original sound modifier to clone.
+	 */
+	protected MinecraftSoundModifier(MinecraftSoundModifier original) {
+		super(original);
 	}
 
 	/**
