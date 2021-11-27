@@ -8,6 +8,7 @@ import org.bukkit.command.CommandSender;
 import fr.pederobien.minecraftgameplateform.dictionary.ECommonMessageCode;
 import fr.pederobien.minecraftmumbleserver.EMumbleMessageCode;
 import fr.pederobien.mumble.server.exceptions.ChannelAlreadyExistException;
+import fr.pederobien.mumble.server.impl.SoundManager;
 import fr.pederobien.mumble.server.interfaces.IMumbleServer;
 
 public class AddChannelEdition extends CommonMumbleEdition {
@@ -21,7 +22,7 @@ public class AddChannelEdition extends CommonMumbleEdition {
 		String channelName = null;
 		try {
 			channelName = args[0];
-			get().addChannel(channelName, null);
+			get().addChannel(channelName, SoundManager.DEFAULT_SOUND_MODIFIER_NAME);
 			sendSynchro(sender, EMumbleMessageCode.ADD_CHANNEL__CHANNEL_ADDED, channelName);
 		} catch (IndexOutOfBoundsException e) {
 			sendSynchro(sender, EMumbleMessageCode.ADD_CHANNEL__NAME_IS_MISSING);
