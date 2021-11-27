@@ -20,8 +20,8 @@ public class TestModifier extends MinecraftSoundModifier {
 	public TestModifier() {
 		super("test");
 		getParameters().add(xParameter = RangeParameter.of(this, X_PARAMETER_NAME, 0.0, -29999984.0, 29999984.0));
-		getParameters().add(yParameter = RangeParameter.of(this, Y_PARAMETER_NAME, 0.0, 0.0, 256.0));
-		getParameters().add(zParameter = RangeParameter.of(this, Z_PARAMETER_NAME, 70.0, -29999984.0, 29999984.0));
+		getParameters().add(yParameter = RangeParameter.of(this, Y_PARAMETER_NAME, 0.0, -29999984.0, 29999984.0));
+		getParameters().add(zParameter = RangeParameter.of(this, Z_PARAMETER_NAME, 70.0, 0.0, 256.0));
 		getParameters().add(radiusParameter = RangeParameter.of(this, RADIUS_PARAMETER_NAME, 50.0, 0.0, Double.MAX_VALUE));
 	}
 
@@ -39,9 +39,9 @@ public class TestModifier extends MinecraftSoundModifier {
 	}
 
 	@Override
-	public VolumeResult calculate(IPlayer transmitter, IPlayer receiver) {
+	public VolumeResult dispatch(IPlayer transmitter, IPlayer receiver) {
 		if (!transmitter.equals(receiver))
-			return VolumeResult.DEFAULT;
+			return VolumeResult.NONE;
 
 		Optional<MinecraftMumblePlayer> optTransmitter = getPlayer(transmitter.getName());
 		if (!optTransmitter.isPresent())
