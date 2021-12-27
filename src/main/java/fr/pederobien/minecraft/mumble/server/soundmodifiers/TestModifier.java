@@ -1,16 +1,17 @@
 package fr.pederobien.minecraft.mumble.server.soundmodifiers;
 
-import java.util.Optional;
+import java.util.Map;
 
 import fr.pederobien.minecraft.mumble.server.MinecraftMumblePlayer;
-import fr.pederobien.minecraft.mumble.server.MinecraftSoundModifier;
+import fr.pederobien.minecraft.mumble.server.MumbleServerPlugin;
 import fr.pederobien.mumble.server.impl.MathHelper;
 import fr.pederobien.mumble.server.impl.modifiers.RangeParameter;
+import fr.pederobien.mumble.server.impl.modifiers.SoundModifier;
 import fr.pederobien.mumble.server.interfaces.IParameter;
 import fr.pederobien.mumble.server.interfaces.IPlayer;
 import fr.pederobien.mumble.server.interfaces.IPosition;
 
-public class TestModifier extends MinecraftSoundModifier {
+public class TestModifier extends SoundModifier {
 	private static final String X_PARAMETER_NAME = "X";
 	private static final String Y_PARAMETER_NAME = "Y";
 	private static final String Z_PARAMETER_NAME = "Z";
@@ -43,15 +44,16 @@ public class TestModifier extends MinecraftSoundModifier {
 		if (!transmitter.equals(receiver))
 			return VolumeResult.NONE;
 
-		Optional<MinecraftMumblePlayer> optTransmitter = getPlayer(transmitter.getName());
-		if (!optTransmitter.isPresent())
+		Map<String, MinecraftMumblePlayer> players = MumbleServerPlugin.getListener().getPlayers();
+		MinecraftMumblePlayer minecraftTransmitter = players.get(transmitter.getName());
+		if (minecraftTransmitter == null)
 			return new VolumeResult(0);
 
-		Optional<MinecraftMumblePlayer> optReceiver = getPlayer(receiver.getName());
-		if (!optReceiver.isPresent())
+		MinecraftMumblePlayer minecraftReceiver = players.get(receiver.getName());
+		if (minecraftReceiver == null)
 			return new VolumeResult(0);
 
-		if (!optTransmitter.get().getMinecraftPlayer().getWorld().equals(optReceiver.get().getMinecraftPlayer().getWorld()))
+		if (minecraftTransmitter.getMinecraftPlayer().getWorld().equals(minecraftReceiver.getMinecraftPlayer().getWorld()))
 			return new VolumeResult(0);
 
 		double distance = MathHelper.getDistance3D(new TestPosition(), receiver.getPosition());

@@ -1,8 +1,8 @@
-main: fr.pederobien.minecraftmumbleserver.MumbleServerPlugin
+main: fr.pederobien.minecraft.mumble.server.MumbleServerPlugin
 name: minecraft-mumble-server
 version: 1.0-SNAPSHOT
 api-version: 1.13
-depend: [minecraft-game-plateform]
+depend: [minecraft-platform]
 
 commands:
   mumble:

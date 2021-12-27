@@ -1,87 +1,98 @@
 package fr.pederobien.minecraft.mumble.server;
 
 import java.io.FileNotFoundException;
-import java.nio.file.Path;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
 
+import org.bukkit.command.PluginCommand;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import fr.pederobien.communication.event.DataEvent;
-import fr.pederobien.dictionary.interfaces.IDictionaryParser;
+import fr.pederobien.dictionary.exceptions.MessageRegisteredException;
+import fr.pederobien.dictionary.impl.JarXmlDictionaryParser;
+import fr.pederobien.minecraft.dictionary.impl.MinecraftDictionaryContext;
+import fr.pederobien.minecraft.mumble.server.commands.MumbleCommandTree;
 import fr.pederobien.minecraft.mumble.server.soundmodifiers.TestModifier;
-import fr.pederobien.minecraftgameplateform.utils.Plateform;
+import fr.pederobien.minecraft.platform.Platform;
 import fr.pederobien.mumble.server.event.PlayerPositionChangeEvent;
 import fr.pederobien.mumble.server.event.PlayerSpeakPostEvent;
 import fr.pederobien.mumble.server.event.PlayerSpeakPreEvent;
 import fr.pederobien.mumble.server.impl.MumbleServer;
 import fr.pederobien.mumble.server.impl.SoundManager;
-import fr.pederobien.mumble.server.interfaces.IMumbleServer;
+import fr.pederobien.utils.AsyncConsole;
 import fr.pederobien.utils.event.EventLogger;
 
 public class MumbleServerPlugin extends JavaPlugin {
-	private static Map<String, MinecraftMumblePlayer> players;
-	private IMumbleServer mumbleServer;
-	private static Object mutex;
+	private static final String DICTIONARY_FOLDER = "resources/dictionaries/";
 
-	protected static Map<String, MinecraftMumblePlayer> getPlayers() {
-		synchronized (mutex) {
-			return players;
-		}
+	private static Plugin instance;
+	private static MumbleCommandTree mumbleTree;
+	private static MumbleEventListener listener;
+
+	/**
+	 * @return The instance of this plugin.
+	 */
+	public static Plugin instance() {
+		return instance;
+	}
+
+	/**
+	 * @return The tree used to modify a mumble server.
+	 */
+	public static MumbleCommandTree getMumbleTree() {
+		return mumbleTree;
+	}
+
+	/**
+	 * @return The mumble event listener that contains the map of minecraft mumble server.
+	 */
+	public static MumbleEventListener getListener() {
+		return listener;
 	}
 
 	@Override
 	public void onEnable() {
-		EventLogger.instance().displayNewLine(false).ignore(DataEvent.class).ignore(PlayerPositionChangeEvent.class);
-		EventLogger.instance().ignore(PlayerSpeakPreEvent.class).ignore(PlayerSpeakPostEvent.class).register();
-		mutex = new Object();
-		players = new HashMap<String, MinecraftMumblePlayer>();
+		instance = this;
 
-		mumbleServer = new MumbleServer("Mumble-1.0-SNAPSHOT", Plateform.ROOT.resolve("Mumble"));
-		mumbleServer.open();
-		getServer().getPluginManager().registerEvents(new EventListener(mumbleServer), this);
-		new MumbleCommand(this, mumbleServer);
+		EventLogger.instance().newLine(false).ignore(DataEvent.class).ignore(PlayerPositionChangeEvent.class);
+		EventLogger.instance().ignore(PlayerSpeakPreEvent.class).ignore(PlayerSpeakPostEvent.class).register();
+
+		mumbleTree = new MumbleCommandTree(new MumbleServer("Mumble-1.0-SNAPSHOT", Platform.ROOT.resolve("Mumble")));
+		mumbleTree.getMumbleServer().open();
+		getServer().getPluginManager().registerEvents(listener = new MumbleEventListener(mumbleTree.getMumbleServer()), this);
+
 		registerDictionaries();
+		registerTabExecutor();
 		registerSoundModifier();
 	}
 
 	@Override
 	public void onDisable() {
-		mumbleServer.close();
-		players.clear();
-		EventLogger.instance().register();
-	}
-
-	/**
-	 * @return A map that contains an association of a minecraft player and a mumble player.
-	 */
-	public static Map<String, MinecraftMumblePlayer> getMinecraftMumblePlayers() {
-		return Collections.unmodifiableMap(players);
+		mumbleTree.getMumbleServer().close();
 	}
 
 	private void registerDictionaries() {
-		String[] dictionaries = new String[] { "Mumble.xml" };
-		// Registering French dictionaries
-		registerDictionary("French", dictionaries);
-
-		// Registering English dictionaries
-		registerDictionary("English", dictionaries);
-	}
-
-	private void registerDictionary(String parent, String... dictionaryNames) {
-		Path jarPath = Plateform.ROOT.getParent().resolve(getName().concat(".jar"));
-		String dictionariesFolder = "resources/dictionaries/".concat(parent).concat("/");
-		for (String name : dictionaryNames)
-			registerDictionary(Plateform.getDefaultDictionaryParser(dictionariesFolder.concat(name)), jarPath);
-	}
-
-	private void registerDictionary(IDictionaryParser parser, Path jarPath) {
 		try {
-			Plateform.getNotificationCenter().getDictionaryContext().register(parser, jarPath);
+			JarXmlDictionaryParser dictionaryParser = new JarXmlDictionaryParser(getFile().toPath());
+
+			MinecraftDictionaryContext context = MinecraftDictionaryContext.instance();
+			String[] dictionaries = new String[] { "English.xml", "French.xml" };
+			for (String dictionary : dictionaries)
+				try {
+					context.register(dictionaryParser.parse(DICTIONARY_FOLDER.concat(dictionary)));
+				} catch (MessageRegisteredException e) {
+					AsyncConsole.print(e);
+					for (StackTraceElement element : e.getStackTrace())
+						AsyncConsole.print(element);
+				}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+	}
+
+	private void registerTabExecutor() {
+		PluginCommand mumble = getCommand(mumbleTree.getRoot().getLabel());
+		mumble.setTabCompleter(mumbleTree.getRoot());
+		mumble.setExecutor(mumbleTree.getRoot());
 	}
 
 	private void registerSoundModifier() {

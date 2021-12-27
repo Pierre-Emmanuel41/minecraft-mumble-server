@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dictionary>
+	<name>Game</name>
+	<version>1.0</version>
+	<locales>
+		<locale>fr</locale>
+		<locale>fr-FR</locale>
+		<locale>fr-CA</locale>
+	</locales>
+	<messages>
+		<message>
+			<code>SERVER_NAME</code>
+			<value>Serveur : %s</value>
+		</message>
+		<message>
+			<code>SERVER_IS_OPENED</code>
+			<value>Ouvert : %s</value>
+		</message>
+		<message>
+			<code>SERVER_CHANNEL_NAME</code>
+			<value>Channel : %s</value>
+		</message>
+		<message>
+			<code>SERVER_CHANNEL_SOUNDMODIFIER_NAME</code>
+			<value>Modifieur de son : %s</value>
+		</message>
+		<message>
+			<code>SERVER_CHANNEL_PLAYERS</code>
+			<value>Joueur(s) : %s</value>
+		</message>
+		<message>
+			<code>MUMBLE_EXPLANATION</code>
+			<value>Pour configurer un serveur mumble</value>
+		</message>
+		<message>
+			<code>MUMBLE__CHANNELS__EXPLANATION</code>
+			<value>Pour ajouter/supprimer des channels pour un server mumble</value>
+		</message>
+		<message>
+			<code>MUMBLE__CHANNELS_ADD__EXPLANATION</code>
+			<value>Pour ajouter un channel à un serveur mumble</value>
+		</message>
+		<message>
+			<code>MUMBLE__CHANNELS_ADD__NAME_IS_MISSING</code>
+			<value>Impossible d'ajouter un channel à %s, le nom est manquant</value>
+		</message>
+		<message>
+			<code>MUMBLE__CHANNELS_ADD__CHANNEL_ALREADY_REGISTERED</code>
+			<value>Impossible d'ajouter %s à %s, ce channel existe déjà</value>
+		</message>
+		<message>
+			<code>MUMBLE__CHANNELS_ADD__CHANNEL_ADDED</code>
+			<value>Le channel %s a été ajouté à %s</value>
+		</message>
+		<message>
+			<code>MUMBLE__CHANNELS_REMOVE__EXPLANATION</code>
+			<value>Pour supprimer un channel d'un serveur mumble</value>
+		</message>
+		<message>
+			<code>MUMBLE__CHANNELS_REMOVE__ALL_CHANNELS_REMOVED</code>
+			<value>Tous les channels ont été supprimés de %s</value>
+		</message>
+		<message>
+			<code>MUMBLE__CHANNELS_REMOVE__CHANNEL_NOT_FOUND</code>
+			<value>Impossible de supprimer %s de %s, ce channel n'existe pas</value>
+		</message>
+		<message>
+			<code>MUMBLE__CHANNELS_REMOVE__NO_CHANNEL_REMOVED</code>
+			<value>Aucun channel n'a été supprimé de %s</value>
+		</message>
+		<message>
+			<code>MUMBLE__CHANNELS_REMOVE__ONE_CHANNEL_REMOVED</code>
+			<value>Le channel %s a été supprimé de %s</value>
+		</message>
+		<message>
+			<code>MUMBLE__CHANNELS_REMOVE__SEVERAL_CHANNELS_REMOVED</code>
+			<value>Les channels %s ont été supprimés de %s</value>
+		</message>
+		<message>
+			<code>MUMBLE__CHANNELS_RENAME__EXPLANATION</code>
+			<value>Pour renommer un channel d'un serveur mumble</value>
+		</message>
+		<message>
+			<code>MUMBLE__CHANNELS_RENAME__CHANNEL_NAME_IS_MISSING</code>
+			<value>Impossible de renommer un channel, il manque le nom du channel</value>
+		</message>
+		<message>
+			<code>MUMBLE__CHANNELS_RENAME__NEW_CHANNEL_NAME_IS_MISSING</code>
+			<value>Impossible de renommer %s, le nouveau nom est manquant</value>
+		</message>
+		<message>
+			<code>MUMBLE__CHANNELS_RENAME__CHANNEL_DOES_NOT_EXIST</code>
+			<value>Impossible de renommer %s, le channel n'existe pas</value>
+		</message>
+		<message>
+			<code>MUMBLE__CHANNELS_RENAME__NAME_ALREADY_USED</code>
+			<value>Impossible de renommer %s en %s, le channel existe déjà</value>
+		</message>
+		<message>
+			<code>MUMBLE__CHANNELS_RENAME__CHANNEL_RENAMED</code>
+			<value>Le channel %s a été renommé %s</value>
+		</message>
+		<message>
+			<code>MUMBLE__CHANNELS_SOUND_MODIFIER__EXPLANATION</code>
+			<value>Pour modifier la propagation du son dans un channel</value>
+		</message>
+		<message>
+			<code>MUMBLE__CHANNELS_SOUND_MODIFIER__CHANNEL_NAME_IS_MISSING</code>
+			<value>Impossible de définir le modifieur de son d'un channel, le nom est manquant</value>
+		</message>
+		<message>
+			<code>MUMBLE__CHANNELS_SOUND_MODIFIER__CHANNEL_DOES_NOT_EXIST</code>
+			<value>Impossible de définir le modifieur de son de %s, le channel n'existe pas</value>
+		</message>
+		<message>
+			<code>MUMBLE__CHANNELS_SOUND_MODIFIER__MODIFIER_NAME_IS_MISSING</code>
+			<value>Impossible de définir le modifieur de son de %s, le nom est manquant</value>
+		</message>
+		<message>
+			<code>MUMBLE__CHANNELS_SOUND_MODIFIER__MODIFIER_DOES_NOT_EXIST</code>
+			<value>Impossible de définir le modifieur de son de %s, le modifieur de son %s n'existe pas</value>
+		</message>
+		<message>
+			<code>MUMBLE__CHANNELS_SOUND_MODIFIER__MODIFIER_UPDATED</code>
+			<value>Le channel %s a maintenant %s en tant que modifieur de son</value>
+		</message>
+		<message>
+			<code>MUMBLE__KICK__EXPLANATION</code>
+			<value>Pour kicker un joueur d'un channel mumble</value>
+		</message>
+		<message>
+			<code>MUMBLE__KICK__ALL_PLAYERS_KICKED</code>
+			<value>Tous les joueurs ont été kick de leur channel</value>
+		</message>
+		<message>
+			<code>MUMBLE__KICK__PLAYER_NOT_FOUND</code>
+			<value>Impossible de kicker %s, ce joueur n'existe pas</value>
+		</message>
+		<message>
+			<code>MUMBLE__KICK__PLAYER_NOT_REGISTERED_IN_CHANNEL</code>
+			<value>Impossible de kicker %s, ce joueur n'est pas dans un channel</value>
+		</message>
+		<message>
+			<code>MUMBLE__KICK__NO_PLAYER_KICKED</code>
+			<value>Aucun joueur n'a été kick</value>
+		</message>
+		<message>
+			<code>MUMBLE__KICK__ONE_PLAYER_KICKED</code>
+			<value>Le joueur %s a été kick de son channel</value>
+		</message>
+		<message>
+			<code>MUMBLE__KICK__SEVERAL_PLAYERS_KICKED</code>
+			<value>Les joueurs %s ont été kick de leur channel</value>
+		</message>
+		<message>
+			<code>MUMBLE__MUTE__EXPLANATION</code>
+			<value>Pour mettre en sourdine un joueur</value>
+		</message>
+		<message>
+			<code>MUMBLE__MUTE__ALL_PLAYERS_MUTED</code>
+			<value>Tous les joueurs ont été mit en sourdine</value>
+		</message>
+		<message>
+			<code>MUMBLE__MUTE__PLAYER_NOT_FOUND</code>
+			<value>Impossible de mettre en sourdine %s, le joueur n'existe pas</value>
+		</message>
+		<message>
+			<code>MUMBLE__MUTE__PLAYER_NOT_REGISTERED_IN_CHANNEL</code>
+			<value>Impossible de mettre en sourdine %s, le joueur n'est pas dans un channel</value>
+		</message>
+		<message>
+			<code>MUMBLE__MUTE__NO_PLAYER_MUTED</code>
+			<value>Aucun joueur n'a été mis en sourdine</value>
+		</message>
+		<message>
+			<code>MUMBLE__MUTE__ONE_PLAYER_MUTED</code>
+			<value>Le joueur %s a été mis en sourdine</value>
+		</message>
+		<message>
+			<code>MUMBLE__MUTE__SEVERAL_PLAYERS_MUTED</code>
+			<value>Les joueurs %s ont été mis en sourdine</value>
+		</message>
+		<message>
+			<code>MUMBLE__DEAFEN__EXPLANATION</code>
+			<value>Pour assourdir un joueur</value>
+		</message>
+		<message>
+			<code>MUMBLE__DEAFEN__ALL_PLAYERS_DEAFENED</code>
+			<value>Tous les joueurs ont été assourdis</value>
+		</message>
+		<message>
+			<code>MUMBLE__DEAFEN__PLAYER_NOT_FOUND</code>
+			<value>Impossible d'assourdir %s, le joueur n'existe pas</value>
+		</message>
+		<message>
+			<code>MUMBLE__DEAFEN__PLAYER_NOT_REGISTERED_IN_CHANNEL</code>
+			<value>Impossible d'assourdir %s, ce joueur n'est pas dans un channel</value>
+		</message>
+		<message>
+			<code>MUMBLE__DEAFEN__NO_PLAYER_DEAFENED</code>
+			<value>Aucun joueur n'a été assourdi</value>
+		</message>
+		<message>
+			<code>MUMBLE__DEAFEN__ONE_PLAYER_DEAFENED</code>
+			<value>Le joueur %s a été assourdi</value>
+		</message>
+		<message>
+			<code>MUMBLE__DEAFEN__SEVERAL_PLAYERS_DEAFENED</code>
+			<value>Les joueurs %s ont été assourdis</value>
+		</message>
+		<message>
+			<code>MUMBLE_DETAILS__EXPLANATION</code>
+			<value>Pour afficher les caractéristiques de tous les channels</value>
+		</message>
+		<message>
+			<code>MUMBLE_DETAILS__NO_CHANNEL_REGISTERED</code>
+			<value>Il n'y a pas de channel enregistré</value>
+		</message>
+		<message>
+			<code>MUMBLE__DETAILS__EXPLANATION</code>
+			<value>Pour afficher les détails d'un serveur mumble</value>
+		</message>
+		<message>
+			<code>MUMBLE__DETAILS__ON_DETAILS</code>
+			<value>Details du serveur mumble : %n%n%s</value>
+		</message>
+	</messages>
+</dictionary>
