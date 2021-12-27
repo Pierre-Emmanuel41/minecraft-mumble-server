@@ -25,13 +25,13 @@
 		</dependency>
 		<dependency>
 			<groupId>fr.pederobien.minecraft</groupId>
-			<artifactId>platform</artifactId>
+			<artifactId>game</artifactId>
 			<version>1.0_MC_1.13.2-SNAPSHOT</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>fr.pederobien.minecraft</groupId>
-			<artifactId>game</artifactId>
+			<artifactId>platform</artifactId>
 			<version>1.0_MC_1.13.2-SNAPSHOT</version>
 			<scope>provided</scope>
 		</dependency>
