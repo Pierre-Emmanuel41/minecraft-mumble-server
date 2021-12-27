@@ -1,4 +1,4 @@
-package fr.pederobien.minecraftmumbleserver;
+package fr.pederobien.minecraft.mumble.server;
 
 import java.io.FileNotFoundException;
 import java.nio.file.Path;
@@ -10,8 +10,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import fr.pederobien.communication.event.DataEvent;
 import fr.pederobien.dictionary.interfaces.IDictionaryParser;
+import fr.pederobien.minecraft.mumble.server.soundmodifiers.TestModifier;
 import fr.pederobien.minecraftgameplateform.utils.Plateform;
-import fr.pederobien.minecraftmumbleserver.soundmodifiers.TestModifier;
 import fr.pederobien.mumble.server.event.PlayerPositionChangeEvent;
 import fr.pederobien.mumble.server.event.PlayerSpeakPostEvent;
 import fr.pederobien.mumble.server.event.PlayerSpeakPreEvent;

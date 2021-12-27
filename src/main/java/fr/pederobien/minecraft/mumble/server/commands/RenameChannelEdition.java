@@ -1,13 +1,13 @@
-package fr.pederobien.minecraftmumbleserver.commands;
+package fr.pederobien.minecraft.mumble.server.commands;
 
 import java.util.List;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
+import fr.pederobien.minecraft.mumble.server.EMumbleMessageCode;
 import fr.pederobien.minecraftgameplateform.commands.common.ECommonLabel;
 import fr.pederobien.minecraftgameplateform.dictionary.ECommonMessageCode;
-import fr.pederobien.minecraftmumbleserver.EMumbleMessageCode;
 import fr.pederobien.mumble.server.exceptions.ChannelAlreadyExistException;
 import fr.pederobien.mumble.server.exceptions.ChannelNotRegisteredException;
 import fr.pederobien.mumble.server.interfaces.IMumbleServer;

@@ -1,4 +1,4 @@
-package fr.pederobien.minecraftmumbleserver;
+package fr.pederobien.minecraft.mumble.server;
 
 import org.bukkit.entity.Player;
 

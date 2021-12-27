@@ -1,4 +1,4 @@
-package fr.pederobien.minecraftmumbleserver.commands;
+package fr.pederobien.minecraft.mumble.server.commands;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +7,8 @@ import java.util.stream.Stream;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
+import fr.pederobien.minecraft.mumble.server.EMumbleMessageCode;
 import fr.pederobien.minecraftgameplateform.interfaces.helpers.IGameConfigurationHelper;
-import fr.pederobien.minecraftmumbleserver.EMumbleMessageCode;
 import fr.pederobien.mumble.server.exceptions.ChannelNotRegisteredException;
 import fr.pederobien.mumble.server.interfaces.IChannel;
 import fr.pederobien.mumble.server.interfaces.IMumbleServer;

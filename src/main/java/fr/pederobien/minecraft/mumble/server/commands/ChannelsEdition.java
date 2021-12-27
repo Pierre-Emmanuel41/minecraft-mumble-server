@@ -1,6 +1,6 @@
-package fr.pederobien.minecraftmumbleserver.commands;
+package fr.pederobien.minecraft.mumble.server.commands;
 
-import fr.pederobien.minecraftmumbleserver.EMumbleMessageCode;
+import fr.pederobien.minecraft.mumble.server.EMumbleMessageCode;
 import fr.pederobien.mumble.server.interfaces.IMumbleServer;
 
 public class ChannelsEdition extends CommonMumbleEdition {

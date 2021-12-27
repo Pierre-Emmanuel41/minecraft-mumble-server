@@ -1,4 +1,4 @@
-package fr.pederobien.minecraftmumbleserver.commands;
+package fr.pederobien.minecraft.mumble.server.commands;
 
 import java.util.ArrayList;
 import java.util.Iterator;

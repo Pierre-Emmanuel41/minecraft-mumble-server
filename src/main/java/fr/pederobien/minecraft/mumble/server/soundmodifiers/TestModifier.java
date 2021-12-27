@@ -1,9 +1,9 @@
-package fr.pederobien.minecraftmumbleserver.soundmodifiers;
+package fr.pederobien.minecraft.mumble.server.soundmodifiers;
 
 import java.util.Optional;
 
-import fr.pederobien.minecraftmumbleserver.MinecraftMumblePlayer;
-import fr.pederobien.minecraftmumbleserver.MinecraftSoundModifier;
+import fr.pederobien.minecraft.mumble.server.MinecraftMumblePlayer;
+import fr.pederobien.minecraft.mumble.server.MinecraftSoundModifier;
 import fr.pederobien.mumble.server.impl.MathHelper;
 import fr.pederobien.mumble.server.impl.modifiers.RangeParameter;
 import fr.pederobien.mumble.server.interfaces.IParameter;

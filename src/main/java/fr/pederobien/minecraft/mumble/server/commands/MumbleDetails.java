@@ -1,4 +1,4 @@
-package fr.pederobien.minecraftmumbleserver.commands;
+package fr.pederobien.minecraft.mumble.server.commands;
 
 import java.util.Iterator;
 import java.util.List;
@@ -9,8 +9,8 @@ import java.util.stream.Collectors;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
+import fr.pederobien.minecraft.mumble.server.EMumbleMessageCode;
 import fr.pederobien.minecraftgameplateform.commands.common.ECommonLabel;
-import fr.pederobien.minecraftmumbleserver.EMumbleMessageCode;
 import fr.pederobien.mumble.server.interfaces.IChannel;
 import fr.pederobien.mumble.server.interfaces.IMumbleServer;
 

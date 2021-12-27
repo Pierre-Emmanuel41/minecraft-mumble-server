@@ -1,4 +1,4 @@
-package fr.pederobien.minecraftmumbleserver.commands;
+package fr.pederobien.minecraft.mumble.server.commands;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,19 +7,19 @@ import java.util.stream.Stream;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
+import fr.pederobien.minecraft.mumble.server.EMumbleMessageCode;
 import fr.pederobien.minecraftgameplateform.dictionary.ECommonMessageCode;
 import fr.pederobien.minecraftgameplateform.exceptions.PlayerNotFoundException;
 import fr.pederobien.minecraftgameplateform.interfaces.helpers.IGameConfigurationHelper;
-import fr.pederobien.minecraftmumbleserver.EMumbleMessageCode;
 import fr.pederobien.mumble.server.exceptions.PlayerNotRegisteredInChannelException;
 import fr.pederobien.mumble.server.interfaces.IChannel;
 import fr.pederobien.mumble.server.interfaces.IMumbleServer;
 import fr.pederobien.mumble.server.interfaces.IPlayer;
 
-public class DeafenPlayerEdition extends CommonMumbleEdition {
+public class MutePlayerEdition extends CommonMumbleEdition {
 
-	public DeafenPlayerEdition(IMumbleServer mumbleServer) {
-		super(EMumbleLabel.DEAFEN, EMumbleMessageCode.DEAFEN__EXPLANATION, mumbleServer);
+	public MutePlayerEdition(IMumbleServer mumbleServer) {
+		super(EMumbleLabel.MUTE, EMumbleMessageCode.MUTE__EXPLANATION, mumbleServer);
 	}
 
 	@Override
@@ -31,35 +31,35 @@ public class DeafenPlayerEdition extends CommonMumbleEdition {
 			if (args[0].equals(IGameConfigurationHelper.ALL)) {
 				for (IChannel channel : get().getChannels().values())
 					for (IPlayer player : channel.getPlayers())
-						player.setDeafen(true);
-				sendSynchro(sender, EMumbleMessageCode.DEAFEN__ALL_PLAYERS_DEAFEN);
+						player.setMute(true);
+				sendSynchro(sender, EMumbleMessageCode.MUTE__ALL_PLAYERS_MUTE);
 				return true;
 			}
 
 			players = getPlayers(args);
 			playerNamesConcatenated = concat(getPlayerNames(players));
 			for (IPlayer player : players)
-				player.setDeafen(true);
+				player.setMute(true);
 		} catch (PlayerNotFoundException e) {
 			sendSynchro(sender, ECommonMessageCode.COMMON_PLAYER_DOES_NOT_EXIST, e.getPlayerName(), get().getName());
 			return false;
 		} catch (PlayerNotRegisteredInChannelException e) {
-			sendSynchro(sender, EMumbleMessageCode.DEAFEN__PLAYER_NOT_REGISTERED_IN_A_CHANNEL, e.getNotRegisteredPlayer().getName());
+			sendSynchro(sender, EMumbleMessageCode.MUTE__PLAYER_NOT_REGISTERED_IN_A_CHANNEL, e.getNotRegisteredPlayer().getName());
 			return false;
 		} catch (IndexOutOfBoundsException e) {
-			sendSynchro(sender, EMumbleMessageCode.DEAFEN__NO_PLAYER_DEAFEN);
+			sendSynchro(sender, EMumbleMessageCode.MUTE__NO_PLAYER_MUTE);
 			return true;
 		}
 
 		switch (players.size()) {
 		case 0:
-			sendSynchro(sender, EMumbleMessageCode.DEAFEN__NO_PLAYER_DEAFEN);
+			sendSynchro(sender, EMumbleMessageCode.MUTE__NO_PLAYER_MUTE);
 			break;
 		case 1:
-			sendSynchro(sender, EMumbleMessageCode.DEAFEN__ONE_PLAYER_DEAFEN, playerNamesConcatenated);
+			sendSynchro(sender, EMumbleMessageCode.MUTE__ONE_PLAYER_MUTE, playerNamesConcatenated);
 			break;
 		default:
-			sendSynchro(sender, EMumbleMessageCode.DEAFEN__SEVERAL_PLAYERS_DEAFEN, playerNamesConcatenated);
+			sendSynchro(sender, EMumbleMessageCode.MUTE__SEVERAL_PLAYERS_MUTE, playerNamesConcatenated);
 			break;
 		}
 
@@ -68,14 +68,14 @@ public class DeafenPlayerEdition extends CommonMumbleEdition {
 
 	@Override
 	public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
-		Stream<String> players = getFreePlayers(asList(args)).map(player -> player.getName());
-		long size = getFreePlayers(asList(args)).filter(player -> !player.isDeafen()).count();
+		Stream<String> players = getFreePlayers(asList(args)).filter(player -> !player.isMute()).map(player -> player.getName());
+		long size = getFreePlayers(asList(args)).filter(player -> !player.isMute()).count();
 		if (size == 0)
 			return emptyList();
 
 		switch (args.length) {
 		case 1:
-			// Adding all to deafen all registered players
+			// Adding all to mute all registered players
 			return filter(Stream.concat(players, Stream.of(IGameConfigurationHelper.ALL)), args);
 		default:
 			// If the first argument is all -> any player is proposed

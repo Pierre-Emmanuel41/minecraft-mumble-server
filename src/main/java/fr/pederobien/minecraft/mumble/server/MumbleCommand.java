@@ -1,9 +1,9 @@
-package fr.pederobien.minecraftmumbleserver;
+package fr.pederobien.minecraft.mumble.server;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
+import fr.pederobien.minecraft.mumble.server.commands.MumbleEdition;
 import fr.pederobien.minecraftgameplateform.commands.AbstractSimpleCommand;
-import fr.pederobien.minecraftmumbleserver.commands.MumbleEdition;
 import fr.pederobien.mumble.server.interfaces.IMumbleServer;
 
 public class MumbleCommand extends AbstractSimpleCommand {

@@ -1,4 +1,4 @@
-package fr.pederobien.minecraftmumbleserver.commands;
+package fr.pederobien.minecraft.mumble.server.commands;
 
 import java.util.Collection;
 import java.util.List;
@@ -7,7 +7,7 @@ import java.util.Optional;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
-import fr.pederobien.minecraftmumbleserver.EMumbleMessageCode;
+import fr.pederobien.minecraft.mumble.server.EMumbleMessageCode;
 import fr.pederobien.mumble.server.exceptions.ChannelNotRegisteredException;
 import fr.pederobien.mumble.server.impl.SoundManager;
 import fr.pederobien.mumble.server.interfaces.IChannel;
