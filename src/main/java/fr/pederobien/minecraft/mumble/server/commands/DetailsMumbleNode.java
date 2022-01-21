@@ -46,7 +46,7 @@ public class DetailsMumbleNode implements ICodeSender {
 		};
 
 		// Creating the node that displays the details of the current server.
-		detailsNode = NodeBuilderFactory.detailsNode(server, onDetails).build(EMumbleCode.MUMBLE__DETAILS__EXPLANATION);
+		detailsNode = NodeBuilderFactory.detailsNode(() -> server, onDetails).build(EMumbleCode.MUMBLE__DETAILS__EXPLANATION);
 
 		// Node available if and only if the current server is not null
 		detailsNode.setAvailable(() -> server != null);
