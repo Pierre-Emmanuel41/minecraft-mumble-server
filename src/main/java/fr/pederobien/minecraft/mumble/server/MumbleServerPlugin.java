@@ -1,13 +1,10 @@
 package fr.pederobien.minecraft.mumble.server;
 
-import java.io.FileNotFoundException;
-
 import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import fr.pederobien.communication.event.DataEvent;
-import fr.pederobien.dictionary.exceptions.MessageRegisteredException;
 import fr.pederobien.dictionary.impl.JarXmlDictionaryParser;
 import fr.pederobien.minecraft.dictionary.impl.MinecraftDictionaryContext;
 import fr.pederobien.minecraft.mumble.server.commands.MumbleCommandTree;
@@ -56,7 +53,7 @@ public class MumbleServerPlugin extends JavaPlugin {
 		EventLogger.instance().newLine(false).ignore(DataEvent.class).ignore(PlayerPositionChangeEvent.class);
 		EventLogger.instance().ignore(PlayerSpeakPreEvent.class).ignore(PlayerSpeakPostEvent.class).register();
 
-		mumbleTree = new MumbleCommandTree(new MumbleServer("Mumble-1.0-SNAPSHOT", Platform.ROOT.resolve("Mumble")));
+		mumbleTree = new MumbleCommandTree(new MumbleServer("Mumble-1.0-SNAPSHOT", Platform.ROOT.resolve("Mumble").toAbsolutePath().toString()));
 		mumbleTree.getMumbleServer().open();
 		getServer().getPluginManager().registerEvents(listener = new MumbleEventListener(mumbleTree.getMumbleServer()), this);
 
@@ -71,22 +68,18 @@ public class MumbleServerPlugin extends JavaPlugin {
 	}
 
 	private void registerDictionaries() {
-		try {
-			JarXmlDictionaryParser dictionaryParser = new JarXmlDictionaryParser(getFile().toPath());
+		JarXmlDictionaryParser dictionaryParser = new JarXmlDictionaryParser(getFile().toPath());
 
-			MinecraftDictionaryContext context = MinecraftDictionaryContext.instance();
-			String[] dictionaries = new String[] { "English.xml", "French.xml" };
-			for (String dictionary : dictionaries)
-				try {
-					context.register(dictionaryParser.parse(DICTIONARY_FOLDER.concat(dictionary)));
-				} catch (MessageRegisteredException e) {
-					AsyncConsole.print(e);
-					for (StackTraceElement element : e.getStackTrace())
-						AsyncConsole.print(element);
-				}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
+		MinecraftDictionaryContext context = MinecraftDictionaryContext.instance();
+		String[] dictionaries = new String[] { "English.xml", "French.xml" };
+		for (String dictionary : dictionaries)
+			try {
+				context.register(dictionaryParser.parse(DICTIONARY_FOLDER.concat(dictionary)));
+			} catch (Exception e) {
+				AsyncConsole.print(e);
+				for (StackTraceElement element : e.getStackTrace())
+					AsyncConsole.print(element);
+			}
 	}
 
 	private void registerTabExecutor() {
