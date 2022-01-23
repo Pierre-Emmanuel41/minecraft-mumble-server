@@ -40,7 +40,7 @@ public class TestModifier extends SoundModifier {
 	}
 
 	@Override
-	public VolumeResult dispatch(IPlayer transmitter, IPlayer receiver) {
+	public VolumeResult calculate(IPlayer transmitter, IPlayer receiver) {
 		if (!transmitter.equals(receiver))
 			return VolumeResult.NONE;
 
@@ -51,9 +51,6 @@ public class TestModifier extends SoundModifier {
 
 		MinecraftMumblePlayer minecraftReceiver = players.get(receiver.getName());
 		if (minecraftReceiver == null)
-			return new VolumeResult(0);
-
-		if (minecraftTransmitter.getMinecraftPlayer().getWorld().equals(minecraftReceiver.getMinecraftPlayer().getWorld()))
 			return new VolumeResult(0);
 
 		double distance = MathHelper.getDistance3D(new TestPosition(), receiver.getPosition());
