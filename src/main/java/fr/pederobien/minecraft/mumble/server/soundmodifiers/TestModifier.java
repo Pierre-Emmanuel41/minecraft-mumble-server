@@ -10,6 +10,7 @@ import fr.pederobien.mumble.server.impl.modifiers.SoundModifier;
 import fr.pederobien.mumble.server.interfaces.IParameter;
 import fr.pederobien.mumble.server.interfaces.IPlayer;
 import fr.pederobien.mumble.server.interfaces.IPosition;
+import fr.pederobien.vocal.common.impl.VolumeResult;
 
 public class TestModifier extends SoundModifier {
 	private static final String X_PARAMETER_NAME = "X";
