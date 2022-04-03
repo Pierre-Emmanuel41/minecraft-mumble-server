@@ -1,16 +1,16 @@
 package fr.pederobien.minecraft.mumble.server.commands;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
-import fr.pederobien.minecraft.managers.PlayerManager;
 import fr.pederobien.minecraft.mumble.server.EMumbleCode;
+import fr.pederobien.mumble.server.exceptions.PlayerNotAdministratorException;
+import fr.pederobien.mumble.server.exceptions.PlayerNotRegisteredInChannelException;
 import fr.pederobien.mumble.server.interfaces.IChannel;
 import fr.pederobien.mumble.server.interfaces.IMumbleServer;
 import fr.pederobien.mumble.server.interfaces.IPlayer;
@@ -28,66 +28,59 @@ public class KickPlayerMumbleNode extends MumbleNode {
 
 	@Override
 	public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
-		List<String> alreadyMentionned = asList(args);
-		Stream<IPlayer> players = getServer().getPlayers().stream().filter(player -> player.getChannel() != null);
 		switch (args.length) {
 		case 1:
-			// Adding all to kick all registered players
-			return filter(concat(players.map(player -> player.getName()), Stream.of("all")), args);
-
-		// Verification that all player name correspond to an existing player and is registered in a channel.
+			return filter(getServer().getPlayers().stream().filter(player -> player.getChannel() != null).map(player -> player.getName()), args);
+		case 2:
+			Predicate<String> nameValid = name -> getServer().getPlayers().get(name).isPresent() && getServer().getPlayers().get(name).get().getChannel() != null;
+			Stream<String> filtered = getServer().getPlayers().stream().filter(player -> player.isAdmin()).map(player -> player.getName());
+			return filter(check(args[0], nameValid, filtered), args);
 		default:
-			// If the first argument is all -> no player is proposed
-			if (args[0].equals("all"))
-				return emptyList();
-
-			Stream<String> free = players.map(player -> player.getName()).filter(name -> !alreadyMentionned.contains(name));
-			return check(args[args.length - 1], name -> PlayerManager.getPlayer(name) != null, free).collect(Collectors.toList());
+			return emptyList();
 		}
 	}
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-		if (args[0].equals("all")) {
-			for (IChannel channel : getServer().getChannels())
-				channel.getPlayers().clear();
-			send(eventBuilder(sender, EMumbleCode.MUMBLE__KICK__ALL_PLAYERS_KICKED).build());
-			return true;
-		}
-
-		List<IPlayer> players = new ArrayList<IPlayer>();
-		for (String player : args) {
-			Optional<IPlayer> optPlayer = getServer().getPlayers().getPlayer(player);
+		IPlayer kicked;
+		try {
+			Optional<IPlayer> optPlayer = getServer().getPlayers().get(args[0]);
 			if (!optPlayer.isPresent()) {
-				send(eventBuilder(sender, EMumbleCode.MUMBLE__KICK__PLAYER_NOT_FOUND, optPlayer.get().getName()));
+				send(eventBuilder(sender, EMumbleCode.MUMBLE__KICK__KICKED_PLAYER_NOT_FOUND, args[0]));
 				return false;
 			}
 
-			if (optPlayer.get().getChannel() == null) {
-				send(eventBuilder(sender, EMumbleCode.MUMBLE__KICK__PLAYER_NOT_REGISTERED_IN_CHANNEL, optPlayer.get().getName()));
+			kicked = optPlayer.get();
+		} catch (IndexOutOfBoundsException e) {
+			send(eventBuilder(sender, EMumbleCode.MUMBLE__KICK__KICKED_PLAYER_NAME_IS_MISSING).build());
+			return false;
+		}
+
+		IPlayer kicking;
+		try {
+			Optional<IPlayer> optPlayer = getServer().getPlayers().get(args[1]);
+			if (!optPlayer.isPresent()) {
+				send(eventBuilder(sender, EMumbleCode.MUMBLE__KICK__KICKED_PLAYER_NOT_FOUND, kicked.getName(), args[1]));
 				return false;
 			}
 
-			players.add(optPlayer.get());
+			kicking = optPlayer.get();
+		} catch (IndexOutOfBoundsException e) {
+			send(eventBuilder(sender, EMumbleCode.MUMBLE__KICK__KICKING_PLAYER_NAME_IS_MISSING, kicked.getName()));
+			return false;
 		}
 
-		String playerNames = concat(args);
-
-		for (IPlayer player : players)
-			player.getChannel().getPlayers().remove(player);
-
-		switch (players.size()) {
-		case 0:
-			send(eventBuilder(sender, EMumbleCode.MUMBLE__KICK__NO_PLAYER_KICKED, getServer().getName()));
-			break;
-		case 1:
-			send(eventBuilder(sender, EMumbleCode.MUMBLE__KICK__ONE_PLAYER_KICKED, playerNames, getServer().getName()));
-			break;
-		default:
-			send(eventBuilder(sender, EMumbleCode.MUMBLE__KICK__SEVERAL_PLAYERS_KICKED, playerNames, getServer().getName()));
-			break;
+		IChannel channel = kicked.getChannel();
+		try {
+			kicking.kick(kicked);
+			send(eventBuilder(sender, EMumbleCode.MUMBLE__KICK__PLAYER_KICKED, kicked.getName(), channel.getName(), kicking.getName()));
+		} catch (PlayerNotAdministratorException e) {
+			send(eventBuilder(sender, EMumbleCode.MUMBLE__KICK__KICKING_PLAYER_NOT_ADMIN, kicked.getName(), kicking.getName()));
+			return false;
+		} catch (PlayerNotRegisteredInChannelException e) {
+			send(eventBuilder(sender, EMumbleCode.MUMBLE__KICK__KICKED_PLAYER_NOT_REGISTERED_IN_CHANNEL, kicked.getName(), kicking.getName()));
+			return false;
 		}
-
 		return true;
 	}
 }

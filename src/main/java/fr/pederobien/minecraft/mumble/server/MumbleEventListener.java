@@ -83,6 +83,17 @@ public class MumbleEventListener implements Listener {
 		updatePlayerLocation(event.getPlayer(), player.getMumblePlayer());
 	}
 
+	/**
+	 * Register the given player in the mumble server.
+	 * 
+	 * @param minecraft The minecraft player to register.
+	 */
+	private void registerPlayer(Player minecraft) {
+		IPlayer mumble = mumbleServer.getPlayers().add(minecraft.getName(), minecraft.getAddress(), minecraft.isOp(), 0, 0, 0, 0, 0);
+		updatePlayerLocation(minecraft, mumble);
+		addPlayer(minecraft, mumble);
+	}
+
 	private void updatePlayerLocation(Player player, IPlayer mumblePlayer) {
 		Location loc = player.getLocation();
 		mumblePlayer.getPosition().update(loc.getX(), -loc.getZ(), loc.getY(), MathHelper.inRange(Math.toRadians(-loc.getYaw() - 90)), Math.toRadians(loc.getPitch()));
@@ -116,16 +127,5 @@ public class MumbleEventListener implements Listener {
 		} finally {
 			lock.unlock();
 		}
-	}
-
-	/**
-	 * Register the given player in the mumble server.
-	 * 
-	 * @param minecraft The minecraft player to register.
-	 */
-	private void registerPlayer(Player minecraft) {
-		IPlayer mumble = mumbleServer.getPlayers().add(minecraft.getAddress(), minecraft.getName(), minecraft.isOp());
-		updatePlayerLocation(minecraft, mumble);
-		addPlayer(minecraft, mumble);
 	}
 }

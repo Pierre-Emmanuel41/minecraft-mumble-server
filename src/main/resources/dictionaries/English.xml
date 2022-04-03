@@ -128,32 +128,36 @@
 			<value>Channel %s has now %s as sound modifier</value>
 		</message>
 		<message>
-			<code>MUMBLE__KICK__EXPLANATION</code>
-			<value>To kick a player from a mumble channel</value>
+			<code>MUMBLE__PLAYERS__KICK__EXPLANATION</code>
+			<value>To kick a player from a channel</value>
 		</message>
 		<message>
-			<code>MUMBLE__KICK__ALL_PLAYERS_KICKED</code>
-			<value>All players have been kicked from their channel</value>
+			<code>MUMBLE__PLAYERS__KICK__KICKED_PLAYER_NAME_IS_MISSING</code>
+			<value>Cannot kick a player, the name of the player to kick is missing</value>
 		</message>
 		<message>
-			<code>MUMBLE__KICK__PLAYER_NOT_FOUND</code>
-			<value>Cannot kick %s, the player does not exist</value>
+			<code>MUMBLE__PLAYERS__KICK__KICKED_PLAYER_NOT_FOUND</code>
+			<value>Cannot kick %s, the player to kick does not exist</value>
 		</message>
 		<message>
-			<code>MUMBLE__KICK__PLAYER_NOT_REGISTERED_IN_CHANNEL</code>
-			<value>Cannot kick %s, this player is not in a channel</value>
+			<code>MUMBLE__PLAYERS__KICK__KICKING_PLAYER_NAME_IS_MISSING</code>
+			<value>Cannot kick %s by another player, the kicking player name is missing</value>
 		</message>
 		<message>
-			<code>MUMBLE__KICK__NO_PLAYER_KICKED</code>
-			<value>No player has been kicked</value>
+			<code>MUMBLE__PLAYERS__KICK__KICKING_PLAYER_NOT_FOUND</code>
+			<value>Cannot kick %s by %s, the kicking player does not exist</value>
 		</message>
 		<message>
-			<code>MUMBLE__KICK__ONE_PLAYER_KICKED</code>
-			<value>The player %s has been kicked from its channel</value>
+			<code>MUMBLE__PLAYERS__KICK__KICKING_PLAYER_NOT_ADMIN</code>
+			<value>Cannot kick %s by %s, the kicking player is not an administrator</value>
 		</message>
 		<message>
-			<code>MUMBLE__KICK__SEVERAL_PLAYERS_KICKED</code>
-			<value>Player %s have been kicked from their channel</value>
+			<code>MUMBLE__PLAYERS__KICK__KICKED_PLAYER_NOT_REGISTERED_IN_CHANNEL</code>
+			<value>Cannot kick %s by %s, the player to kick is not registered in a channel</value>
+		</message>
+		<message>
+			<code>MUMBLE__KICK__PLAYER_KICKED</code>
+			<value>%s has been kicked from %s by %s</value>
 		</message>
 		<message>
 			<code>MUMBLE__MUTE__EXPLANATION</code>
