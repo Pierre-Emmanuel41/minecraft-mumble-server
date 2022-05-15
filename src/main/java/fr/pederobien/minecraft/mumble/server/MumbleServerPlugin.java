@@ -11,7 +11,7 @@ import fr.pederobien.minecraft.mumble.server.commands.MumbleCommandTree;
 import fr.pederobien.minecraft.mumble.server.soundmodifiers.TestModifier;
 import fr.pederobien.minecraft.platform.Platform;
 import fr.pederobien.mumble.server.event.PlayerPositionChangePostEvent;
-import fr.pederobien.mumble.server.impl.MumbleServer;
+import fr.pederobien.mumble.server.impl.SimpleMumbleServer;
 import fr.pederobien.mumble.server.impl.SoundManager;
 import fr.pederobien.utils.AsyncConsole;
 import fr.pederobien.utils.event.EventLogger;
@@ -50,7 +50,7 @@ public class MumbleServerPlugin extends JavaPlugin {
 
 		EventLogger.instance().newLine(false).ignore(DataEvent.class).ignore(PlayerPositionChangePostEvent.class).register();
 
-		mumbleTree = new MumbleCommandTree(new MumbleServer("Mumble-1.0-SNAPSHOT", Platform.ROOT.resolve("Mumble").toAbsolutePath().toString()));
+		mumbleTree = new MumbleCommandTree(new SimpleMumbleServer("Mumble-1.0-SNAPSHOT", Platform.ROOT.resolve("Mumble").toAbsolutePath().toString()));
 		mumbleTree.getMumbleServer().open();
 		getServer().getPluginManager().registerEvents(listener = new MumbleEventListener(mumbleTree.getMumbleServer()), this);
 

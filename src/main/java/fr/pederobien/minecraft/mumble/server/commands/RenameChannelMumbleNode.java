@@ -28,7 +28,7 @@ public class RenameChannelMumbleNode extends MumbleNode {
 		case 1:
 			return filter(getServer().getChannels().stream().map(channel -> channel.getName()), args);
 		case 2:
-			return check(args[0], name -> getServer().getChannels().getChannel(name) != null, asList(getMessage(sender, EGameCode.NAME__COMPLETION)));
+			return check(args[0], name -> getServer().getChannels().get(name) != null, asList(getMessage(sender, EGameCode.NAME__COMPLETION)));
 		default:
 			return emptyList();
 		}
@@ -52,13 +52,13 @@ public class RenameChannelMumbleNode extends MumbleNode {
 			return false;
 		}
 
-		Optional<IChannel> optOldChannel = getServer().getChannels().getChannel(oldName);
+		Optional<IChannel> optOldChannel = getServer().getChannels().get(oldName);
 		if (!optOldChannel.isPresent()) {
 			send(eventBuilder(sender, EMumbleCode.MUMBLE__CHANNELS_RENAME__CHANNEL_DOES_NOT_EXIST, oldName));
 			return false;
 		}
 
-		Optional<IChannel> optNewChannel = getServer().getChannels().getChannel(newName);
+		Optional<IChannel> optNewChannel = getServer().getChannels().get(newName);
 		if (optNewChannel.isPresent()) {
 			send(eventBuilder(sender, EMumbleCode.MUMBLE__CHANNELS_RENAME__NAME_ALREADY_USED, oldName, newName));
 			return false;
