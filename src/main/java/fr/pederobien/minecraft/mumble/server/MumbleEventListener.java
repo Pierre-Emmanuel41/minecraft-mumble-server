@@ -14,7 +14,6 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import fr.pederobien.mumble.server.impl.MathHelper;
@@ -71,16 +70,6 @@ public class MumbleEventListener implements Listener {
 			if (optEntry.isPresent())
 				optEntry.get().getValue().getMumblePlayer().setAdmin(false);
 		}
-	}
-
-	@EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
-	private void onPlayerMoveEvent(PlayerMoveEvent event) {
-		MinecraftMumblePlayer player = players.get(event.getPlayer().getName());
-
-		if (player == null)
-			return;
-
-		updatePlayerLocation(event.getPlayer(), player.getMumblePlayer());
 	}
 
 	/**
