@@ -47,7 +47,7 @@ public class RemoveChannelMumbleNode extends MumbleNode {
 
 		List<IChannel> channels = new ArrayList<IChannel>();
 		for (String channel : args) {
-			Optional<IChannel> optChannel = getServer().getChannels().get(channel);
+			Optional<IChannel> optChannel = getServer().getChannels().getChannel(channel);
 			if (!optChannel.isPresent()) {
 				return false;
 			}

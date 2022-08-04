@@ -125,36 +125,32 @@
 			<value>Le channel %s a maintenant %s en tant que modifieur de son</value>
 		</message>
 		<message>
-			<code>MUMBLE__PLAYERS__KICK__EXPLANATION</code>
-			<value>Pour kick un joueur d'un channel</value>
+			<code>MUMBLE__KICK__EXPLANATION</code>
+			<value>Pour kicker un joueur d'un channel mumble</value>
 		</message>
 		<message>
-			<code>MUMBLE__PLAYERS__KICK__KICKED_PLAYER_NAME_IS_MISSING</code>
-			<value>Impossible de kick un joueur, le nom du joueur à kicker est manquant</value>
+			<code>MUMBLE__KICK__ALL_PLAYERS_KICKED</code>
+			<value>Tous les joueurs ont été kick de leur channel</value>
 		</message>
 		<message>
-			<code>MUMBLE__PLAYERS__KICK__KICKED_PLAYER_NOT_FOUND</code>
-			<value>Impossible de kick %s, le joueur à kicker n'existe pas</value>
+			<code>MUMBLE__KICK__PLAYER_NOT_FOUND</code>
+			<value>Impossible de kicker %s, ce joueur n'existe pas</value>
 		</message>
 		<message>
-			<code>MUMBLE__PLAYERS__KICK__KICKING_PLAYER_NAME_IS_MISSING</code>
-			<value>Impossible de kick %s par un autre joueur, le nom du joueur qui kick est manquant</value>
+			<code>MUMBLE__KICK__PLAYER_NOT_REGISTERED_IN_CHANNEL</code>
+			<value>Impossible de kicker %s, ce joueur n'est pas dans un channel</value>
 		</message>
 		<message>
-			<code>MUMBLE__PLAYERS__KICK__KICKING_PLAYER_NOT_FOUND</code>
-			<value>Impossible de kick %s par %s, le joueur qui kick n'existe pas</value>
+			<code>MUMBLE__KICK__NO_PLAYER_KICKED</code>
+			<value>Aucun joueur n'a été kick</value>
 		</message>
 		<message>
-			<code>MUMBLE__PLAYERS__KICK__KICKING_PLAYER_NOT_ADMIN</code>
-			<value>Impossible de kick %s par %s, le joueur qui kick n'est pas un administrateur</value>
+			<code>MUMBLE__KICK__ONE_PLAYER_KICKED</code>
+			<value>Le joueur %s a été kick de son channel</value>
 		</message>
 		<message>
-			<code>MUMBLE__PLAYERS__KICK__KICKED_PLAYER_NOT_REGISTERED_IN_CHANNEL</code>
-			<value>Impossible de kick %s par %s, le joueur a kicker n'est pas enregistré dans un channel</value>
-		</message>
-		<message>
-			<code>MUMBLE__KICK__PLAYER_KICKED</code>
-			<value>%s a été kick de %s par %s</value>
+			<code>MUMBLE__KICK__SEVERAL_PLAYERS_KICKED</code>
+			<value>Les joueurs %s ont été kick de leur channel</value>
 		</message>
 		<message>
 			<code>MUMBLE__MUTE__EXPLANATION</code>

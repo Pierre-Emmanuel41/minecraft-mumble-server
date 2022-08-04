@@ -97,26 +97,23 @@ public enum EMumbleCode implements IMinecraftCode {
 	// Code for the "mumble kick" command ----------------------------------------
 	MUMBLE__KICK__EXPLANATION,
 
-	// Code when name of the player to kick is missing
-	MUMBLE__KICK__KICKED_PLAYER_NAME_IS_MISSING,
+	// Code when all players are kicked from a mumble server
+	MUMBLE__KICK__ALL_PLAYERS_KICKED,
 
 	// Code when the player to kick does not exist
-	MUMBLE__KICK__KICKED_PLAYER_NOT_FOUND,
-
-	// Code when name of the kicking player is missing
-	MUMBLE__KICK__KICKING_PLAYER_NAME_IS_MISSING,
-
-	// Code when the kicking player does not exist
-	MUMBLE__KICK__KICKING_PLAYER_NOT_FOUND,
-
-	// Code when the kicking player is not an administrator
-	MUMBLE__KICK__KICKING_PLAYER_NOT_ADMIN,
+	MUMBLE__KICK__PLAYER_NOT_FOUND,
 
 	// Code when the player to kick is not registered in a channel
-	MUMBLE__KICK__KICKED_PLAYER_NOT_REGISTERED_IN_CHANNEL,
+	MUMBLE__KICK__PLAYER_NOT_REGISTERED_IN_CHANNEL,
 
-	// Code when a player has been kicked from a channel
-	MUMBLE__KICK__PLAYER_KICKED,
+	// Code when no player is kicked
+	MUMBLE__KICK__NO_PLAYER_KICKED,
+
+	// Code when one player is kicked
+	MUMBLE__KICK__ONE_PLAYER_KICKED,
+
+	// Code when several players are kicked
+	MUMBLE__KICK__SEVERAL_PLAYERS_KICKED,
 
 	// Code for the "mumble mute" command ----------------------------------------
 	MUMBLE__MUTE__EXPLANATION,

@@ -14,6 +14,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import fr.pederobien.mumble.server.impl.MathHelper;
@@ -72,15 +73,14 @@ public class MumbleEventListener implements Listener {
 		}
 	}
 
-	/**
-	 * Register the given player in the mumble server.
-	 * 
-	 * @param minecraft The minecraft player to register.
-	 */
-	private void registerPlayer(Player minecraft) {
-		IPlayer mumble = mumbleServer.getPlayers().add(minecraft.getName(), minecraft.getAddress(), minecraft.isOp(), 0, 0, 0, 0, 0);
-		updatePlayerLocation(minecraft, mumble);
-		addPlayer(minecraft, mumble);
+	@EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
+	private void onPlayerMoveEvent(PlayerMoveEvent event) {
+		MinecraftMumblePlayer player = players.get(event.getPlayer().getName());
+
+		if (player == null)
+			return;
+
+		updatePlayerLocation(event.getPlayer(), player.getMumblePlayer());
 	}
 
 	private void updatePlayerLocation(Player player, IPlayer mumblePlayer) {
@@ -116,5 +116,16 @@ public class MumbleEventListener implements Listener {
 		} finally {
 			lock.unlock();
 		}
+	}
+
+	/**
+	 * Register the given player in the mumble server.
+	 * 
+	 * @param minecraft The minecraft player to register.
+	 */
+	private void registerPlayer(Player minecraft) {
+		IPlayer mumble = mumbleServer.getPlayers().add(minecraft.getAddress(), minecraft.getName(), minecraft.isOp());
+		updatePlayerLocation(minecraft, mumble);
+		addPlayer(minecraft, mumble);
 	}
 }

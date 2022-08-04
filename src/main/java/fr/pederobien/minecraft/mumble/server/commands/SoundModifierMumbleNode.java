@@ -31,7 +31,7 @@ public class SoundModifierMumbleNode extends MumbleNode {
 			return filter(getServer().getChannels().stream().map(channel -> channel.getName()), args);
 		case 2:
 			Collection<ISoundModifier> sounds = SoundManager.getSoundModifiers().values();
-			return filter(check(args[0], name -> getServer().getChannels().get(name) != null, sounds.stream().map(sound -> sound.getName())), args);
+			return filter(check(args[0], name -> getServer().getChannels().getChannel(name) != null, sounds.stream().map(sound -> sound.getName())), args);
 		default:
 			return emptyList();
 		}
@@ -41,7 +41,7 @@ public class SoundModifierMumbleNode extends MumbleNode {
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		IChannel channel;
 		try {
-			Optional<IChannel> optChannel = getServer().getChannels().get(args[0]);
+			Optional<IChannel> optChannel = getServer().getChannels().getChannel(args[0]);
 			if (!optChannel.isPresent()) {
 				send(eventBuilder(sender, EMumbleCode.MUMBLE__CHANNELS_SOUND_MODIFIER__CHANNEL_DOES_NOT_EXIST, args[0]));
 				return false;

@@ -56,7 +56,7 @@ public class MutePlayerMumbleNode extends MumbleNode {
 
 		List<IPlayer> players = new ArrayList<IPlayer>();
 		for (String player : args) {
-			Optional<IPlayer> optPlayer = getServer().getPlayers().get(player);
+			Optional<IPlayer> optPlayer = getServer().getPlayers().getPlayer(player);
 			if (!optPlayer.isPresent()) {
 				send(eventBuilder(sender, EMumbleCode.MUMBLE__MUTE__PLAYER_NOT_FOUND, optPlayer.get().getName()));
 				return false;
