@@ -124,7 +124,9 @@ public class MumbleEventListener implements Listener {
 	 * @param minecraft The minecraft player to register.
 	 */
 	private void registerPlayer(Player minecraft) {
-		IPlayer mumble = mumbleServer.getPlayers().add(minecraft.getAddress(), minecraft.getName(), minecraft.isOp());
+		Location loc = minecraft.getLocation();
+		IPlayer mumble = mumbleServer.getPlayers().add(minecraft.getName(), minecraft.getAddress(), minecraft.isOp(), loc.getX(), loc.getY(), loc.getZ(), loc.getYaw(),
+				loc.getPitch());
 		updatePlayerLocation(minecraft, mumble);
 		addPlayer(minecraft, mumble);
 	}

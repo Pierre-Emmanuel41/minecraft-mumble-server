@@ -10,6 +10,7 @@ import fr.pederobien.mumble.server.impl.modifiers.SoundModifier;
 import fr.pederobien.mumble.server.interfaces.IParameter;
 import fr.pederobien.mumble.server.interfaces.IPlayer;
 import fr.pederobien.mumble.server.interfaces.IPosition;
+import fr.pederobien.vocal.common.impl.VolumeResult;
 
 public class TestModifier extends SoundModifier {
 	private static final String X_PARAMETER_NAME = "X";
@@ -31,12 +32,13 @@ public class TestModifier extends SoundModifier {
 	 * 
 	 * @param original The original sound modifier to clone.
 	 */
+	@SuppressWarnings("unchecked")
 	private TestModifier(TestModifier original) {
 		super(original);
-		this.xParameter = getParameters().getParameter(X_PARAMETER_NAME);
-		this.yParameter = getParameters().getParameter(Y_PARAMETER_NAME);
-		this.zParameter = getParameters().getParameter(Z_PARAMETER_NAME);
-		this.radiusParameter = getParameters().getParameter(RADIUS_PARAMETER_NAME);
+		this.xParameter = (IParameter<Double>) getParameters().get(X_PARAMETER_NAME).get();
+		this.yParameter = (IParameter<Double>) getParameters().get(Y_PARAMETER_NAME).get();
+		this.zParameter = (IParameter<Double>) getParameters().get(Z_PARAMETER_NAME).get();
+		this.radiusParameter = (IParameter<Double>) getParameters().get(RADIUS_PARAMETER_NAME).get();
 	}
 
 	@Override

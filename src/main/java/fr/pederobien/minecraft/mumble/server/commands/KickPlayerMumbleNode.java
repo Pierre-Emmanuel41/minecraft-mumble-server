@@ -50,14 +50,15 @@ public class KickPlayerMumbleNode extends MumbleNode {
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		if (args[0].equals("all")) {
 			for (IChannel channel : getServer().getChannels())
-				channel.clear();
+				channel.getPlayers().clear();
+			
 			send(eventBuilder(sender, EMumbleCode.MUMBLE__KICK__ALL_PLAYERS_KICKED).build());
 			return true;
 		}
 
 		List<IPlayer> players = new ArrayList<IPlayer>();
 		for (String player : args) {
-			Optional<IPlayer> optPlayer = getServer().getPlayers().getPlayer(player);
+			Optional<IPlayer> optPlayer = getServer().getPlayers().get(player);
 			if (!optPlayer.isPresent()) {
 				send(eventBuilder(sender, EMumbleCode.MUMBLE__KICK__PLAYER_NOT_FOUND, optPlayer.get().getName()));
 				return false;
@@ -74,7 +75,7 @@ public class KickPlayerMumbleNode extends MumbleNode {
 		String playerNames = concat(args);
 
 		for (IPlayer player : players)
-			player.getChannel().removePlayer(player);
+			player.getChannel().getPlayers().remove(player);
 
 		switch (players.size()) {
 		case 0:

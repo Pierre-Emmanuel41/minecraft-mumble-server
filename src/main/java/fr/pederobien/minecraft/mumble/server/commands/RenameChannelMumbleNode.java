@@ -1,14 +1,14 @@
 package fr.pederobien.minecraft.mumble.server.commands;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
 import fr.pederobien.minecraft.game.impl.EGameCode;
 import fr.pederobien.minecraft.mumble.server.EMumbleCode;
-import fr.pederobien.mumble.server.exceptions.ChannelAlreadyRegisteredException;
-import fr.pederobien.mumble.server.exceptions.ChannelNotRegisteredException;
+import fr.pederobien.mumble.server.interfaces.IChannel;
 import fr.pederobien.mumble.server.interfaces.IMumbleServer;
 
 public class RenameChannelMumbleNode extends MumbleNode {
@@ -28,7 +28,7 @@ public class RenameChannelMumbleNode extends MumbleNode {
 		case 1:
 			return filter(getServer().getChannels().stream().map(channel -> channel.getName()), args);
 		case 2:
-			return check(args[0], name -> getServer().getChannels().getChannel(name) != null, asList(getMessage(sender, EGameCode.NAME__COMPLETION)));
+			return check(args[0], name -> getServer().getChannels().get(name) != null, asList(getMessage(sender, EGameCode.NAME__COMPLETION)));
 		default:
 			return emptyList();
 		}
@@ -52,16 +52,20 @@ public class RenameChannelMumbleNode extends MumbleNode {
 			return false;
 		}
 
-		try {
-			getServer().getChannels().renameChannel(oldName, newName);
-			send(eventBuilder(sender, EMumbleCode.MUMBLE__CHANNELS_RENAME__CHANNEL_RENAMED, oldName, newName));
-		} catch (ChannelNotRegisteredException e) {
-			send(eventBuilder(sender, EMumbleCode.MUMBLE__CHANNELS_RENAME__CHANNEL_DOES_NOT_EXIST, e.getName()));
-			return false;
-		} catch (ChannelAlreadyRegisteredException e) {
-			send(eventBuilder(sender, EMumbleCode.MUMBLE__CHANNELS_RENAME__NAME_ALREADY_USED, oldName, e.getChannel().getName()));
+		Optional<IChannel> optOldChannel = getServer().getChannels().get(oldName);
+		if (!optOldChannel.isPresent()) {
+			send(eventBuilder(sender, EMumbleCode.MUMBLE__CHANNELS_RENAME__CHANNEL_DOES_NOT_EXIST, oldName));
 			return false;
 		}
+
+		Optional<IChannel> optNewChannel = getServer().getChannels().get(newName);
+		if (!optNewChannel.isPresent()) {
+			send(eventBuilder(sender, EMumbleCode.MUMBLE__CHANNELS_RENAME__CHANNEL_DOES_NOT_EXIST, newName));
+			return false;
+		}
+
+		optOldChannel.get().setName(newName);
+		send(eventBuilder(sender, EMumbleCode.MUMBLE__CHANNELS_RENAME__NAME_ALREADY_USED, oldName, newName));
 		return true;
 	}
 }
