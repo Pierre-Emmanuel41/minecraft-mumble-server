@@ -4,15 +4,15 @@ import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import fr.pederobien.commandtree.events.NodeEvent;
 import fr.pederobien.communication.event.ConnectionEvent;
+import fr.pederobien.dictionary.event.DictionaryEvent;
 import fr.pederobien.dictionary.impl.JarXmlDictionaryParser;
 import fr.pederobien.minecraft.dictionary.impl.MinecraftDictionaryContext;
 import fr.pederobien.minecraft.mumble.server.commands.MumbleCommandTree;
 import fr.pederobien.minecraft.mumble.server.soundmodifiers.TestModifier;
-import fr.pederobien.minecraft.platform.Platform;
 import fr.pederobien.mumble.server.event.MumblePlayerPositionChangePostEvent;
 import fr.pederobien.mumble.server.event.MumblePlayerPositionChangePreEvent;
-import fr.pederobien.mumble.server.impl.SimpleMumbleServer;
 import fr.pederobien.mumble.server.impl.SoundManager;
 import fr.pederobien.utils.AsyncConsole;
 import fr.pederobien.utils.event.EventLogger;
@@ -50,15 +50,15 @@ public class MumbleServerPlugin extends JavaPlugin {
 	public void onEnable() {
 		instance = this;
 
-		EventLogger.instance().newLine(true).timeStamp(true).register();
+		EventLogger.instance().register();
+		EventLogger.instance().ignore(DictionaryEvent.class);
 		EventLogger.instance().ignore(ConnectionEvent.class);
+		EventLogger.instance().ignore(NodeEvent.class);
 		EventLogger.instance().ignore(VocalPlayerSpeakEvent.class);
 		EventLogger.instance().ignore(MumblePlayerPositionChangePreEvent.class);
 		EventLogger.instance().ignore(MumblePlayerPositionChangePostEvent.class);
 
-		mumbleTree = new MumbleCommandTree(new SimpleMumbleServer("Minecraft", Platform.ROOT.resolve("Mumble").toAbsolutePath().toString()));
-		mumbleTree.getMumbleServer().open();
-		getServer().getPluginManager().registerEvents(listener = new MumbleEventListener(mumbleTree.getMumbleServer()), this);
+		mumbleTree = new MumbleCommandTree();
 
 		registerDictionaries();
 		registerTabExecutor();
@@ -67,7 +67,9 @@ public class MumbleServerPlugin extends JavaPlugin {
 
 	@Override
 	public void onDisable() {
-		mumbleTree.getMumbleServer().close();
+		if (mumbleTree.getServer() != null)
+			mumbleTree.getServer().close();
+		;
 	}
 
 	private void registerDictionaries() {
