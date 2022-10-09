@@ -11,14 +11,14 @@ import fr.pederobien.mumble.server.exceptions.MumbleServerTypeDismatchException;
 import fr.pederobien.mumble.server.impl.SimpleMumbleServer;
 
 public class OpenServerNode extends MumbleServerNode {
-	private MumbleCommandTree tree;
+	private MumbleServerCommandTree tree;
 
 	/**
 	 * Creates a server in order to open a simple mumble server or a stand-alone mumble server.
 	 * 
 	 * @param tree The command tree associated to this node.
 	 */
-	protected OpenServerNode(MumbleCommandTree tree) {
+	protected OpenServerNode(MumbleServerCommandTree tree) {
 		super(() -> tree.getServer(), "open", EMumbleServerCode.MINECRAFT__MUMBLE_SERVER_CL__OPEN__EXPLANATION, s -> true);
 		this.tree = tree;
 	}

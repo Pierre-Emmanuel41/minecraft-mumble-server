@@ -9,7 +9,7 @@ import fr.pederobien.communication.event.ConnectionEvent;
 import fr.pederobien.dictionary.event.DictionaryEvent;
 import fr.pederobien.dictionary.impl.JarXmlDictionaryParser;
 import fr.pederobien.minecraft.dictionary.impl.MinecraftDictionaryContext;
-import fr.pederobien.minecraft.mumble.server.commands.MumbleCommandTree;
+import fr.pederobien.minecraft.mumble.server.commands.MumbleServerCommandTree;
 import fr.pederobien.minecraft.mumble.server.soundmodifiers.TestModifier;
 import fr.pederobien.mumble.server.event.MumblePlayerPositionChangePostEvent;
 import fr.pederobien.mumble.server.event.MumblePlayerPositionChangePreEvent;
@@ -22,7 +22,7 @@ public class MumbleServerPlugin extends JavaPlugin {
 	private static final String DICTIONARY_FOLDER = "resources/dictionaries/";
 
 	private static Plugin instance;
-	private static MumbleCommandTree mumbleTree;
+	private static MumbleServerCommandTree mumbleTree;
 	private static MumbleEventListener listener;
 
 	/**
@@ -35,7 +35,7 @@ public class MumbleServerPlugin extends JavaPlugin {
 	/**
 	 * @return The tree used to modify a mumble server.
 	 */
-	public static MumbleCommandTree getMumbleTree() {
+	public static MumbleServerCommandTree getMumbleTree() {
 		return mumbleTree;
 	}
 
@@ -58,7 +58,7 @@ public class MumbleServerPlugin extends JavaPlugin {
 		EventLogger.instance().ignore(MumblePlayerPositionChangePreEvent.class);
 		EventLogger.instance().ignore(MumblePlayerPositionChangePostEvent.class);
 
-		mumbleTree = new MumbleCommandTree();
+		mumbleTree = new MumbleServerCommandTree();
 
 		registerDictionaries();
 		registerTabExecutor();

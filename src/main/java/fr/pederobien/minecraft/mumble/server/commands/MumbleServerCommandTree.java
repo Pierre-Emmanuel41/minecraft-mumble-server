@@ -5,15 +5,17 @@ import fr.pederobien.minecraft.commandtree.interfaces.IMinecraftCodeNode;
 import fr.pederobien.minecraft.mumble.server.EMumbleServerCode;
 import fr.pederobien.mumble.server.interfaces.IMumbleServer;
 
-public class MumbleCommandTree {
+public class MumbleServerCommandTree {
 	private IMumbleServer server;
 	private IMinecraftCodeNode root;
 	private OpenServerNode openNode;
+	private CloseServerNode closeNode;
 
-	public MumbleCommandTree() {
+	public MumbleServerCommandTree() {
 		root = new MinecraftCodeRootNode("mumble", EMumbleServerCode.MINECRAFT__MUMBLE_SERVER_CL__ROOT__EXPLANATION, () -> true);
 
 		root.add(openNode = new OpenServerNode(this));
+		root.add(closeNode = new CloseServerNode(this));
 	}
 
 	/**
@@ -40,9 +42,16 @@ public class MumbleCommandTree {
 	}
 
 	/**
-	 * @return The node that open a new server.
+	 * @return The node that opens a mumble server.
 	 */
 	public OpenServerNode getOpenNode() {
 		return openNode;
+	}
+
+	/**
+	 * @return The node that closes a mumble server
+	 */
+	public CloseServerNode getCloseNode() {
+		return closeNode;
 	}
 }
