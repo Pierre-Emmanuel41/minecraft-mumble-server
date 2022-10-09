@@ -1,6 +1,5 @@
 package fr.pederobien.minecraft.mumble.server.commands;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,8 +29,7 @@ public class SoundModifierMumbleNode extends MumbleNode {
 		case 1:
 			return filter(getServer().getChannels().stream().map(channel -> channel.getName()), args);
 		case 2:
-			Collection<ISoundModifier> sounds = SoundManager.getSoundModifiers().values();
-			return filter(check(args[0], name -> getServer().getChannels().get(name) != null, sounds.stream().map(sound -> sound.getName())), args);
+			return filter(check(args[0], name -> getServer().getChannels().get(name) != null, SoundManager.toStream().map(sound -> sound.getName())), args);
 		default:
 			return emptyList();
 		}
