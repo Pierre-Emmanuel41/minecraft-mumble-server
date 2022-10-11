@@ -59,6 +59,7 @@ public class MumbleServerPlugin extends JavaPlugin {
 		EventLogger.instance().ignore(MumblePlayerPositionChangePostEvent.class);
 
 		mumbleTree = new MumbleServerCommandTree();
+		getServer().getPluginManager().registerEvents(listener = new MumbleEventListener(() -> mumbleTree.getServer()), this);
 
 		registerDictionaries();
 		registerTabExecutor();

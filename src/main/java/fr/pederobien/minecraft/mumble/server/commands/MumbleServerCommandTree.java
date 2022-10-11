@@ -1,21 +1,25 @@
 package fr.pederobien.minecraft.mumble.server.commands;
 
 import fr.pederobien.minecraft.commandtree.impl.MinecraftCodeRootNode;
-import fr.pederobien.minecraft.commandtree.interfaces.IMinecraftCodeNode;
+import fr.pederobien.minecraft.commandtree.interfaces.IMinecraftCodeRootNode;
 import fr.pederobien.minecraft.mumble.server.EMumbleServerCode;
 import fr.pederobien.mumble.server.interfaces.IMumbleServer;
 
 public class MumbleServerCommandTree {
 	private IMumbleServer server;
-	private IMinecraftCodeNode root;
+	private IMinecraftCodeRootNode root;
 	private OpenServerNode openNode;
 	private CloseServerNode closeNode;
+	private ChannelNode channelNode;
+	private DetailsNode detailsNode;
 
 	public MumbleServerCommandTree() {
 		root = new MinecraftCodeRootNode("mumble", EMumbleServerCode.MINECRAFT__MUMBLE_SERVER_CL__ROOT__EXPLANATION, () -> true);
 
 		root.add(openNode = new OpenServerNode(this));
 		root.add(closeNode = new CloseServerNode(this));
+		root.add(channelNode = new ChannelNode(() -> getServer()));
+		root.add(detailsNode = new DetailsNode(() -> getServer()));
 	}
 
 	/**
@@ -37,7 +41,7 @@ public class MumbleServerCommandTree {
 	/**
 	 * @return The root associated to this tree.
 	 */
-	public IMinecraftCodeNode getRoot() {
+	public IMinecraftCodeRootNode getRoot() {
 		return root;
 	}
 
@@ -53,5 +57,19 @@ public class MumbleServerCommandTree {
 	 */
 	public CloseServerNode getCloseNode() {
 		return closeNode;
+	}
+
+	/**
+	 * @return The node that adds or removes channel from a mumble server or adds/removes players from a channel.
+	 */
+	public ChannelNode getChannelNode() {
+		return channelNode;
+	}
+
+	/**
+	 * @return The node that displays the current configuration of a mumble server.
+	 */
+	public DetailsNode getDetailsNode() {
+		return detailsNode;
 	}
 }

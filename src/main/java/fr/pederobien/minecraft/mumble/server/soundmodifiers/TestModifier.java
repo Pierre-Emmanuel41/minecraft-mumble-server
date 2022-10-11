@@ -1,9 +1,5 @@
 package fr.pederobien.minecraft.mumble.server.soundmodifiers;
 
-import java.util.Map;
-
-import fr.pederobien.minecraft.mumble.server.MinecraftMumblePlayer;
-import fr.pederobien.minecraft.mumble.server.MumbleServerPlugin;
 import fr.pederobien.mumble.server.impl.MathHelper;
 import fr.pederobien.mumble.server.impl.modifiers.RangeParameter;
 import fr.pederobien.mumble.server.impl.modifiers.SoundModifier;
@@ -22,8 +18,8 @@ public class TestModifier extends SoundModifier {
 	public TestModifier() {
 		super("test");
 		getParameters().add(xParameter = RangeParameter.of(this, X_PARAMETER_NAME, 0.0, -29999984.0, 29999984.0));
-		getParameters().add(yParameter = RangeParameter.of(this, Y_PARAMETER_NAME, 0.0, -29999984.0, 29999984.0));
-		getParameters().add(zParameter = RangeParameter.of(this, Z_PARAMETER_NAME, 70.0, 0.0, 256.0));
+		getParameters().add(yParameter = RangeParameter.of(this, Y_PARAMETER_NAME, 70.0, 0.0, 256.0));
+		getParameters().add(zParameter = RangeParameter.of(this, Z_PARAMETER_NAME, 0.0, -29999984.0, 29999984.0));
 		getParameters().add(radiusParameter = RangeParameter.of(this, RADIUS_PARAMETER_NAME, 50.0, 0.0, Double.MAX_VALUE));
 	}
 
@@ -42,21 +38,9 @@ public class TestModifier extends SoundModifier {
 	}
 
 	@Override
-	public VolumeResult dispatch(IPlayer transmitter, IPlayer receiver) {
+	public VolumeResult calculate(IPlayer transmitter, IPlayer receiver) {
 		if (!transmitter.equals(receiver))
 			return VolumeResult.NONE;
-
-		Map<String, MinecraftMumblePlayer> players = MumbleServerPlugin.getListener().getPlayers();
-		MinecraftMumblePlayer minecraftTransmitter = players.get(transmitter.getName());
-		if (minecraftTransmitter == null)
-			return new VolumeResult(0);
-
-		MinecraftMumblePlayer minecraftReceiver = players.get(receiver.getName());
-		if (minecraftReceiver == null)
-			return new VolumeResult(0);
-
-		if (minecraftTransmitter.getMinecraftPlayer().getWorld().equals(minecraftReceiver.getMinecraftPlayer().getWorld()))
-			return new VolumeResult(0);
 
 		double distance = MathHelper.getDistance3D(new TestPosition(), receiver.getPosition());
 		double[] volumes = MathHelper.getDefaultLeftAndRightVolume(new TestPosition(), receiver.getPosition());
@@ -83,12 +67,12 @@ public class TestModifier extends SoundModifier {
 
 		@Override
 		public double getY() {
-			return yParameter.getValue();
+			return -zParameter.getValue();
 		}
 
 		@Override
 		public double getZ() {
-			return zParameter.getValue();
+			return yParameter.getValue();
 		}
 
 		@Override

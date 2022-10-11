@@ -1,13 +1,17 @@
 package fr.pederobien.minecraft.mumble.server.commands;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 import fr.pederobien.minecraft.mumble.server.EMumbleServerCode;
+import fr.pederobien.minecraft.mumble.server.MumbleServerPlugin;
 import fr.pederobien.minecraft.platform.Platform;
 import fr.pederobien.mumble.server.exceptions.MumbleServerTypeDismatchException;
+import fr.pederobien.mumble.server.impl.MathHelper;
 import fr.pederobien.mumble.server.impl.SimpleMumbleServer;
 
 public class OpenServerNode extends MumbleServerNode {
@@ -25,9 +29,11 @@ public class OpenServerNode extends MumbleServerNode {
 
 	@Override
 	public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+		String[] servers = Platform.ROOT.resolve("Mumble").toFile().list();
 		switch (args.length) {
 		case 1:
-			return asList(getMessage(sender, EMumbleServerCode.MINECRAFT__MUMBLE_SERVER_CL__NAME__COMPLETION));
+			Stream<String> stream = Stream.of(servers);
+			return filter(stream.filter(server -> !server.equals("logs")).map(name -> name.substring(0, name.lastIndexOf("."))), args);
 		default:
 			return emptyList();
 		}
@@ -47,6 +53,26 @@ public class OpenServerNode extends MumbleServerNode {
 			SimpleMumbleServer server = new SimpleMumbleServer(name, Platform.ROOT.resolve("Mumble").toAbsolutePath().toString());
 			server.open();
 			tree.setServer(server);
+
+			for (Player player : MumbleServerPlugin.instance().getServer().getOnlinePlayers()) {
+				// Player's X coordinate
+				double x = player.getLocation().getX();
+
+				// Player's y coordinate
+				double y = -player.getLocation().getZ();
+
+				// Player's X coordinate
+				double z = player.getLocation().getY();
+
+				// Player's X coordinate
+				double yaw = MathHelper.inRange(Math.toRadians(-player.getLocation().getYaw() - 90));
+
+				// Player's X coordinate
+				double pitch = Math.toRadians(player.getLocation().getPitch());
+
+				getServer().getPlayers().add(player.getName(), player.getAddress(), player.isOp(), x, y, z, yaw, pitch);
+			}
+
 			sendSuccessful(sender, EMumbleServerCode.MINECRAFT__MUMBLE_SERVER_CL__OPEN__SIMPLE_SERVER_OPENED, name, server.getConfigurationPort(), server.getVocalPort());
 			return true;
 		} catch (MumbleServerTypeDismatchException e) {

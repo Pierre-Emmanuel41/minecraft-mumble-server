@@ -267,6 +267,102 @@ public enum EMumbleServerCode implements IMinecraftCode {
 	// Code when the maximum value has been set
 	MINECRAFT__MUMBLE_SERVER_CL__PARAMETER__MAX_VALUE__VALUE_SET,
 
+	// Code for the "mumble details" command ------------------------------------------------------
+	MINECRAFT__MUMBLE_SERVER_CL__DETAILS__EXPLANATION,
+
+	// Code for the server name
+	MINECRAFT__MUMBLE_SERVER_CL__DETAILS__SERVER_NAME,
+
+	// Code for the details of sound modifiers
+	MINECRAFT__MUMBLE_SERVER_CL__DETAILS__SOUND_MODIFIERS,
+
+	// Code for the sound modifier's name
+	MINECRAFT__MUMBLE_SERVER_CL__DETAILS__SOUND_MODIFIER_NAME,
+
+	// Code for the details of a sound modifier's parameters
+	MINECRAFT__MUMBLE_SERVER_CL__DETAILS__SOUND_MODIFIER_PARAMETERS,
+
+	// Code for the parameter's name
+	MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PARAMETER_NAME,
+
+	// Code for the parameter's value
+	MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PARAMETER_VALUE,
+
+	// Code for the parameter's default value
+	MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PARAMETER_DEFAULT_VALUE,
+
+	// Code for the parameter's minimum value
+	MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PARAMETER_MINIMUM_VALUE,
+
+	// Code for the parameter's maximum value
+	MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PARAMETER_MAXIMUM_VALUE,
+
+	// Code for the details of players
+	MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYERS,
+
+	// Code for the player's name
+	MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_NAME,
+
+	// Code for the player's identifier
+	MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_IDENTIFIER,
+
+	// Code for the player's online status
+	MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_ONLINE_STATUS,
+
+	// Code when the player is not connected in game
+	MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_OFFLINE,
+
+	// Code when the player is connected in game
+	MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_ONLINE,
+
+	// Code for the player's game address
+	MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_GAME_ADDRESS,
+
+	// Code for the player's administrator status
+	MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_ADMIN_STATUS,
+
+	// Code when the player is an administrator
+	MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_ADMIN,
+
+	// Code when the player is not an administrator
+	MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_NOT_ADMIN,
+
+	// Code for the player's mute status
+	MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_MUTE_STATUS,
+
+	// Code when the player is mute
+	MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_MUTE,
+
+	// Code when the player is not mute
+	MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_NOT_MUTE,
+
+	// Code for the player's mute by status
+	MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_MUTE_BY,
+
+	// Code for the player's deafen status
+	MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_DEAFEN_STATUS,
+
+	// Code when the player is deafen
+	MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_DEAFEN,
+
+	// Code when the player is not deafen
+	MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_NOT_DEAFEN,
+
+	// Code for the player's position
+	MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_POSITION,
+
+	// Code for the details of channels
+	MINECRAFT__MUMBLE_SERVER_CL__DETAILS__CHANNELS,
+
+	// Code for the channel's name
+	MINECRAFT__MUMBLE_SERVER_CL__DETAILS__CHANNEL_NAME,
+
+	// Code for the details of the channel's sound modifier
+	MINECRAFT__MUMBLE_SERVER_CL__DETAILS__CHANNEL_SOUND_MODIFIER,
+
+	// Code for the server configuration
+	MINECRAFT__MUMBLE_SERVER_CL__DETAILS__SERVER,
+
 	;
 
 	private IPlayerGroup group;
