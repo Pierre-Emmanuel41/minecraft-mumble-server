@@ -1,5 +1,6 @@
 package fr.pederobien.minecraft.mumble.server.commands;
 
+import java.nio.file.Path;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -9,27 +10,29 @@ import org.bukkit.entity.Player;
 
 import fr.pederobien.minecraft.mumble.server.EMumbleServerCode;
 import fr.pederobien.minecraft.mumble.server.MumbleServerPlugin;
-import fr.pederobien.minecraft.platform.Platform;
 import fr.pederobien.mumble.server.exceptions.MumbleServerTypeDismatchException;
 import fr.pederobien.mumble.server.impl.MathHelper;
 import fr.pederobien.mumble.server.impl.SimpleMumbleServer;
 
 public class OpenServerNode extends MumbleServerNode {
 	private MumbleServerCommandTree tree;
+	private Path path;
 
 	/**
 	 * Creates a server in order to open a simple mumble server or a stand-alone mumble server.
 	 * 
 	 * @param tree The command tree associated to this node.
+	 * @param path The path to the folder in which the configuration file of a mumble server is written.
 	 */
-	protected OpenServerNode(MumbleServerCommandTree tree) {
+	protected OpenServerNode(MumbleServerCommandTree tree, Path path) {
 		super(() -> tree.getServer(), "open", EMumbleServerCode.MINECRAFT__MUMBLE_SERVER_CL__OPEN__EXPLANATION, s -> true);
 		this.tree = tree;
+		this.path = path;
 	}
 
 	@Override
 	public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
-		String[] servers = Platform.ROOT.resolve("Mumble").toFile().list();
+		String[] servers = path.toFile().list();
 		switch (args.length) {
 		case 1:
 			Stream<String> stream = Stream.of(servers);
@@ -50,7 +53,7 @@ public class OpenServerNode extends MumbleServerNode {
 		}
 
 		try {
-			SimpleMumbleServer server = new SimpleMumbleServer(name, Platform.ROOT.resolve("Mumble").toAbsolutePath().toString());
+			SimpleMumbleServer server = new SimpleMumbleServer(name, path.toFile().getAbsolutePath());
 			server.open();
 			tree.setServer(server);
 

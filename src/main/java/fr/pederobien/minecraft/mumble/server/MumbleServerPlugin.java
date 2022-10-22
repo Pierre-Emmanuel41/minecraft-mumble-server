@@ -1,5 +1,9 @@
 package fr.pederobien.minecraft.mumble.server;
 
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -20,6 +24,7 @@ import fr.pederobien.vocal.server.event.VocalPlayerSpeakEvent;
 
 public class MumbleServerPlugin extends JavaPlugin {
 	private static final String DICTIONARY_FOLDER = "resources/dictionaries/";
+	private static final Path MUMBLE_FOLDER = Paths.get("plugins", "Mumble");
 
 	private static Plugin instance;
 	private static MumbleServerCommandTree mumbleTree;
@@ -58,7 +63,11 @@ public class MumbleServerPlugin extends JavaPlugin {
 		EventLogger.instance().ignore(MumblePlayerPositionChangePreEvent.class);
 		EventLogger.instance().ignore(MumblePlayerPositionChangePostEvent.class);
 
-		mumbleTree = new MumbleServerCommandTree();
+		File folder = MUMBLE_FOLDER.toFile();
+		if (!folder.exists())
+			folder.mkdirs();
+
+		mumbleTree = new MumbleServerCommandTree(MUMBLE_FOLDER);
 		getServer().getPluginManager().registerEvents(listener = new MumbleEventListener(() -> mumbleTree.getServer()), this);
 
 		registerDictionaries();

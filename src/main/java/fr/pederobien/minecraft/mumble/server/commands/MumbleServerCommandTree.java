@@ -1,5 +1,7 @@
 package fr.pederobien.minecraft.mumble.server.commands;
 
+import java.nio.file.Path;
+
 import fr.pederobien.minecraft.commandtree.impl.MinecraftCodeRootNode;
 import fr.pederobien.minecraft.commandtree.interfaces.IMinecraftCodeRootNode;
 import fr.pederobien.minecraft.mumble.server.EMumbleServerCode;
@@ -13,10 +15,15 @@ public class MumbleServerCommandTree {
 	private ChannelNode channelNode;
 	private DetailsNode detailsNode;
 
-	public MumbleServerCommandTree() {
+	/**
+	 * Creates a command tree in order to perform changes on a mumble server.
+	 * 
+	 * @param path The path to the folder in which the configuration file of a mumble server is written.
+	 */
+	public MumbleServerCommandTree(Path path) {
 		root = new MinecraftCodeRootNode("mumble", EMumbleServerCode.MINECRAFT__MUMBLE_SERVER_CL__ROOT__EXPLANATION, () -> true);
 
-		root.add(openNode = new OpenServerNode(this));
+		root.add(openNode = new OpenServerNode(this, path));
 		root.add(closeNode = new CloseServerNode(this));
 		root.add(channelNode = new ChannelNode(() -> getServer()));
 		root.add(detailsNode = new DetailsNode(() -> getServer()));
