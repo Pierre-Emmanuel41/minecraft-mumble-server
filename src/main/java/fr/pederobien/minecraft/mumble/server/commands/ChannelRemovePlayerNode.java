@@ -62,7 +62,7 @@ public class ChannelRemovePlayerNode extends MumbleServerNode {
 				return false;
 			}
 
-			players.remove(optPlayer.get());
+			players.add(optPlayer.get());
 		}
 
 		String playerNames = concat(extract(args, 1), ", ");
