@@ -55,7 +55,7 @@ public class MumbleServerPlugin extends JavaPlugin {
 	public void onEnable() {
 		instance = this;
 
-		EventLogger.instance().register();
+		EventLogger.instance().newLine(true).timeStamp(false).register();
 		EventLogger.instance().ignore(DictionaryEvent.class);
 		EventLogger.instance().ignore(ConnectionEvent.class);
 		EventLogger.instance().ignore(NodeEvent.class);
