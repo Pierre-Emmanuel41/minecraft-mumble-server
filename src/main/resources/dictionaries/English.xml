@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <dictionary>
-	<name>Game</name>
 	<version>1.0</version>
 	<locales>
 		<locale>en</locale>
@@ -12,212 +10,480 @@
 	</locales>
 	<messages>
 		<message>
-			<code>SERVER_NAME</code>
-			<value>Server: %s</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__NAME__COMPLETION</code>
+			<value>&lt;name&gt;</value>
 		</message>
 		<message>
-			<code>SERVER_IS_OPENED</code>
-			<value>Opened: %s</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CONFIGURATION_PORT__COMPLETION</code>
+			<value>&lt;configuration port&gt;</value>
 		</message>
 		<message>
-			<code>SERVER_CHANNEL_NAME</code>
-			<value>Channel: %s</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__VOCAL_PORT__COMPLETION</code>
+			<value>&lt;vocal port&gt;</value>
 		</message>
 		<message>
-			<code>SERVER_CHANNEL_SOUNDMODIFIER_NAME</code>
-			<value>Sound modifier: %s</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__GAME_PORT__COMPLETION</code>
+			<value>&lt;game port&gt;</value>
 		</message>
 		<message>
-			<code>SERVER_CHANNEL_PLAYERS</code>
-			<value>Player(s): %s</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__VALUE__COMPLETION</code>
+			<value>&lt;value&gt;</value>
 		</message>
 		<message>
-			<code>MUMBLE_EXPLANATION</code>
-			<value>To configure a mumble server</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__MIN_VALUE__COMPLETION</code>
+			<value>&lt;minimum value&gt;</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS__EXPLANATION</code>
-			<value>To add/remove channels from a mumble server</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__MAX_VALUE__COMPLETION</code>
+			<value>&lt;maximum value&gt;</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_ADD__EXPLANATION</code>
-			<value>To add channel to a mumble server</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__ROOT__EXPLANATION</code>
+			<value>To perform changes on a Mumble server</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_ADD__NAME_IS_MISSING</code>
-			<value>Cannot add a channel to %s, the name is missing</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__OPEN__EXPLANATION</code>
+			<value>To open a Mumble server</value>
 		</message>
 		<message>
-			<code>ADD_CHANNEL__CHANNEL_ALREADY_REGISTERED</code>
-			<value>Cannot add %s to %s, the channel already exists</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__OPEN__NAME_IS_MISSING</code>
+			<value>Cannot open a Mumble server, the server name is missing</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_ADD__CHANNEL_ALREADY_REGISTERED</code>
-			<value>Channel %s has been added to %s</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__OPEN__SERVER_TYPE_DISMATCH</code>
+			<value>Cannot open %s, a configuration file already exists and is associated to type "%s", expected "%s"</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_REMOVE__EXPLANATION</code>
-			<value>To remove a channel from a mumble server</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__OPEN__SIMPLE_SERVER_OPENED</code>
+			<value>Mumble server %s has been opened: Configuration port is %s, vocal port is %s</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_REMOVE__ALL_CHANNELS_REMOVED</code>
-			<value>All channels have been removed from %s</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CLOSE__EXPLANATION</code>
+			<value>To close a Mumble server</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_REMOVE__CHANNEL_NOT_FOUND</code>
-			<value>Cannot remove %s from %s, this channel does not exist</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CLOSE__SERVER_CLOSED</code>
+			<value>The Mumble server %s has been closed</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_REMOVE__NO_CHANNEL_REMOVED</code>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__EXPLANATION</code>
+			<value>To add/remove channels from a server or to add/remove players from a channel</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__ADD__EXPLANATION</code>
+			<value>To add a channel to a Mumble server or players to a channel</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__ADD__CHANNEL__EXPLANATION</code>
+			<value>To add a channel to a Mumble server</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__ADD__CHANNEL__NAME_IS_MISSING</code>
+			<value>Cannot add a channel to %s, the channel name is missing</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__ADD__CHANNEL__CHANNEL_ALREADY_REGISTERED</code>
+			<value>Cannot add %s to %s, the channel is already registered</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__ADD__CHANNEL__SOUND_MODIFIER_IS_MISSING</code>
+			<value>Cannot add %s to %s, the sound modifier name is missing</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__ADD__CHANNEL__SOUND_MODIFIER_NOT_FOUND</code>
+			<value>Cannot add %s to %s, the sound modifier %s does not exist</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__ADD__CHANNEL__CHANNEL_ADDED</code>
+			<value>The channel %s has been added to %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__ADD__PLAYER__EXPLANATION</code>
+			<value>To add players in a channel</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__ADD__PLAYER__CHANNEL_NAME_IS_MISSING</code>
+			<value>Cannot add players to a channel, the channel name is missing</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__ADD__PLAYER__CHANNEL_NOT_FOUND</code>
+			<value>Cannot add players to %s, the channel does not exist</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__ADD__PLAYER__PLAYER_NOT_FOUND</code>
+			<value>Cannot add %s to %s, the player does not exist</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__ADD__PLAYER__PLAYER_ALREADY_REGISTERED</code>
+			<value>Cannot add %s to %s, the player is already registered in channel %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__ADD__PLAYER__PLAYER_NOT_JOINED</code>
+			<value>Cannot add %s to %s, the player has not joined the Mumble server</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__ADD__PLAYER__NO_PLAYER_ADDED</code>
+			<value>No player has been added to %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__ADD__PLAYER__ONE_PLAYER_ADDED</code>
+			<value>Player %s has been added to %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__ADD__PLAYER__SEVERAL_PLAYERS_ADDED</code>
+			<value>Players %s have been added to %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__REMOVE__EXPLANATION</code>
+			<value>To remove channels from a Mumble server or players from a channel</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__REMOVE__CHANNEL__EXPLANATION</code>
+			<value>To remove channels from a Mumble server</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__REMOVE__CHANNEL__CHANNEL_NOT_FOUND</code>
+			<value>Cannot remove %s from %s, the channel does not exist</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__REMOVE__CHANNEL__NO_CHANNEL_REMOVED</code>
 			<value>No channel has been removed from %s</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_REMOVE__ONE_CHANNEL_REMOVED</code>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__REMOVE__CHANNEL__ONE_CHANNEL_REMOVED</code>
 			<value>Channel %s has been removed from %s</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_REMOVE__SEVERAL_CHANNELS_REMOVED</code>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__REMOVE__CHANNEL__SEVERAL_CHANNELS_REMOVED</code>
 			<value>Channels %s have been removed from %s</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_RENAME__EXPLANATION</code>
-			<value>To rename a channel of a mumble server</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__REMOVE__PLAYER__EXPLANATION</code>
+			<value>To remove players from a channel</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_RENAME__CHANNEL_NAME_IS_MISSING</code>
-			<value>Cannot rename a channel, the channel to rename is missing</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__REMOVE__PLAYER__CHANNEL_NAME_IS_MISSING</code>
+			<value>Cannot remove players from a channel, the channel name is missing</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_RENAME__NEW_CHANNEL_NAME_IS_MISSING</code>
-			<value>Cannot rename %s, the new name is missing</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__REMOVE__PLAYER__CHANNEL_NOT_FOUND</code>
+			<value>Cannot remove players from %s, the channel does not exist</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_RENAME__CHANNEL_DOES_NOT_EXIST</code>
-			<value>Cannot rename %s, this channel does not exist</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__REMOVE__PLAYER__PLAYER_NOT_FOUND</code>
+			<value>Cannot remove %s from %s, the player does not exist</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_RENAME__NAME_ALREADY_USED</code>
-			<value>Cannot rename %s as %s, the channel already exists</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__REMOVE__PLAYER__NO_PLAYER_REMOVED</code>
+			<value>No player has been removed from %s</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_RENAME__CHANNEL_RENAMED</code>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__REMOVE__PLAYER__ONE_PLAYER_REMOVED</code>
+			<value>Player %s has been removed from %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__REMOVE__PLAYER__SEVERAL_PLAYERS_REMOVED</code>
+			<value>Players %s have been removed from %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__RENAME__EXPLANATION</code>
+			<value>To rename a channel</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__RENAME__NAME_IS_MISSING</code>
+			<value>Cannot rename a channel, the name of the channel to rename is missing</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__RENAME__CHANNEL_NOT_FOUND</code>
+			<value>Cannot rename %s, the channel does not exist</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__RENAME__NEW_NAME_IS_MISSING</code>
+			<value>Cannot rename %s, the new channel name is missing</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__RENAME__CHANNEL_ALREADY_REGISTERED</code>
+			<value>Cannot rename %s as %s, the channel is already registered</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__RENAME__CHANNEL_RENAMED</code>
 			<value>Channel %s has been renamed as %s</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_SOUND_MODIFIER__EXPLANATION</code>
-			<value>To modify the sound propagation in a channel</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__SOUNDMODIFIER__EXPLANATION</code>
+			<value>To modify the sound modifier of a channel or the parameters of a sound modifier</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_SOUND_MODIFIER__CHANNEL_NAME_IS_MISSING</code>
-			<value>Cannot set the sound modifier of a channel, the name is missing</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__DETAILS__EXPLANATION</code>
+			<value>To display the characteristics of the sound modifier associated to a channel</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_SOUND_MODIFIER__CHANNEL_DOES_NOT_EXIST</code>
-			<value>Cannot set the sound modifier of %s, this channel does not exist</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__DETAILS__CHANNEL_NAME_IS_MISSING</code>
+			<value>Cannot display the characteristics of the sound modifier associated to a channel, the channel name is missing</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_SOUND_MODIFIER__MODIFIER_NAME_IS_MISSING</code>
-			<value>Cannot set the sound modifier of %s, the name is missing</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__DETAILS__CHANNEL_NOT_FOUND</code>
+			<value>Cannot display the characteristics of the sound modifier associated to %s, the channel does not exist</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_SOUND_MODIFIER__MODIFIER_DOES_NOT_EXIST</code>
-			<value>Cannot set the sound modifier of %s, the sound modifier %s does not exist</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__DETAILS__SOUND_MODIFIER_NAME</code>
+			<value>Name: %s</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_SOUND_MODIFIER__MODIFIER_UPDATED</code>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__DETAILS__SOUND_MODIFIER_PARAMETERS</code>
+			<value>Parameters:</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__DETAILS__PARAMETER_NAME</code>
+			<value>Name: %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__DETAILS__PARAMETER_VALUE</code>
+			<value>Value: %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__DETAILS__PARAMETER_DEFAULT_VALUE</code>
+			<value>Default value: %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__DETAILS__PARAMETER_MINIMUM_VALUE</code>
+			<value>Minimum value: %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__DETAILS__PARAMETER_MAXIMUM_VALUE</code>
+			<value>Maximum value: %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__DETAILS__SOUND_MODIFIER_DETAILS</code>
+			<value>Properties of channel %s's sound modifier:%n%s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__SET__EXPLANATION</code>
+			<value>To set the sound modifier of a channel</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__SET__CHANNEL_NAME_IS_MISSING</code>
+			<value>Cannot set the sound modifier of a channel, the channel name is missing</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__SET__CHANNEL_NOT_FOUND</code>
+			<value>Cannot set the sound modifier of %s, the channel does not exist</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__SET__SOUND_MODIFIER_NAME_IS_MISSING</code>
+			<value>Cannot set the sound modifier of %s, the sound modifier name is missing</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__SET__SOUND_MODIFIER_NOT_FOUND</code>
+			<value>Cannot set the %s as sound modifier for %s, the sound modifier does not exist</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__SET__SOUND_MODIFIER_SET</code>
 			<value>Channel %s has now %s as sound modifier</value>
 		</message>
 		<message>
-			<code>MUMBLE__KICK__EXPLANATION</code>
-			<value>To kick a player from a mumble channel</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__MODIFY__EXPLANATION</code>
+			<value>To modify the characteristics of a parameter of a sound modifier associated to a channel</value>
 		</message>
 		<message>
-			<code>MUMBLE__KICK__ALL_PLAYERS_KICKED</code>
-			<value>All players have been kicked from their channel</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__MODIFY__CHANNEL_NAME_IS_MISSING</code>
+			<value>Cannot modify the characteristics of a parameter, the channel name is missing</value>
 		</message>
 		<message>
-			<code>MUMBLE__KICK__PLAYER_NOT_FOUND</code>
-			<value>Cannot kick %s, the player does not exist</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__MODIFY__CHANNEL_NOT_FOUND</code>
+			<value>Cannot modify the characteristics of a parameter, the channel %s does not exist</value>
 		</message>
 		<message>
-			<code>MUMBLE__KICK__PLAYER_NOT_REGISTERED_IN_CHANNEL</code>
-			<value>Cannot kick %s, this player is not in a channel</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__MODIFY__PARAMETER_NAME_IS_MISSING</code>
+			<value>Cannot modify the characteristics of a parameter of channel %s, the parameter name is missing</value>
 		</message>
 		<message>
-			<code>MUMBLE__KICK__NO_PLAYER_KICKED</code>
-			<value>No player has been kicked</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__MODIFY__PARAMETER_NOT_FOUND</code>
+			<value>Cannot modify the characteristics of %s of channel %s, the parameter does not exist</value>
 		</message>
 		<message>
-			<code>MUMBLE__KICK__ONE_PLAYER_KICKED</code>
-			<value>The player %s has been kicked from its channel</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__PARAMETER__ROOT__EXPLANATION</code>
+			<value>To modify the properties of a parameter of a sound modifier associated to a channel</value>
 		</message>
 		<message>
-			<code>MUMBLE__KICK__SEVERAL_PLAYERS_KICKED</code>
-			<value>Player %s have been kicked from their channel</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__PARAMETER__VALUE__EXPLANATION</code>
+			<value>To modify the current value of a parameter</value>
 		</message>
 		<message>
-			<code>MUMBLE__MUTE__EXPLANATION</code>
-			<value>To mute a player</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__PARAMETER__VALUE__VALUE_IS_MISSING</code>
+			<value>Cannot set the value of %s, the value is missing</value>
 		</message>
 		<message>
-			<code>MUMBLE__MUTE__ALL_PLAYERS_MUTED</code>
-			<value>All players have been muted</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__PARAMETER__VALUE__VALUE_BAD_FORMAT</code>
+			<value>Cannot set the value of %s, the value has a bad format</value>
 		</message>
 		<message>
-			<code>MUMBLE__MUTE__PLAYER_NOT_FOUND</code>
-			<value>Cannot mute %s, the player does not exist</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__PARAMETER__VALUE__VALUE_OUT_OF_RANGE</code>
+			<value>Cannot set the value of %s, the value must be in range [%s,%s]</value>
 		</message>
 		<message>
-			<code>MUMBLE__MUTE__PLAYER_NOT_REGISTERED_IN_CHANNEL</code>
-			<value>Cannot mute %s, the player is not in a channel</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__PARAMETER__VALUE__VALUE_SET</code>
+			<value>The value of parameter %s of sound modifier %s associated to channel %s is now %s</value>
 		</message>
 		<message>
-			<code>MUMBLE__MUTE__NO_PLAYER_MUTED</code>
-			<value>No player is muted</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__PARAMETER__MIN_VALUE__EXPLANATION</code>
+			<value>To modify the minimum value of the range of a parameter</value>
 		</message>
 		<message>
-			<code>MUMBLE__MUTE__ONE_PLAYER_MUTED</code>
-			<value>Player %s has been muted</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__PARAMETER__MIN_VALUE__VALUE_IS_MISSING</code>
+			<value>Cannot modify the minimum value of the range of %s, the minimum value is missing</value>
 		</message>
 		<message>
-			<code>MUMBLE__MUTE__SEVERAL_PLAYERS_MUTED</code>
-			<value>Players %s have been muted</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__PARAMETER__MIN_VALUE__VALUE_BAD_FORMAT</code>
+			<value>Cannot modify the minimum value of the range of %s, the minimum value has a bad format</value>
 		</message>
 		<message>
-			<code>MUMBLE__DEAFEN__EXPLANATION</code>
-			<value>To deafen a player</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__PARAMETER__MIN_VALUE__VALUE_SET</code>
+			<value>The parameter %s of sound modifier %s associated to channel %s has now %s as minimum value</value>
 		</message>
 		<message>
-			<code>MUMBLE__DEAFEN__ALL_PLAYERS_DEAFENED</code>
-			<value>All players have been deafen</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__PARAMETER__MAX_VALUE__EXPLANATION</code>
+			<value>To modify the maximum value of the range of a parameter</value>
 		</message>
 		<message>
-			<code>MUMBLE__DEAFEN__PLAYER_NOT_FOUND</code>
-			<value>Cannot deafen %s, the player does not exist</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__PARAMETER__MAX_VALUE__VALUE_IS_MISSING</code>
+			<value>Cannot modify the maximum value of the range of %s, the maximum value is missing</value>
 		</message>
 		<message>
-			<code>MUMBLE__DEAFEN__PLAYER_NOT_REGISTERED_IN_CHANNEL</code>
-			<value>Cannot deafen %s, the player is not in a channel</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__PARAMETER__MAX_VALUE__VALUE_BAD_FORMAT</code>
+			<value>Cannot modify the maximum value of the range of %s, the maximum value has a bad format</value>
 		</message>
 		<message>
-			<code>MUMBLE__DEAFEN__NO_PLAYER_DEAFENED</code>
-			<value>No player is deafened</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__PARAMETER__MAX_VALUE__VALUE_SET</code>
+			<value>The parameter %s of sound modifier %s associated to channel %s has now %s as maximum value</value>
 		</message>
 		<message>
-			<code>MUMBLE__DEAFEN__ONE_PLAYER_DEAFENED</code>
-			<value>Player %s has been deafened</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__EXPLANATION</code>
+			<value>To display the mumble server current configuration</value>
 		</message>
 		<message>
-			<code>MUMBLE__DEAFEN__SEVERAL_PLAYERS_DEAFENED</code>
-			<value>Players %s have been deafened</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__SERVER_NAME</code>
+			<value>Name: %s</value>
 		</message>
 		<message>
-			<code>MUMBLE__DETAILS__EXPLANATION</code>
-			<value>To display the details of a mumble server</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__SOUND_MODIFIERS</code>
+			<value>Sound modifiers:</value>
 		</message>
 		<message>
-			<code>MUMBLE__DETAILS__ON_DETAILS</code>
-			<value>Details of the server mumble: %n%n%s</value>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__SOUND_MODIFIER_NAME</code>
+			<value>Name: %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__SOUND_MODIFIER_PARAMETERS</code>
+			<value>Parameters:</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PARAMETER_NAME</code>
+			<value>Name: %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PARAMETER_VALUE</code>
+			<value>Value: %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PARAMETER_DEFAULT_VALUE</code>
+			<value>Default value: %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PARAMETER_MINIMUM_VALUE</code>
+			<value>Minimum value: %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PARAMETER_MAXIMUM_VALUE</code>
+			<value>Maximum value: %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYERS</code>
+			<value>Players:</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_NAME</code>
+			<value>Name: %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_IDENTIFIER</code>
+			<value>Identifier: %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_ONLINE</code>
+			<value>Online</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_OFFLINE</code>
+			<value>Offline</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_ONLINE_STATUS</code>
+			<value>Online status: %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_GAME_ADDRESS</code>
+			<value>Game address: %s:%s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_ADMIN</code>
+			<value>Administrator</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_NOT_ADMIN</code>
+			<value>Not administrator</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_ADMIN_STATUS</code>
+			<value>Administrator status: %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_MUTE</code>
+			<value>Mute</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_NOT_MUTE</code>
+			<value>Not mute</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_MUTE_STATUS</code>
+			<value>Mute status: %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_MUTE_BY</code>
+			<value>Mute for: %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_DEAFEN</code>
+			<value>Deafen</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_NOT_DEAFEN</code>
+			<value>Not deafen</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_DEAFEN_STATUS</code>
+			<value>Deafen status: %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_POSITION</code>
+			<value>Position: X=%s, Y=%s, Z=%s, Yaw=%s, Pitch=%s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__CHANNELS</code>
+			<value>Channels:</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__CHANNEL_NAME</code>
+			<value>Name: %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__CHANNEL_SOUND_MODIFIER</code>
+			<value>Sound modifier:</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__SERVER</code>
+			<value>Server configuration:%n%s</value>
 		</message>
 	</messages>
-</dictionary>
+</dictionary>	
