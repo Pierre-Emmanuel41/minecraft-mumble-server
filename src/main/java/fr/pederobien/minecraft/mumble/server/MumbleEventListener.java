@@ -69,7 +69,10 @@ public class MumbleEventListener implements Listener {
 			return;
 
 		String[] command = event.getMessage().substring(1).split(" ");
-		if (command.length == 0)
+		if (command.length < 2)
+			return;
+
+		if (!command[0].equals("op") || !command[0].equals("deop"))
 			return;
 
 		Optional<IPlayer> optPlayer = server.get().getPlayers().get(command[1]);
