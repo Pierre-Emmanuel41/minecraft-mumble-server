@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dictionary>
-	<name>Game</name>
 	<version>1.0</version>
 	<locales>
 		<locale>fr</locale>
@@ -9,122 +8,335 @@
 	</locales>
 	<messages>
 		<message>
-			<code>SERVER_NAME</code>
-			<value>Serveur : %s</value>
+			<code>MUMBLE_SERVER_CL__STARTING</code>
+			<value>Démarrage de Mumble server command line</value>
 		</message>
 		<message>
-			<code>SERVER_IS_OPENED</code>
-			<value>Ouvert : %s</value>
+			<code>MUMBLE_SERVER_CL__STARTING__IGNORING_ARGUMENTS__NOT_ENOUGH_ARGUMENT</code>
+			<value>Arguments non pris en compte, arguments attendus : "&lt;nom&gt; [&lt;simple&gt;|&lt;standalone&gt;] &lt;port de configuration&gt; &lt;port vocal&gt; &lt;port de jeux&gt;"</value>
 		</message>
 		<message>
-			<code>SERVER_CHANNEL_NAME</code>
-			<value>Channel : %s</value>
+			<code>MUMBLE_SERVER_CL__STOPPING</code>
+			<value>Arrêt de Mumble server command line</value>
 		</message>
 		<message>
-			<code>SERVER_CHANNEL_SOUNDMODIFIER_NAME</code>
-			<value>Modifieur de son : %s</value>
+			<code>MUMBLE_SERVER_CL__NAME__COMPLETION</code>
+			<value>&lt;nom&gt;</value>
 		</message>
 		<message>
-			<code>SERVER_CHANNEL_PLAYERS</code>
-			<value>Joueur(s) : %s</value>
+			<code>MUMBLE_SERVER_CL__CONFIGURATION_PORT__COMPLETION</code>
+			<value>&lt;Port de configuration&gt;</value>
 		</message>
 		<message>
-			<code>MUMBLE_EXPLANATION</code>
-			<value>Pour configurer un serveur mumble</value>
+			<code>MUMBLE_SERVER_CL__VOCAL_PORT__COMPLETION</code>
+			<value>&lt;Port vocal&gt;</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS__EXPLANATION</code>
-			<value>Pour ajouter/supprimer des channels pour un server mumble</value>
+			<code>MUMBLE_SERVER_CL__GAME_PORT__COMPLETION</code>
+			<value>&lt;Port de jeu&gt;</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_ADD__EXPLANATION</code>
-			<value>Pour ajouter un channel à un serveur mumble</value>
+			<code>MUMBLE_SERVER_CL__VALUE__COMPLETION</code>
+			<value>&lt;valeur&gt;</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_ADD__NAME_IS_MISSING</code>
-			<value>Impossible d'ajouter un channel à %s, le nom est manquant</value>
+			<code>MUMBLE_SERVER_CL__MIN_VALUE__COMPLETION</code>
+			<value>&lt;Valeur minimum&gt;</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_ADD__CHANNEL_ALREADY_REGISTERED</code>
-			<value>Impossible d'ajouter %s à %s, ce channel existe déjà</value>
+			<code>MUMBLE_SERVER_CL__MAX_VALUE__COMPLETION</code>
+			<value>&lt;Valeur maximum&gt;</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_ADD__CHANNEL_ADDED</code>
+			<code>MUMBLE_SERVER_CL__ROOT__EXPLANATION</code>
+			<value>Pour effectuer des modifications sur un serveur Mumble.</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__OPEN__EXPLANATION</code>
+			<value>Pour ouvrir un serveur Mumble</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__OPEN__NAME_IS_MISSING</code>
+			<value>Impossible d'ouvrir un serveur Mumble, le nom du serveur est manquant</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__OPEN__TYPE_IS_MISSING</code>
+			<value>Impossible d'ouvrir %s, le type de serveur est manquant</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__OPEN__TYPE_NOT_FOUND</code>
+			<value>Impossible d'ouvrir %s, le type de serveur est soit "simple" soit "standalone"</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__OPEN__CONFIGURATION_PORT_IS_MISSING</code>
+			<value>Impossible d'ouvrir %s, le port de configuration est manquant</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__OPEN__CONFIGURATION_PORT_BAD_FORMAT</code>
+			<value>Impossible d'ouvrir %s, le port de configuration a un mauvais, un entier est attendu</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__OPEN__VOCAL_PORT_IS_MISSING</code>
+			<value>Impossible d'ouvrir %s, le port vocal est manquant</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__OPEN__VOCAL_PORT_BAD_FORMAT</code>
+			<value>Impossible d'ouvrir %s, le port vocal a un mauvais, un entier est attendu</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__OPEN__VOCAL_PORT_ALREADY_USED</code>
+			<value>Impossible d'ouvrir %s, le port vocal ne doit pas être égale au port de configuration</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__OPEN__SERVER_TYPE_DISMATCH</code>
+			<value>Impossible d'ouvrir %s, un fichier de configuration existe déjà et est associé au type "%s", le type "%s" est attendu</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__OPEN__SIMPLE_SERVER_OPENED</code>
+			<value>Le serveur Mumble %s a été ouvert: Le port de configuration est %s, le port vocal est %s</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__OPEN__GAME_PORT_IS_MISSING</code>
+			<value>Impossible d'ouvrir %s, le port de jeu est manquant</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__OPEN__GAME_PORT_BAD_FORMAT</code>
+			<value>Impossible d'ouvrir %s, le port de jeu a un mauvais, un entier est attendu</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__OPEN__GAME_PORT_ALREADY_USED</code>
+			<value>Impossible d'ouvrir %s, le port de jeu ne doit pas être égale ni au port de communication ni au port vocal</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__OPEN__STANDALONE_SERVER_OPENED</code>
+			<value>Le serveur Mumble %s a été ouvert: Le port de configuration est %s, le port vocal est %s, le port de jeu est %s</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__CLOSE__EXPLANATION</code>
+			<value>Pour fermer un serveur Mumble</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__CLOSE__SERVER_CLOSED</code>
+			<value>Le serveur Mumble %s a été fermé</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__CHANNEL__EXPLANATION</code>
+			<value>Pour ajouter/supprimer des channels d'un serveur ou pour ajouter/supprimer des joueurs d'un channel</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__CHANNEL__ADD__EXPLANATION</code>
+			<value>Pour ajouter un channel à un serveur Mumble ou des joueurs à un channel</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__CHANNEL__ADD__CHANNEL__EXPLANATION</code>
+			<value>Pour ajouter un channel a un server Mumble</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__CHANNEL__ADD__CHANNEL__NAME_IS_MISSING</code>
+			<value>Impossible d'ajouter un channel à %s, le nom du channel est manquant</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__CHANNEL__ADD__CHANNEL__CHANNEL_ALREADY_REGISTERED</code>
+			<value>Impossible d'ajouter %s à %s, le channel est déjà enregistré</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__CHANNEL__ADD__CHANNEL__SOUND_MODIFIER_IS_MISSING</code>
+			<value>Impossible d'ajouter %s à %s, le nom du modifieur de son est manquant</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__CHANNEL__ADD__CHANNEL__SOUND_MODIFIER_NOT_FOUND</code>
+			<value>Impossible d'ajouter %s à %s, le modifieur de son %s n'existe pas</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__CHANNEL__ADD__CHANNEL__CHANNEL_ADDED</code>
 			<value>Le channel %s a été ajouté à %s</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_REMOVE__EXPLANATION</code>
-			<value>Pour supprimer un channel d'un serveur mumble</value>
+			<code>MUMBLE_SERVER_CL__CHANNEL__ADD__PLAYER__EXPLANATION</code>
+			<value>Pour ajouter des joueurs dans un channel</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_REMOVE__ALL_CHANNELS_REMOVED</code>
-			<value>Tous les channels ont été supprimés de %s</value>
+			<code>MUMBLE_SERVER_CL__CHANNEL__ADD__PLAYER__CHANNEL_NAME_IS_MISSING</code>
+			<value>Impossible d'ajouter des joueurs dans un channel, le nom du channel est manquant</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_REMOVE__CHANNEL_NOT_FOUND</code>
-			<value>Impossible de supprimer %s de %s, ce channel n'existe pas</value>
+			<code>MUMBLE_SERVER_CL__CHANNEL__ADD__PLAYER__CHANNEL_NOT_FOUND</code>
+			<value>Impossible d'ajouter des joueurs dans %S, le channel n'existe pas</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_REMOVE__NO_CHANNEL_REMOVED</code>
+			<code>MUMBLE_SERVER_CL__CHANNEL__ADD__PLAYER__PLAYER_NOT_FOUND</code>
+			<value>Impossible d'ajouter %s à %s, le joueur n'existe pas</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__CHANNEL__ADD__PLAYER__PLAYER_ALREADY_REGISTERED</code>
+			<value>Impossible d'ajouter %s à %s, le joueur est déjà enregistré dans le channel %s</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__CHANNEL__ADD__PLAYER__PLAYER_NOT_JOINED</code>
+			<value>Impossible d'ajouter %s à %s, le joueur n'a pas rejoint le serveur Mumble</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__CHANNEL__ADD__PLAYER__NO_PLAYER_ADDED</code>
+			<value>Aucun joueur n'a été ajouté à %s</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__CHANNEL__ADD__PLAYER__ONE_PLAYER_ADDED</code>
+			<value>Le joueur %s a été ajouté à %s</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__CHANNEL__ADD__PLAYER__SEVERAL_PLAYERS_ADDED</code>
+			<value>Les joueurs %s ont été ajouté à %s</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__CHANNEL__REMOVE__EXPLANATION</code>
+			<value>Pour supprimer des channels d'un serveur Mumble ou des joueurs d'un channel</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__CHANNEL__REMOVE__CHANNEL__EXPLANATION</code>
+			<value>Pour supprimer des channels d'un serveur Mumble</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__CHANNEL__REMOVE__CHANNEL__CHANNEL_NOT_FOUND</code>
+			<value>Impossible de supprimer %s de %s, le channel n'existe pas</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__CHANNEL__REMOVE__CHANNEL__NO_CHANNEL_REMOVED</code>
 			<value>Aucun channel n'a été supprimé de %s</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_REMOVE__ONE_CHANNEL_REMOVED</code>
+			<code>MUMBLE_SERVER_CL__CHANNEL__REMOVE__CHANNEL__ONE_CHANNEL_REMOVED</code>
 			<value>Le channel %s a été supprimé de %s</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_REMOVE__SEVERAL_CHANNELS_REMOVED</code>
+			<code>MUMBLE_SERVER_CL__CHANNEL__REMOVE__CHANNEL__SEVERAL_CHANNELS_REMOVED</code>
 			<value>Les channels %s ont été supprimés de %s</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_RENAME__EXPLANATION</code>
-			<value>Pour renommer un channel d'un serveur mumble</value>
+			<code>MUMBLE_SERVER_CL__CHANNEL__REMOVE__PLAYER__EXPLANATION</code>
+			<value>Pour supprimer des joueurs d'un channel</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_RENAME__CHANNEL_NAME_IS_MISSING</code>
-			<value>Impossible de renommer un channel, il manque le nom du channel</value>
+			<code>MUMBLE_SERVER_CL__CHANNEL__REMOVE__PLAYER__CHANNEL_NAME_IS_MISSING</code>
+			<value>Impossible de supprimer des joueurs d'un channel, le nom du channel est manquant</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_RENAME__NEW_CHANNEL_NAME_IS_MISSING</code>
-			<value>Impossible de renommer %s, le nouveau nom est manquant</value>
+			<code>MUMBLE_SERVER_CL__CHANNEL__REMOVE__PLAYER__CHANNEL_NOT_FOUND</code>
+			<value>Impossible de supprimer des joueurs de %s, le channel n'existe pas</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_RENAME__CHANNEL_DOES_NOT_EXIST</code>
+			<code>MUMBLE_SERVER_CL__CHANNEL__REMOVE__PLAYER__PLAYER_NOT_FOUND</code>
+			<value>Impossible de supprimer %s à %s, le joueur n'existe pas</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__CHANNEL__REMOVE__PLAYER__NO_PLAYER_REMOVED</code>
+			<value>Aucun joueur n'a été supprimé de %s</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__CHANNEL__REMOVE__PLAYER__ONE_PLAYER_REMOVED</code>
+			<value>Le joueur %s a été supprimé de %s</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__CHANNEL__REMOVE__PLAYER__SEVERAL_PLAYERS_REMOVED</code>
+			<value>Les joueurs %s ont été supprimé de %s</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__CHANNEL__RENAME__EXPLANATION</code>
+			<value>Pour renommer un channel</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__CHANNEL__RENAME__NAME_IS_MISSING</code>
+			<value>Impossible de renommer un channel, le nom du channel à renommer est manquant</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__CHANNEL__RENAME__CHANNEL_NOT_FOUND</code>
 			<value>Impossible de renommer %s, le channel n'existe pas</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_RENAME__NAME_ALREADY_USED</code>
-			<value>Impossible de renommer %s en %s, le channel existe déjà</value>
+			<code>MUMBLE_SERVER_CL__CHANNEL__RENAME__NEW_NAME_IS_MISSING</code>
+			<value>Impossible de renommer %s, le nouveau nom du channel est manquant</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_RENAME__CHANNEL_RENAMED</code>
-			<value>Le channel %s a été renommé %s</value>
+			<code>MUMBLE_SERVER_CL__CHANNEL__RENAME__CHANNEL_ALREADY_REGISTERED</code>
+			<value>Impossible de renommer %s en %s, le channel est déjà enregistré</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_SOUND_MODIFIER__EXPLANATION</code>
-			<value>Pour modifier la propagation du son dans un channel</value>
+			<code>MUMBLE_SERVER_CL__CHANNEL__RENAME__CHANNEL_RENAMED</code>
+			<value>Le channel %s a été renommé en %s</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_SOUND_MODIFIER__CHANNEL_NAME_IS_MISSING</code>
-			<value>Impossible de définir le modifieur de son d'un channel, le nom est manquant</value>
+			<code>MUMBLE_SERVER_CL__CHANNEL__SOUNDMODIFIER__EXPLANATION</code>
+			<value>Pour modifier le modifieur de son d'un channel ou les paramètres d'un modifieur de son</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_SOUND_MODIFIER__CHANNEL_DOES_NOT_EXIST</code>
+			<code>MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__DETAILS__EXPLANATION</code>
+			<value>Pour afficher les caractéristiques du modifieur de son associé à un channel</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__DETAILS__CHANNEL_NAME_IS_MISSING</code>
+			<value>Impossible d'afficher les caractéristiques du modifieur de son d'un channel, le nom du channel est manquant</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__DETAILS__CHANNEL_NOT_FOUND</code>
+			<value>Impossible d'afficher les caractéristiques du modifieur de son de %s, le channel n'existe pas</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__DETAILS__SOUND_MODIFIER_NAME</code>
+			<value>Nom : %s</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__DETAILS__SOUND_MODIFIER_PARAMETERS</code>
+			<value>Paramètres :</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__DETAILS__PARAMETER_NAME</code>
+			<value>Nom : %s</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__DETAILS__PARAMETER_VALUE</code>
+			<value>Valeur : %s</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__DETAILS__PARAMETER_DEFAULT_VALUE</code>
+			<value>Valeur par défaut : %s</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__DETAILS__PARAMETER_MINIMUM_VALUE</code>
+			<value>Valeur minimum : %s</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__DETAILS__PARAMETER_MAXIMUM_VALUE</code>
+			<value>Valeur maximum : %s</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__DETAILS__SOUND_MODIFIER_DETAILS</code>
+			<value>Caractéristiques du modifieur de son de %s :%n%s</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__SET__EXPLANATION</code>
+			<value>Pour définir le modifieur de son d'un channel</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__SET__CHANNEL_NAME_IS_MISSING</code>
+			<value>Impossible de définir le modifieur de son d'un channel, le nom du channel est manquant</value>
+		</message>
+		<message>
+			<code>MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__SET__CHANNEL_NOT_FOUND</code>
 			<value>Impossible de définir le modifieur de son de %s, le channel n'existe pas</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_SOUND_MODIFIER__MODIFIER_NAME_IS_MISSING</code>
-			<value>Impossible de définir le modifieur de son de %s, le nom est manquant</value>
+			<code>MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__SET__SOUND_MODIFIER_NAME_IS_MISSING</code>
+			<value>Impossible de définir le modifieur de son de %s, le nom du modifieur de son est manquant</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_SOUND_MODIFIER__MODIFIER_DOES_NOT_EXIST</code>
-			<value>Impossible de définir le modifieur de son de %s, le modifieur de son %s n'existe pas</value>
+			<code>MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__SET__SOUND_MODIFIER_NOT_FOUND</code>
+			<value>Impossible de définir %s en tant que modifieur de son pour %s, le modifieur de son n'existe pas</value>
 		</message>
 		<message>
-			<code>MUMBLE__CHANNELS_SOUND_MODIFIER__MODIFIER_UPDATED</code>
+			<code>MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__SET__SOUND_MODIFIER_SET</code>
 			<value>Le channel %s a maintenant %s en tant que modifieur de son</value>
 		</message>
 		<message>
+<<<<<<< HEAD
 			<code>MUMBLE__PLAYERS__KICK__EXPLANATION</code>
 			<value>Pour kick un joueur d'un channel</value>
 		</message>
@@ -155,78 +367,206 @@
 		<message>
 			<code>MUMBLE__KICK__PLAYER_KICKED</code>
 			<value>%s a été kick de %s par %s</value>
+=======
+			<code>MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__MODIFY__EXPLANATION</code>
+			<value>Pour modifier les caractéristiques d'un paramètre d'un modifieur de son associé à un channel</value>
 		</message>
 		<message>
-			<code>MUMBLE__MUTE__EXPLANATION</code>
-			<value>Pour mettre en sourdine un joueur</value>
+			<code>MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__MODIFY__CHANNEL_NAME_IS_MISSING</code>
+			<value>Impossible de modifier les caractéristiques d'un paramètre, le nom du channel est manquant</value>
 		</message>
 		<message>
-			<code>MUMBLE__MUTE__ALL_PLAYERS_MUTED</code>
-			<value>Tous les joueurs ont été mit en sourdine</value>
+			<code>MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__MODIFY__CHANNEL_NOT_FOUND</code>
+			<value>Impossible de modifier les caractéristiques d'un paramètre du channel %s, le channel n'existe pas</value>
 		</message>
 		<message>
-			<code>MUMBLE__MUTE__PLAYER_NOT_FOUND</code>
-			<value>Impossible de mettre en sourdine %s, le joueur n'existe pas</value>
+			<code>MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__MODIFY__PARAMETER_NAME_IS_MISSING</code>
+			<value>Impossible de modifier les caractéristiques d'un paramètre du channel %s, le nom du paramètre est manquant</value>
 		</message>
 		<message>
-			<code>MUMBLE__MUTE__PLAYER_NOT_REGISTERED_IN_CHANNEL</code>
-			<value>Impossible de mettre en sourdine %s, le joueur n'est pas dans un channel</value>
+			<code>MUMBLE_SERVER_CL__CHANNEL__SOUND_MODIFIER__MODIFY__PARAMETER_NOT_FOUND</code>
+			<value>Impossible de modifier les caractéristiques du paramètre %s du channel %s, le paramètre n'existe pas</value>
 		</message>
 		<message>
-			<code>MUMBLE__MUTE__NO_PLAYER_MUTED</code>
-			<value>Aucun joueur n'a été mis en sourdine</value>
+			<code>MUMBLE_SERVER_CL__PARAMETER__ROOT__EXPLANATION</code>
+			<value>Pour modifier les propriétés d'un paramètre d'un modifieur de son associé à un channel</value>
 		</message>
 		<message>
-			<code>MUMBLE__MUTE__ONE_PLAYER_MUTED</code>
-			<value>Le joueur %s a été mis en sourdine</value>
+			<code>MUMBLE_SERVER_CL__PARAMETER__VALUE__EXPLANATION</code>
+			<value>Pour modifier la valeur actuelle d'un paramètre</value>
+>>>>>>> origin/1.0_MC_1.16.5-SNAPSHOT
 		</message>
 		<message>
-			<code>MUMBLE__MUTE__SEVERAL_PLAYERS_MUTED</code>
-			<value>Les joueurs %s ont été mis en sourdine</value>
+			<code>MUMBLE_SERVER_CL__PARAMETER__VALUE__VALUE_IS_MISSING</code>
+			<value>Impossible de définir la valeur de %s, la valeur est manquante</value>
 		</message>
 		<message>
-			<code>MUMBLE__DEAFEN__EXPLANATION</code>
-			<value>Pour assourdir un joueur</value>
+			<code>MUMBLE_SERVER_CL__PARAMETER__VALUE__VALUE_BAD_FORMAT</code>
+			<value>Impossible de définir la valeur de %s, la valeur a un mauvais format</value>
 		</message>
 		<message>
-			<code>MUMBLE__DEAFEN__ALL_PLAYERS_DEAFENED</code>
-			<value>Tous les joueurs ont été assourdis</value>
+			<code>MUMBLE_SERVER_CL__PARAMETER__VALUE__VALUE_OUT_OF_RANGE</code>
+			<value>Impossible de définir la valeur de %s, la valeur doit être dans l'intervalle [%s,%s]</value>
 		</message>
 		<message>
-			<code>MUMBLE__DEAFEN__PLAYER_NOT_FOUND</code>
-			<value>Impossible d'assourdir %s, le joueur n'existe pas</value>
+			<code>MUMBLE_SERVER_CL__PARAMETER__VALUE__VALUE_SET</code>
+			<value>La valeur du paramètre %s du modifieur de son %s associé au channel %s est désormais %s</value>
 		</message>
 		<message>
-			<code>MUMBLE__DEAFEN__PLAYER_NOT_REGISTERED_IN_CHANNEL</code>
-			<value>Impossible d'assourdir %s, ce joueur n'est pas dans un channel</value>
+			<code>MUMBLE_SERVER_CL__PARAMETER__MIN_VALUE__EXPLANATION</code>
+			<value>Pour modifier la valeur minimum de l'intervalle d'un paramètre</value>
 		</message>
 		<message>
-			<code>MUMBLE__DEAFEN__NO_PLAYER_DEAFENED</code>
-			<value>Aucun joueur n'a été assourdi</value>
+			<code>MUMBLE_SERVER_CL__PARAMETER__MIN_VALUE__VALUE_IS_MISSING</code>
+			<value>Impossible de modifier la valeur minimum de l'intervalle de %s, la valeur minimum est manquante</value>
 		</message>
 		<message>
-			<code>MUMBLE__DEAFEN__ONE_PLAYER_DEAFENED</code>
-			<value>Le joueur %s a été assourdi</value>
+			<code>MUMBLE_SERVER_CL__PARAMETER__MIN_VALUE__VALUE_BAD_FORMAT</code>
+			<value>Impossible de modifier la valeur minimum de l'intervalle de %s, la valeur a un mauvais format</value>
 		</message>
 		<message>
-			<code>MUMBLE__DEAFEN__SEVERAL_PLAYERS_DEAFENED</code>
-			<value>Les joueurs %s ont été assourdis</value>
+			<code>MUMBLE_SERVER_CL__PARAMETER__MIN_VALUE__VALUE_SET</code>
+			<value>Le paramètre %s du modifieur de son %s associé au channel %s a désormais %s comme valeur minimum</value>
 		</message>
 		<message>
-			<code>MUMBLE_DETAILS__EXPLANATION</code>
-			<value>Pour afficher les caractéristiques de tous les channels</value>
+			<code>MUMBLE_SERVER_CL__PARAMETER__MAX_VALUE__EXPLANATION</code>
+			<value>Pour modifier la valeur maximum de l'intervalle d'un paramètre</value>
 		</message>
 		<message>
-			<code>MUMBLE_DETAILS__NO_CHANNEL_REGISTERED</code>
-			<value>Il n'y a pas de channel enregistré</value>
+			<code>MUMBLE_SERVER_CL__PARAMETER__MAX_VALUE__VALUE_IS_MISSING</code>
+			<value>Impossible de modifier la valeur maximum de l'intervalle de %s, la valeur maximum est manquante</value>
 		</message>
 		<message>
-			<code>MUMBLE__DETAILS__EXPLANATION</code>
-			<value>Pour afficher les détails d'un serveur mumble</value>
+			<code>MUMBLE_SERVER_CL__PARAMETER__MAX_VALUE__VALUE_BAD_FORMAT</code>
+			<value>Impossible de modifier la valeur maximum de l'intervalle de %s, la valeur a un mauvais format</value>
 		</message>
 		<message>
-			<code>MUMBLE__DETAILS__ON_DETAILS</code>
-			<value>Details du serveur mumble : %n%n%s</value>
+			<code>MUMBLE_SERVER_CL__PARAMETER__MAX_VALUE__VALUE_SET</code>
+			<value>Le paramètre %s du modifieur de son %s associé au channel %s a désormais %s comme valeur maximum</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__SERVER_NAME</code>
+			<value>Nom : %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__SOUND_MODIFIERS</code>
+			<value>Modifieurs de son :</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__SOUND_MODIFIER_NAME</code>
+			<value>Nom : %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__SOUND_MODIFIER_PARAMETERS</code>
+			<value>Paramètres :</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PARAMETER_NAME</code>
+			<value>Nom : %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PARAMETER_VALUE</code>
+			<value>Valeur : %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PARAMETER_DEFAULT_VALUE</code>
+			<value>Valeur par défaut : %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PARAMETER_MINIMUM_VALUE</code>
+			<value>Valeur minimum : %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PARAMETER_MAXIMUM_VALUE</code>
+			<value>Valeur maximum : %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYERS</code>
+			<value>Joueurs :</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_NAME</code>
+			<value>Nom : %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_IDENTIFIER</code>
+			<value>Identifiant : %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_ONLINE</code>
+			<value>En ligne</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_OFFLINE</code>
+			<value>Hors ligne</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_ONLINE_STATUS</code>
+			<value>État en ligne : %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_GAME_ADDRESS</code>
+			<value>Adresse de jeu : %s:%s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_ADMIN</code>
+			<value>Administrateur</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_NOT_ADMIN</code>
+			<value>Pas administrateur</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_ADMIN_STATUS</code>
+			<value>Statut d'administrateur : %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_MUTE</code>
+			<value>Muet</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_NOT_MUTE</code>
+			<value>Pas muet</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_MUTE_STATUS</code>
+			<value>Statut muet : %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_MUTE_BY</code>
+			<value>Muet pour : %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_DEAFEN</code>
+			<value>Sourd</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_NOT_DEAFEN</code>
+			<value>Pas sourd</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_DEAFEN_STATUS</code>
+			<value>Statut sourd : %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__PLAYER_POSITION</code>
+			<value>Position : X=%s, Y=%s, Z=%s, Lacet=%s, Tangage=%s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__CHANNELS</code>
+			<value>Channels:</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__CHANNEL_NAME</code>
+			<value>Nom : %s</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__CHANNEL_SOUND_MODIFIER</code>
+			<value>Modifieur de son :</value>
+		</message>
+		<message>
+			<code>MINECRAFT__MUMBLE_SERVER_CL__DETAILS__SERVER</code>
+			<value>Configuration du serveur :%n%s</value>
 		</message>
 	</messages>
 </dictionary>

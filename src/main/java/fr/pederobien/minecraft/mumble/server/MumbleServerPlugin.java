@@ -1,26 +1,39 @@
 package fr.pederobien.minecraft.mumble.server;
 
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import fr.pederobien.communication.event.DataEvent;
+import fr.pederobien.commandtree.events.NodeEvent;
+import fr.pederobien.communication.event.ConnectionEvent;
+import fr.pederobien.dictionary.event.DictionaryEvent;
 import fr.pederobien.dictionary.impl.JarXmlDictionaryParser;
 import fr.pederobien.minecraft.dictionary.impl.MinecraftDictionaryContext;
-import fr.pederobien.minecraft.mumble.server.commands.MumbleCommandTree;
+import fr.pederobien.minecraft.mumble.server.commands.MumbleServerCommandTree;
 import fr.pederobien.minecraft.mumble.server.soundmodifiers.TestModifier;
+<<<<<<< HEAD
 import fr.pederobien.minecraft.platform.Platform;
 import fr.pederobien.mumble.server.event.MumblePlayerPositionChangePostEvent;
 import fr.pederobien.mumble.server.impl.SimpleMumbleServer;
+=======
+import fr.pederobien.mumble.server.event.MumblePlayerPositionChangePostEvent;
+import fr.pederobien.mumble.server.event.MumblePlayerPositionChangePreEvent;
+>>>>>>> origin/1.0_MC_1.16.5-SNAPSHOT
 import fr.pederobien.mumble.server.impl.SoundManager;
 import fr.pederobien.utils.AsyncConsole;
 import fr.pederobien.utils.event.EventLogger;
+import fr.pederobien.vocal.server.event.VocalPlayerSpeakEvent;
 
 public class MumbleServerPlugin extends JavaPlugin {
 	private static final String DICTIONARY_FOLDER = "resources/dictionaries/";
+	private static final Path MUMBLE_FOLDER = Paths.get("plugins", "Mumble");
 
 	private static Plugin instance;
-	private static MumbleCommandTree mumbleTree;
+	private static MumbleServerCommandTree mumbleTree;
 	private static MumbleEventListener listener;
 
 	/**
@@ -33,7 +46,7 @@ public class MumbleServerPlugin extends JavaPlugin {
 	/**
 	 * @return The tree used to modify a mumble server.
 	 */
-	public static MumbleCommandTree getMumbleTree() {
+	public static MumbleServerCommandTree getMumbleTree() {
 		return mumbleTree;
 	}
 
@@ -48,11 +61,28 @@ public class MumbleServerPlugin extends JavaPlugin {
 	public void onEnable() {
 		instance = this;
 
+<<<<<<< HEAD
 		EventLogger.instance().newLine(false).ignore(DataEvent.class).ignore(MumblePlayerPositionChangePostEvent.class).register();
 
 		mumbleTree = new MumbleCommandTree(new SimpleMumbleServer("Mumble-1.0-SNAPSHOT", Platform.ROOT.resolve("Mumble").toAbsolutePath().toString()));
 		mumbleTree.getMumbleServer().open();
 		getServer().getPluginManager().registerEvents(listener = new MumbleEventListener(mumbleTree.getMumbleServer()), this);
+=======
+		EventLogger.instance().newLine(true).timeStamp(false).register();
+		EventLogger.instance().ignore(DictionaryEvent.class);
+		EventLogger.instance().ignore(ConnectionEvent.class);
+		EventLogger.instance().ignore(NodeEvent.class);
+		EventLogger.instance().ignore(VocalPlayerSpeakEvent.class);
+		EventLogger.instance().ignore(MumblePlayerPositionChangePreEvent.class);
+		EventLogger.instance().ignore(MumblePlayerPositionChangePostEvent.class);
+
+		File folder = MUMBLE_FOLDER.toFile();
+		if (!folder.exists())
+			folder.mkdirs();
+
+		mumbleTree = new MumbleServerCommandTree(MUMBLE_FOLDER);
+		getServer().getPluginManager().registerEvents(listener = new MumbleEventListener(() -> mumbleTree.getServer()), this);
+>>>>>>> origin/1.0_MC_1.16.5-SNAPSHOT
 
 		registerDictionaries();
 		registerTabExecutor();
@@ -61,7 +91,9 @@ public class MumbleServerPlugin extends JavaPlugin {
 
 	@Override
 	public void onDisable() {
-		mumbleTree.getMumbleServer().close();
+		if (mumbleTree.getServer() != null)
+			mumbleTree.getServer().close();
+		;
 	}
 
 	private void registerDictionaries() {

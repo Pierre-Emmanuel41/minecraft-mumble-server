@@ -1,9 +1,5 @@
 package fr.pederobien.minecraft.mumble.server.soundmodifiers;
 
-import java.util.Map;
-
-import fr.pederobien.minecraft.mumble.server.MinecraftMumblePlayer;
-import fr.pederobien.minecraft.mumble.server.MumbleServerPlugin;
 import fr.pederobien.mumble.server.impl.MathHelper;
 import fr.pederobien.mumble.server.impl.modifiers.RangeParameter;
 import fr.pederobien.mumble.server.impl.modifiers.SoundModifier;
@@ -22,8 +18,8 @@ public class TestModifier extends SoundModifier {
 	public TestModifier() {
 		super("test");
 		getParameters().add(xParameter = RangeParameter.of(this, X_PARAMETER_NAME, 0.0, -29999984.0, 29999984.0));
-		getParameters().add(yParameter = RangeParameter.of(this, Y_PARAMETER_NAME, 0.0, -29999984.0, 29999984.0));
-		getParameters().add(zParameter = RangeParameter.of(this, Z_PARAMETER_NAME, 70.0, 0.0, 256.0));
+		getParameters().add(yParameter = RangeParameter.of(this, Y_PARAMETER_NAME, 70.0, 0.0, 256.0));
+		getParameters().add(zParameter = RangeParameter.of(this, Z_PARAMETER_NAME, 0.0, -29999984.0, 29999984.0));
 		getParameters().add(radiusParameter = RangeParameter.of(this, RADIUS_PARAMETER_NAME, 50.0, 0.0, Double.MAX_VALUE));
 	}
 
@@ -46,6 +42,7 @@ public class TestModifier extends SoundModifier {
 		if (!transmitter.equals(receiver))
 			return VolumeResult.NONE;
 
+<<<<<<< HEAD
 		Map<String, MinecraftMumblePlayer> players = MumbleServerPlugin.getListener().getPlayers();
 		MinecraftMumblePlayer minecraftTransmitter = players.get(transmitter.getName());
 		if (minecraftTransmitter == null)
@@ -55,6 +52,8 @@ public class TestModifier extends SoundModifier {
 		if (minecraftReceiver == null)
 			return new VolumeResult(0);
 
+=======
+>>>>>>> origin/1.0_MC_1.16.5-SNAPSHOT
 		double distance = MathHelper.getDistance3D(new TestPosition(), receiver.getPosition());
 		double[] volumes = MathHelper.getDefaultLeftAndRightVolume(new TestPosition(), receiver.getPosition());
 		VolumeResult result = new VolumeResult((-1.0 / radiusParameter.getValue()) * distance + 1, volumes[0], volumes[1]);
@@ -80,12 +79,12 @@ public class TestModifier extends SoundModifier {
 
 		@Override
 		public double getY() {
-			return yParameter.getValue();
+			return -zParameter.getValue();
 		}
 
 		@Override
 		public double getZ() {
-			return zParameter.getValue();
+			return yParameter.getValue();
 		}
 
 		@Override
