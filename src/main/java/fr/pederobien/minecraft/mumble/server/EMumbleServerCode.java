@@ -376,7 +376,7 @@ public enum EMumbleServerCode implements IMinecraftCode {
 	}
 
 	@Override
-	public String value() {
+	public String getCode() {
 		return name();
 	}
 
@@ -388,5 +388,10 @@ public enum EMumbleServerCode implements IMinecraftCode {
 	@Override
 	public void setGroup(IPlayerGroup group) {
 		this.group = group;
+	}
+
+	@Override
+	public String toString() {
+		return String.format("value=%s,group=%s", getCode(), getGroup());
 	}
 }
